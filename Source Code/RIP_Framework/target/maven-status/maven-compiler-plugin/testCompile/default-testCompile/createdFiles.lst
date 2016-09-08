@@ -1,0 +1,5 @@
+com\rip\framework\configuration\HibernateTestConfiguration.class
+com\rip\framework\service\EmployeeServiceImplTest.class
+com\rip\framework\dao\EntityDaoImplTest.class
+com\rip\framework\controller\AppControllerTest.class
+com\rip\framework\dao\EmployeeDaoImplTest.class
