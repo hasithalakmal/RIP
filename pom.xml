@@ -31,16 +31,6 @@
         <module>RIP_UI</module>
     </modules>
 
-    <dependencyManagement>
-        <dependencies>
-            
-        </dependencies>
-    </dependencyManagement>
-
-    <repositories>
-        
-    </repositories>
-
-   
+  
 
 </project>
