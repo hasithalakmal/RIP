@@ -53,16 +53,7 @@
                         <target>1.7</target>
                     </configuration>
                 </plugin>			
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>2.4</version>
-                    <configuration>
-                        <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                        <warName>RIP_API</warName>
-                        <failOnMissingWebXml>false</failOnMissingWebXml>
-                    </configuration>
-                </plugin>
+
             </plugins>
         </pluginManagement>
         <finalName>RIP</finalName>
