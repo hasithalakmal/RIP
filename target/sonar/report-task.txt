@@ -1,5 +1,0 @@
-projectKey=com.rip:RIP
-serverUrl=http://localhost:9000
-dashboardUrl=http://localhost:9000/dashboard/index/com.rip:RIP
-ceTaskId=AVcUQbEAZoWfKkOl8WWw
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AVcUQbEAZoWfKkOl8WWw

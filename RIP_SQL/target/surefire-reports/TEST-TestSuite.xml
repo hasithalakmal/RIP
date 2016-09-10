@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="23" failures="0" name="TestSuite" time="3.495" errors="0" skipped="0">
+<testsuite tests="23" failures="0" name="TestSuite" time="3.802" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_05\jre\bin"/>
@@ -61,27 +61,27 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.rip.sql.controller.AppControllerTest" name="deleteEmployee" time="0.01"/>
-  <testcase classname="com.rip.sql.controller.AppControllerTest" name="editEmployee" time="0.038"/>
-  <testcase classname="com.rip.sql.controller.AppControllerTest" name="listEmployees" time="0.004"/>
+  <testcase classname="com.rip.sql.controller.AppControllerTest" name="deleteEmployee" time="0.023"/>
+  <testcase classname="com.rip.sql.controller.AppControllerTest" name="editEmployee" time="0.033"/>
+  <testcase classname="com.rip.sql.controller.AppControllerTest" name="listEmployees" time="0.006"/>
   <testcase classname="com.rip.sql.controller.AppControllerTest" name="newEmployee" time="0"/>
   <testcase classname="com.rip.sql.controller.AppControllerTest" name="saveEmployeeWithSuccess" time="0.001"/>
-  <testcase classname="com.rip.sql.controller.AppControllerTest" name="saveEmployeeWithValidationError" time="0"/>
-  <testcase classname="com.rip.sql.controller.AppControllerTest" name="saveEmployeeWithValidationErrorNonUniqueSSN" time="0.002"/>
-  <testcase classname="com.rip.sql.controller.AppControllerTest" name="updateEmployeeWithSuccess" time="0"/>
+  <testcase classname="com.rip.sql.controller.AppControllerTest" name="saveEmployeeWithValidationError" time="0.001"/>
+  <testcase classname="com.rip.sql.controller.AppControllerTest" name="saveEmployeeWithValidationErrorNonUniqueSSN" time="0.001"/>
+  <testcase classname="com.rip.sql.controller.AppControllerTest" name="updateEmployeeWithSuccess" time="0.001"/>
   <testcase classname="com.rip.sql.controller.AppControllerTest" name="updateEmployeeWithValidationError" time="0"/>
   <testcase classname="com.rip.sql.controller.AppControllerTest" name="updateEmployeeWithValidationErrorNonUniqueSSN" time="0"/>
-  <testcase classname="com.rip.sql.dao.EmployeeDaoImplTest" name="deleteEmployeeByInvalidSsn" time="0.089"/>
+  <testcase classname="com.rip.sql.dao.EmployeeDaoImplTest" name="deleteEmployeeByInvalidSsn" time="0.185"/>
   <testcase classname="com.rip.sql.dao.EmployeeDaoImplTest" name="deleteEmployeeBySsn" time="0.003"/>
   <testcase classname="com.rip.sql.dao.EmployeeDaoImplTest" name="findAllEmployees" time="0.003"/>
-  <testcase classname="com.rip.sql.dao.EmployeeDaoImplTest" name="findById" time="0.009"/>
-  <testcase classname="com.rip.sql.dao.EmployeeDaoImplTest" name="findEmployeeBySsn" time="0.019"/>
-  <testcase classname="com.rip.sql.dao.EmployeeDaoImplTest" name="saveEmployee" time="0.02"/>
-  <testcase classname="com.rip.sql.service.EmployeeServiceImplTest" name="deleteEmployeeBySsn" time="0.001"/>
+  <testcase classname="com.rip.sql.dao.EmployeeDaoImplTest" name="findById" time="0.01"/>
+  <testcase classname="com.rip.sql.dao.EmployeeDaoImplTest" name="findEmployeeBySsn" time="0.011"/>
+  <testcase classname="com.rip.sql.dao.EmployeeDaoImplTest" name="saveEmployee" time="0.021"/>
+  <testcase classname="com.rip.sql.service.EmployeeServiceImplTest" name="deleteEmployeeBySsn" time="0"/>
   <testcase classname="com.rip.sql.service.EmployeeServiceImplTest" name="findAllEmployees" time="0"/>
   <testcase classname="com.rip.sql.service.EmployeeServiceImplTest" name="findById" time="0.001"/>
-  <testcase classname="com.rip.sql.service.EmployeeServiceImplTest" name="findEmployeeBySsn" time="0.001"/>
+  <testcase classname="com.rip.sql.service.EmployeeServiceImplTest" name="findEmployeeBySsn" time="0"/>
   <testcase classname="com.rip.sql.service.EmployeeServiceImplTest" name="isEmployeeSsnUnique" time="0.001"/>
-  <testcase classname="com.rip.sql.service.EmployeeServiceImplTest" name="saveEmployee" time="0.001"/>
-  <testcase classname="com.rip.sql.service.EmployeeServiceImplTest" name="updateEmployee" time="0.003"/>
+  <testcase classname="com.rip.sql.service.EmployeeServiceImplTest" name="saveEmployee" time="0"/>
+  <testcase classname="com.rip.sql.service.EmployeeServiceImplTest" name="updateEmployee" time="0.001"/>
 </testsuite>
