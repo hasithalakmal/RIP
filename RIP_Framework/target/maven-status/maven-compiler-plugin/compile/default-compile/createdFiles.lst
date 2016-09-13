@@ -1,4 +1,7 @@
+com\rip\framework\service\UserManagementService.class
 com\rip\framework\util\PasswordHasher.class
+com\rip\framework\controller\UserManagementRestController.class
+com\rip\framework\service\UserManagementServiceImpl.class
 com\rip\framework\configuration\AppConfig.class
 com\rip\framework\configuration\AppController.class
 com\rip\framework\configuration\CORSFilter.class
@@ -11,5 +14,8 @@ com\rip\framework\dao\EmployeeDao.class
 com\rip\framework\model\Employee.class
 com\rip\framework\service\EmployeeService.class
 com\rip\framework\configuration\AppInitializer.class
+com\rip\framework\mongodao\UserManagementDaoImpl.class
 com\rip\framework\aspect\LogingAspect.class
 com\rip\framework\configuration\HibernateConfiguration.class
+com\rip\framework\configuration\MongoDBConfigaration.class
+com\rip\framework\mongodao\UserManagementDao.class

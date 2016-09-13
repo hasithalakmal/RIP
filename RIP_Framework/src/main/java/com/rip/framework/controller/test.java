@@ -5,6 +5,7 @@
  */
 package com.rip.framework.controller;
 
+import com.rip.framework.configuration.MongoDBConfigaration;
 import com.rip.framework.model.Employee;
 import com.rip.framework.service.EmployeeService;
 import java.util.List;
@@ -27,11 +28,22 @@ public class test {
     @Autowired
     EmployeeService employeeService;
 
+    @Autowired
+    MongoDBConfigaration mongoDBConfigaration;
+    
     @RequestMapping(value = "test", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<List<Employee>> test() {
         List<Employee> x = employeeService.findAllEmployees();
         return new ResponseEntity<>(x, HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "testmongo", method = RequestMethod.GET, produces = "application/json")
+    public void test_mongo() {
+        System.out.println("working");
+        mongoDBConfigaration.test();
+         System.out.println("@@@@@@@@@@@@");
+    }
+
 
    
 
