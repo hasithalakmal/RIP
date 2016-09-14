@@ -39,19 +39,18 @@ public class ProjectManagementRestController {
     
     @RequestMapping(value = "project/{projectName}/{version}", method = RequestMethod.DELETE, consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> deleteProject(@PathVariable String projectName,  @PathVariable String version) {
-        System.out.println(">>>>>>>>>>>>>"+ projectName +">>>>>>>"+version );
         String msg = projectManagementService.deleteProject(projectName, version);
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
     
-    /*
+   
     @RequestMapping(value = "project/{projectName}/{version}", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> getProject(@PathVariable String projectName,String version) {
+    public ResponseEntity<String> getProject(@PathVariable String projectName,@PathVariable String version) {
 
         String msg = projectManagementService.selectProject(projectName, version);
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
-    
+     /*
     @RequestMapping(value = "project/{projectName}", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> getProjectByName(@PathVariable String projectName) {
 

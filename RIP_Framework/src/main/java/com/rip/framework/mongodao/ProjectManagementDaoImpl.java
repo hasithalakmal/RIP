@@ -8,6 +8,7 @@ package com.rip.framework.mongodao;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
 import com.mongodb.util.JSON;
@@ -59,8 +60,7 @@ public class ProjectManagementDaoImpl implements ProjectManagementDao {
         BasicDBObject query = new BasicDBObject();
         query.put("project_name", projectName);
         query.put("version", version);
-        
-        System.out.println("???? "+projectName+ version);
+
 
         WriteResult state = table.remove(query);
 
@@ -69,7 +69,31 @@ public class ProjectManagementDaoImpl implements ProjectManagementDao {
 
     @Override
     public String selectProject(String projectName, String version) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         DB db = mongoDBConfigaration.getMongoDBConnection();
+        /**
+         * ** Get collection / table from 'testdb' ***
+         */
+        // if collection doesn't exists, MongoDB will create it for you
+        DBCollection table = db.getCollection("Projects");
+
+        /**
+         * ** Update ***
+         */
+        // search document where name="mkyong" and update it with new values
+        BasicDBObject query = new BasicDBObject();
+        query.put("project_name", projectName);
+        query.put("version", version);
+
+        DBCursor cursor = table.find(query);
+
+        if (cursor.hasNext()) {
+            return cursor.next().toString();
+        } else {
+            return "{\n"
+                    + "  \"user_name\": null\n"
+                    + "}";
+        }
+
     }
 
     @Override

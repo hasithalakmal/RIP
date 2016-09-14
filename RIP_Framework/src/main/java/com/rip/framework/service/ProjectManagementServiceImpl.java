@@ -31,7 +31,8 @@ public class ProjectManagementServiceImpl implements ProjectManagementService {
 
     @Override
     public String selectProject(String projectName, String version) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String msg = projectManagementDao.selectProject(projectName,version);
+        return msg;
     }
 
     @Override
