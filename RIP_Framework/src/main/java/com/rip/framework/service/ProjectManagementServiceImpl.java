@@ -8,12 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-
 @Service("projectManagementService")
 @Transactional
 public class ProjectManagementServiceImpl implements ProjectManagementService {
-    
+
     @Autowired
     ProjectManagementDao projectManagementDao;
 
@@ -25,13 +23,19 @@ public class ProjectManagementServiceImpl implements ProjectManagementService {
 
     @Override
     public String deleteProject(String projectName, String version) {
-       String msg = projectManagementDao.deleteProject(projectName,version);
+        String msg = projectManagementDao.deleteProject(projectName, version);
         return msg;
     }
 
     @Override
     public String selectProject(String projectName, String version) {
-        String msg = projectManagementDao.selectProject(projectName,version);
+        String msg = projectManagementDao.selectProject(projectName, version);
+        return msg;
+    }
+
+    @Override
+    public ArrayList selectProjectByName(String projectName) {
+        ArrayList msg = projectManagementDao.selectProjectByName(projectName);
         return msg;
     }
 
@@ -45,11 +49,4 @@ public class ProjectManagementServiceImpl implements ProjectManagementService {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public String selectProjectByName(String projectName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-  
-	
 }

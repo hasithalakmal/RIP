@@ -50,14 +50,14 @@ public class ProjectManagementRestController {
         String msg = projectManagementService.selectProject(projectName, version);
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
-     /*
+     
     @RequestMapping(value = "project/{projectName}", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> getProjectByName(@PathVariable String projectName) {
+    public ResponseEntity<ArrayList> getProjectByName(@PathVariable String projectName) {
 
-        String msg = projectManagementService.selectProjectByName(projectName);
+        ArrayList msg = projectManagementService.selectProjectByName(projectName);
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
-    
+    /*
     @RequestMapping(value = "project/{userName}", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
     public ResponseEntity<ArrayList> getProjectByUser(@PathVariable String userName) {
 

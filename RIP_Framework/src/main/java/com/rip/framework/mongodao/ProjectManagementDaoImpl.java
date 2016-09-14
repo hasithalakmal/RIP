@@ -97,8 +97,26 @@ public class ProjectManagementDaoImpl implements ProjectManagementDao {
     }
 
     @Override
-    public String selectProjectByName(String projectName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList selectProjectByName(String projectName) {
+          DB db = mongoDBConfigaration.getMongoDBConnection();
+        /**
+         * ** Get collection / table from 'Users' ***
+         */
+        // if collection doesn't exists, MongoDB will create it for you
+        DBCollection table = db.getCollection("Projects");
+
+        DBCursor cursor = table.find();
+
+        ArrayList projects = new ArrayList();
+
+        int i = 1;
+        while (cursor.hasNext()) {
+            DBObject project = cursor.next();
+            projects.add(project);
+
+        }
+
+        return projects;
     }
 
     @Override

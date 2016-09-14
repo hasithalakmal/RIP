@@ -12,7 +12,7 @@ public interface ProjectManagementService {
         
         String selectProject(String projectName, String version);
         
-        String selectProjectByName(String projectName);
+        ArrayList selectProjectByName(String projectName);
         
         ArrayList selectProjectByUser(String userName);
 
