@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,12 +39,19 @@ public class UserManagementRestController {
     public ResponseEntity<String> updateUser(@RequestBody String user) {
 
         JSONObject jason = new JSONObject(user);
-        System.out.println(jason);
         Object userName = jason.get("user_name");
 
-        
         String msg = userManagementService.updateUser(userName.toString(), user);
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "user/{userName}", method = RequestMethod.DELETE, consumes = "application/json", produces = "application/json")
+    public ResponseEntity<String> deleteUser(@PathVariable String userName) {
+
+        String msg = userManagementService.deleteUser(userName);
+        return new ResponseEntity<>(msg, HttpStatus.OK);
+    }
+    
+    
 
 }
