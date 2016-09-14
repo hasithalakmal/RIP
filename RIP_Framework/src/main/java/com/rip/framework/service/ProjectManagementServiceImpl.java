@@ -41,12 +41,14 @@ public class ProjectManagementServiceImpl implements ProjectManagementService {
 
     @Override
     public ArrayList selectProjectByUser(String userName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList msg = projectManagementDao.selectProjectByUser(userName);
+        return msg;
     }
 
     @Override
     public ArrayList selectAllProjects() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList msg = projectManagementDao.selectAllProjects();
+        return msg;
     }
 
 }

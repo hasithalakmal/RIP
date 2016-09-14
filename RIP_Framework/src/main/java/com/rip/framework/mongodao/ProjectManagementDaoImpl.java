@@ -61,7 +61,6 @@ public class ProjectManagementDaoImpl implements ProjectManagementDao {
         query.put("project_name", projectName);
         query.put("version", version);
 
-
         WriteResult state = table.remove(query);
 
         return state.toString();
@@ -69,7 +68,7 @@ public class ProjectManagementDaoImpl implements ProjectManagementDao {
 
     @Override
     public String selectProject(String projectName, String version) {
-         DB db = mongoDBConfigaration.getMongoDBConnection();
+        DB db = mongoDBConfigaration.getMongoDBConnection();
         /**
          * ** Get collection / table from 'testdb' ***
          */
@@ -98,7 +97,59 @@ public class ProjectManagementDaoImpl implements ProjectManagementDao {
 
     @Override
     public ArrayList selectProjectByName(String projectName) {
-          DB db = mongoDBConfigaration.getMongoDBConnection();
+        DB db = mongoDBConfigaration.getMongoDBConnection();
+        /**
+         * ** Get collection / table from 'Users' ***
+         */
+        // if collection doesn't exists, MongoDB will create it for you
+        DBCollection table = db.getCollection("Projects");
+
+        BasicDBObject query = new BasicDBObject();
+        query.put("project_name", projectName);
+
+        DBCursor cursor = table.find(query);
+
+        ArrayList projects = new ArrayList();
+
+        int i = 1;
+        while (cursor.hasNext()) {
+            DBObject project = cursor.next();
+            projects.add(project);
+
+        }
+
+        return projects;
+    }
+
+    @Override
+    public ArrayList selectProjectByUser(String userName) {
+        DB db = mongoDBConfigaration.getMongoDBConnection();
+        /**
+         * ** Get collection / table from 'Users' ***
+         */
+        // if collection doesn't exists, MongoDB will create it for you
+        DBCollection table = db.getCollection("Projects");
+
+        BasicDBObject query = new BasicDBObject();
+        query.put("user_name", userName);
+
+        DBCursor cursor = table.find(query);
+
+        ArrayList projects = new ArrayList();
+
+        int i = 1;
+        while (cursor.hasNext()) {
+            DBObject project = cursor.next();
+            projects.add(project);
+
+        }
+
+        return projects;
+    }
+
+    @Override
+    public ArrayList selectAllProjects() {
+        DB db = mongoDBConfigaration.getMongoDBConnection();
         /**
          * ** Get collection / table from 'Users' ***
          */
@@ -119,15 +170,4 @@ public class ProjectManagementDaoImpl implements ProjectManagementDao {
         return projects;
     }
 
-    @Override
-    public ArrayList selectProjectByUser(String userName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList selectAllProjects() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
 }

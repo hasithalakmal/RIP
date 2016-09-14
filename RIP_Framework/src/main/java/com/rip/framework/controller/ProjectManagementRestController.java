@@ -36,34 +36,32 @@ public class ProjectManagementRestController {
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
 
-    
     @RequestMapping(value = "project/{projectName}/{version}", method = RequestMethod.DELETE, consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> deleteProject(@PathVariable String projectName,  @PathVariable String version) {
+    public ResponseEntity<String> deleteProject(@PathVariable String projectName, @PathVariable String version) {
         String msg = projectManagementService.deleteProject(projectName, version);
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
-    
-   
+
     @RequestMapping(value = "project/{projectName}/{version}", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> getProject(@PathVariable String projectName,@PathVariable String version) {
+    public ResponseEntity<String> getProject(@PathVariable String projectName, @PathVariable String version) {
 
         String msg = projectManagementService.selectProject(projectName, version);
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
-     
+
     @RequestMapping(value = "project/{projectName}", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
     public ResponseEntity<ArrayList> getProjectByName(@PathVariable String projectName) {
 
         ArrayList msg = projectManagementService.selectProjectByName(projectName);
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
-    /*
-    @RequestMapping(value = "project/{userName}", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
-    public ResponseEntity<ArrayList> getProjectByUser(@PathVariable String userName) {
 
+    @RequestMapping(value = "project-by-user/{userName}", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
+    public ResponseEntity<ArrayList> getProjectByUser(@PathVariable String userName) {
         ArrayList msg = projectManagementService.selectProjectByUser(userName);
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
+
     
     @RequestMapping(value = "project", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
     public ResponseEntity<ArrayList> getAllProjects() {
@@ -71,7 +69,5 @@ public class ProjectManagementRestController {
         ArrayList users = projectManagementService.selectAllProjects();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
-    */
     
-
 }
