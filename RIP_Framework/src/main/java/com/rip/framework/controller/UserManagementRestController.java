@@ -5,11 +5,9 @@
  */
 package com.rip.framework.controller;
 
-import com.rip.framework.configuration.MongoDBConfigaration;
-import com.rip.framework.model.Employee;
-import com.rip.framework.service.EmployeeService;
+import com.mongodb.util.JSON;
 import com.rip.framework.service.UserManagementService;
-import java.util.List;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,20 +25,25 @@ import org.springframework.web.bind.annotation.RestController;
 @Component
 public class UserManagementRestController {
 
-  
     @Autowired
     UserManagementService userManagementService;
-    
-    @RequestMapping(value = "addUser", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> addUser(@RequestBody String a) {
-        System.out.println(a);
-        String msg = userManagementService.createUser(a);
+
+    @RequestMapping(value = "user", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    public ResponseEntity<String> addUser(@RequestBody String user) {
+        String msg = userManagementService.createUser(user);
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
-    
-   
 
+    @RequestMapping(value = "user", method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
+    public ResponseEntity<String> updateUser(@RequestBody String user) {
 
-   
+        JSONObject jason = new JSONObject(user);
+        System.out.println(jason);
+        Object userName = jason.get("user_name");
+
+        
+        String msg = userManagementService.updateUser(userName.toString(), user);
+        return new ResponseEntity<>(msg, HttpStatus.OK);
+    }
 
 }

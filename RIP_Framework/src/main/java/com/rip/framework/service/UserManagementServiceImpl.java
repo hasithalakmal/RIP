@@ -1,9 +1,6 @@
 package com.rip.framework.service;
 
-import com.rip.framework.dao.EmployeeDao;
-import com.rip.framework.model.Employee;
 import com.rip.framework.mongodao.UserManagementDao;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +18,30 @@ public class UserManagementServiceImpl implements UserManagementService {
     @Override
     public String createUser(String user) {
         String state = userManagementDao.createUser(user);
+        return state;
+    }
+
+    @Override
+    public String updateUser(String userName, String user) {
+        String state = userManagementDao.updateUser(userName,user);
+        return state;
+    }
+
+    @Override
+    public String deleteUser(String userName) {
+        String state = userManagementDao.deleteUser(userName);
+        return state;
+    }
+
+    @Override
+    public String selectUser(String userName) {
+        String state = userManagementDao.selectUser(userName);
+        return state;
+    }
+
+    @Override
+    public String selectAllUsers() {
+        String state = userManagementDao.selectAllUsers();
         return state;
     }
 

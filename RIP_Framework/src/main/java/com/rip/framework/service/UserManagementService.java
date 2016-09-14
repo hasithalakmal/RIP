@@ -1,12 +1,16 @@
 package com.rip.framework.service;
 
-import com.rip.framework.model.Employee;
-import java.util.List;
-
 
 
 public interface UserManagementService {
 
 	String createUser(String user);
 	
+        String updateUser(String userName,String user);
+        
+        String deleteUser(String userName);
+        
+        String selectUser(String userName);
+        
+        String selectAllUsers();
 }
