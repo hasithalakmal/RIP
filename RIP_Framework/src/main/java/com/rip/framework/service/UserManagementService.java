@@ -1,5 +1,7 @@
 package com.rip.framework.service;
 
+import java.util.ArrayList;
+
 
 
 public interface UserManagementService {
@@ -12,5 +14,5 @@ public interface UserManagementService {
         
         String selectUser(String userName);
         
-        String selectAllUsers();
+        ArrayList selectAllUsers();
 }

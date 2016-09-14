@@ -1,5 +1,7 @@
 package com.rip.framework.mongodao;
 
+import java.util.ArrayList;
+
 
 
 public interface UserManagementDao {
@@ -12,6 +14,6 @@ public interface UserManagementDao {
         
         String selectUser(String userName);
         
-        String selectAllUsers();
+        ArrayList selectAllUsers();
 
 }

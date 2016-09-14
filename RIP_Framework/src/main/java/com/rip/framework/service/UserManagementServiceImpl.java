@@ -1,6 +1,7 @@
 package com.rip.framework.service;
 
 import com.rip.framework.mongodao.UserManagementDao;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,8 +41,8 @@ public class UserManagementServiceImpl implements UserManagementService {
     }
 
     @Override
-    public String selectAllUsers() {
-        String state = userManagementDao.selectAllUsers();
+    public ArrayList selectAllUsers() {
+        ArrayList state = userManagementDao.selectAllUsers();
         return state;
     }
 

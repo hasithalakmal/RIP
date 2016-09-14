@@ -13,6 +13,7 @@ import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
 import com.mongodb.util.JSON;
 import com.rip.framework.configuration.MongoDBConfigaration;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -116,7 +117,7 @@ public class UserManagementDaoImpl implements UserManagementDao {
     }
 
     @Override
-    public String selectAllUsers() {
+    public ArrayList selectAllUsers() {
         DB db = mongoDBConfigaration.getMongoDBConnection();
         /**
          * ** Get collection / table from 'Users' ***
@@ -126,16 +127,16 @@ public class UserManagementDaoImpl implements UserManagementDao {
 
         DBCursor cursor = table.find();
 
-        BasicDBObject obj = new BasicDBObject();
+        ArrayList users = new ArrayList();
 
         int i = 1;
         while (cursor.hasNext()) {
             DBObject user = cursor.next();
-            obj.append(user.get("user_name").toString(), user);
+            users.add(user);
 
         }
 
-        return obj.toString();
+        return users;
     }
 
 }

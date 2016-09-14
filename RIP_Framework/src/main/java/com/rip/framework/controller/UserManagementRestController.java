@@ -7,6 +7,7 @@ package com.rip.framework.controller;
 
 import com.mongodb.util.JSON;
 import com.rip.framework.service.UserManagementService;
+import java.util.ArrayList;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -57,6 +58,13 @@ public class UserManagementRestController {
 
         String msg = userManagementService.selectUser(userName);
         return new ResponseEntity<>(msg, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "user", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
+    public ResponseEntity<ArrayList> getAllUsers() {
+
+        ArrayList users = userManagementService.selectAllUsers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
     
     
