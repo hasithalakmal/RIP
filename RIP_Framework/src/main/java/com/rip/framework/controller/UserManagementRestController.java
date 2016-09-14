@@ -52,6 +52,13 @@ public class UserManagementRestController {
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
     
+    @RequestMapping(value = "user/{userName}", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
+    public ResponseEntity<String> getUser(@PathVariable String userName) {
+
+        String msg = userManagementService.selectUser(userName);
+        return new ResponseEntity<>(msg, HttpStatus.OK);
+    }
+    
     
 
 }

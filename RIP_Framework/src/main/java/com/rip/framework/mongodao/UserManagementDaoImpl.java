@@ -108,30 +108,32 @@ public class UserManagementDaoImpl implements UserManagementDao {
         if (cursor.hasNext()) {
             return cursor.next().toString();
         } else {
-            return "{'user_name' : 'Null'}";
+            return "{\n"
+                    + "  \"user_name\": null\n"
+                    + "}";
         }
 
     }
 
     @Override
     public String selectAllUsers() {
-         DB db = mongoDBConfigaration.getMongoDBConnection();
+        DB db = mongoDBConfigaration.getMongoDBConnection();
         /**
          * ** Get collection / table from 'Users' ***
          */
         // if collection doesn't exists, MongoDB will create it for you
         DBCollection table = db.getCollection("Users");
-       
+
         DBCursor cursor = table.find();
-        
+
         BasicDBObject obj = new BasicDBObject();
 
         int i = 1;
         while (cursor.hasNext()) {
-             DBObject user = cursor.next();
-             obj.append(user.get("user_name").toString(), user);
-             
-        } 
+            DBObject user = cursor.next();
+            obj.append(user.get("user_name").toString(), user);
+
+        }
 
         return obj.toString();
     }
