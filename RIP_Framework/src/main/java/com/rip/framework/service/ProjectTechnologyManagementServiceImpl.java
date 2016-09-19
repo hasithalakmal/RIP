@@ -11,37 +11,27 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service("technologyManagementService")
 @Transactional
-public class TechnologyManagementServiceImpl implements TechnologyManagementService {
-
-    @Autowired
-    TechnologyManagementDao technologyManagementDao;
+public class ProjectTechnologyManagementServiceImpl implements ProjectTechnologyManagementService {
 
     @Override
-    public String introduceNewTechnology(String technology) {
+    public String addProjectTechnologySpeck(String proTechnologySpeck) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String removeExsistingTechnology(String userName, String user) {
+    public String updateProjectTechnologySpeck(String proTechnologySpeck) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList getExsistingTechnologies() {
+    public String deleetProjectTechnologySpeck(String appName, String version) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList getExsistingTechnologies(String catogery) {
+    public String getProjectTechnologySpeck(String appName, String version) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public String getExsistingTechnology(String technologyName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-      
    
-	
 }

@@ -6,7 +6,6 @@
 package com.rip.framework.mongodao;
 
 import com.rip.framework.configuration.MongoDBConfigaration;
-import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -14,36 +13,33 @@ import org.springframework.stereotype.Repository;
  *
  * @author Hasitha Lakmal
  */
-@Repository("technologyManagementDao")
-public class TechnologyManagementDaoImpl implements TechnologyManagementDao {
+@Repository("projectTechnologyManagementDao")
+public class ProjectTechnologyManagementDaoImpl implements ProjectTechnologyManagementDao {
 
     @Autowired
     MongoDBConfigaration mongoDBConfigaration;
 
     @Override
-    public String introduceNewTechnology(String technology) {
+    public String addProjectTechnologySpeck(String proTechnologySpeck) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String removeExsistingTechnology(String userName, String user) {
+    public String updateProjectTechnologySpeck(String proTechnologySpeck) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList getExsistingTechnologies() {
+    public String deleetProjectTechnologySpeck(String appName, String version) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList getExsistingTechnologies(String catogery) {
+    public String getProjectTechnologySpeck(String appName, String version) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public String getExsistingTechnology(String technologyName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
    
 
