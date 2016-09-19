@@ -15,15 +15,40 @@ public class ResourceTemplate extends Template {
 
     private String resource_name;
     private String uri;
-    private String post;
-    private String get;
-    private String put;
-    private String delete;
-    private String patch;
+    private String[] methods;
     
-    public ResourceTemplate(String id){
-        this.createId(id);   
+    
+    public ResourceTemplate(String id,int resId){
+        this.createId(id);
+        this.setId(this.getId()+Integer.toString(resId));
     }
+
+
+    public String getResource_name() {
+        return resource_name;
+    }
+
+    public void setResource_name(String resource_name) {
+        this.resource_name = resource_name;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+    public String[] getMethods() {
+        return methods;
+    }
+
+    public void setMethods(String[] methods) {
+        this.methods = methods;
+    }
+
+    
     
     @Override
     public void createId(String id) {

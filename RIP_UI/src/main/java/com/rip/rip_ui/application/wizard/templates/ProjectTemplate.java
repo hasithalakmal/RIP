@@ -14,14 +14,14 @@ public class ProjectTemplate extends Template {
     private RequestDetailsTemplate request_details;
     private TechSpecTemplate technical_spec;
     private DatabaseTemplate database;
-    private QueryTemplate query_design;
+    private ResourcesTemplate resources;
     
     public ProjectTemplate(String id, String dbName){
         this.createId(id);
         this.request_details = new RequestDetailsTemplate(this.getId());
         this.technical_spec = new TechSpecTemplate(this.getId());
         this.database = new DatabaseTemplate(this.getId(),dbName);
-        this.query_design = new QueryTemplate(this.getId());
+        this.resources = new ResourcesTemplate(this.getId());
     }
      
     public void setReqDetails(String projectId,String projectName, String version, String datetime){
@@ -49,6 +49,11 @@ public class ProjectTemplate extends Template {
         this.technical_spec.setAuthentication_type(array[14]);
         this.technical_spec.setIs_need_crud_operations_for_all(array[15]);
         this.technical_spec.setIs_need_crud_forms_for_all(array[16]);
+    }
+    
+    //giving the size of the resources list
+    public int getResourcesSize(){
+        return resources.getResourceListSize();
     }
 
     @Override

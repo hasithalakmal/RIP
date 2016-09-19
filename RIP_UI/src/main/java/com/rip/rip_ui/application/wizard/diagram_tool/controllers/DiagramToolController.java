@@ -5,10 +5,15 @@
  */
 package com.rip.rip_ui.application.wizard.diagram_tool.controllers;
 
+
 import com.rip.rip_ui.application.wizard.models.ProjectHandler;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -18,12 +23,24 @@ import javafx.fxml.Initializable;
 public class DiagramToolController implements Initializable {
 
     private ProjectHandler projectHandler;
+    private String commandLine;
+    private String responseString;
     /**
      * Initializes the controller class.
      */
+    
+    @FXML
+    private TextField commandInput;
+    
+    @FXML
+    private Label responseLabel;
+    
+    @FXML
+    private Label warningLabel;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
 
     //receive projectHandler instance from previous scene
@@ -31,4 +48,12 @@ public class DiagramToolController implements Initializable {
         this.projectHandler = projectHandler;
     }
     
+    @FXML
+    public void executeQuery(ActionEvent event){
+        commandLine = commandInput.getText();
+        commandLine.toLowerCase();
+        String[] splitArray = commandLine.split("\\s+");
+        responseString = projectHandler.analyzeCommand(splitArray);
+    }
+
 }
