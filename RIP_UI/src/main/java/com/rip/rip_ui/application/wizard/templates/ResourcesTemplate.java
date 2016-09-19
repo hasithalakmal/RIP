@@ -5,6 +5,7 @@
  */
 package com.rip.rip_ui.application.wizard.templates;
 
+import com.rip.rip_ui.application.wizard.diagram_tool.templates.ResourceTemplate;
 import java.util.ArrayList;
 import javax.annotation.Resource;
 
@@ -14,14 +15,14 @@ import javax.annotation.Resource;
  */
 public class ResourcesTemplate extends Template{
     
-    private ArrayList<Resource> resources = new ArrayList<Resource>();
+    private ArrayList<ResourceTemplate> resources = new ArrayList<ResourceTemplate>();
     
     public ResourcesTemplate(String id){
         this.createId(id);
     }
     
-    public void addResources(Resource resource){
-        resources.add(resource);
+    public void addResources(int id, ResourceTemplate resource){
+        resources.add(id,resource);
     }
     
     //giving the size of the resources list

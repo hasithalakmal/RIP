@@ -20,7 +20,7 @@ public class ResourceTemplate extends Template {
     
     public ResourceTemplate(String id,int resId){
         this.createId(id);
-        this.setId(this.getId()+Integer.toString(resId));
+        this.setId(this.getId()+"-"+Integer.toString(resId)+"-R");
     }
 
 

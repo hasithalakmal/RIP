@@ -5,6 +5,9 @@
  */
 package com.rip.rip_ui.application.wizard.templates;
 
+import com.rip.rip_ui.application.wizard.diagram_tool.templates.ResourceTemplate;
+
+
 /**
  *
  * @author Supun
@@ -54,6 +57,11 @@ public class ProjectTemplate extends Template {
     //giving the size of the resources list
     public int getResourcesSize(){
         return resources.getResourceListSize();
+    }
+    
+    //addvResource instance to resources array
+    public void addResource(int id, ResourceTemplate resource){
+        resources.addResources(id, resource);
     }
 
     @Override

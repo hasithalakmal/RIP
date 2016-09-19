@@ -8,6 +8,7 @@ package com.rip.rip_ui.application.wizard.models;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.ResourceTemplate;
 import com.rip.rip_ui.application.wizard.templates.ProjectTemplate;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 
@@ -18,7 +19,10 @@ import java.util.Calendar;
 public class ProjectHandler {
     
     private String id = "RIP_PRO_001";
+    private String projectName;
     private String dbName;
+    
+    private ArrayList<String> resourceElements;
 
     
     private ProjectTemplate project;
@@ -29,16 +33,17 @@ public class ProjectHandler {
     //initialize a project
     public void createNewProject(String[] reqDetails, String[] techSpec){
         this.setDbName(reqDetails[2]);
+        this.setProjectName(reqDetails[1]);
         project = new ProjectTemplate(id, this.getDbName());
         
         //set current date time
         String datetime = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(Calendar.getInstance().getTime());
         
-        project.setReqDetails(id,reqDetails[0], reqDetails[1],datetime);
+        project.setReqDetails(id,reqDetails[0], this.getProjectName(),datetime);
         project.setTechSpec(techSpec);
         
-        fileHandler = new FileHandler();
-        fileHandler.writeToJSON(project, id);
+         
+        
     }
     
     //analyze first word of command
@@ -74,14 +79,27 @@ public class ProjectHandler {
             
             String resource = commandArray[2];
             String uri = commandArray[3];
-            Arrays.copyOfRange(commandArray, 4, commandArray.length);
-            
+                        
             int resourceId = project.getResourcesSize();
             ResourceTemplate resourceObj = new ResourceTemplate(id,resourceId);
+            
+            resourceObj.setResource_name(resource);
+            resourceObj.setUri(uri);
+            resourceObj.setMethods(Arrays.copyOfRange(commandArray, 4, commandArray.length));
+            
+            project.addResource(resourceId, resourceObj);
+            this.writeToProject();
+            resourceElements.add(resource);
             
         }
         
         return "";
+    }
+    
+    
+    public void writeToProject(){
+        fileHandler = new FileHandler();
+        fileHandler.writeToJSON(project, id);
     }
     
     
@@ -91,5 +109,13 @@ public class ProjectHandler {
 
     public void setDbName(String dbName) {
         this.dbName = dbName;
+    }
+    
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 }
