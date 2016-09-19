@@ -22,7 +22,7 @@ public class ProjectHandler {
     private String projectName;
     private String dbName;
     
-    private ArrayList<String> resourceElements;
+    private ArrayList<String> resourceElements = new ArrayList<String>();
 
     
     private ProjectTemplate project;
@@ -88,8 +88,9 @@ public class ProjectHandler {
             resourceObj.setMethods(Arrays.copyOfRange(commandArray, 4, commandArray.length));
             
             project.addResource(resourceId, resourceObj);
+            resourceElements.add("aaa");
             this.writeToProject();
-            resourceElements.add(resource);
+            
             
         }
         

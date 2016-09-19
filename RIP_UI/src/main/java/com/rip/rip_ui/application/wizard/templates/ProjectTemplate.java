@@ -17,14 +17,15 @@ public class ProjectTemplate extends Template {
     private RequestDetailsTemplate request_details;
     private TechSpecTemplate technical_spec;
     private DatabaseTemplate database;
-    private ResourcesTemplate resources;
+    private RestApiTemplate rest_api;
+    
     
     public ProjectTemplate(String id, String dbName){
         this.createId(id);
         this.request_details = new RequestDetailsTemplate(this.getId());
         this.technical_spec = new TechSpecTemplate(this.getId());
         this.database = new DatabaseTemplate(this.getId(),dbName);
-        this.resources = new ResourcesTemplate(this.getId());
+        this.rest_api = new RestApiTemplate(this.getId());
     }
      
     public void setReqDetails(String projectId,String projectName, String version, String datetime){
@@ -56,14 +57,13 @@ public class ProjectTemplate extends Template {
     
     //giving the size of the resources list
     public int getResourcesSize(){
-        return resources.getResourceListSize();
+        return rest_api.getResourcesListSize();
     }
     
-    //addvResource instance to resources array
     public void addResource(int id, ResourceTemplate resource){
-        resources.addResources(id, resource);
-    }
-
+        rest_api.addResource(id, resource);
+    }    
+    
     @Override
     public void createId(String id) {
         this.setId(id);
