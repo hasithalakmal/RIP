@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public interface TechnologyManagementService {
 
-    String introduceNewTechnology(String technology);
+    String addNewTechnology(String technology);
 
-    String removeExsistingTechnology(String userName, String user);
+    String deleteExsistingTechnology(String techName, String version);
 
     ArrayList getExsistingTechnologies();
 
     ArrayList getExsistingTechnologies(String catogery);
 
-    String getExsistingTechnology(String technologyName);
+    String getExsistingTechnology(String techName, String version);
 
 }

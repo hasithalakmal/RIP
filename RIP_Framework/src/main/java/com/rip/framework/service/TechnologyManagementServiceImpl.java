@@ -17,28 +17,33 @@ public class TechnologyManagementServiceImpl implements TechnologyManagementServ
     TechnologyManagementDao technologyManagementDao;
 
     @Override
-    public String introduceNewTechnology(String technology) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String addNewTechnology(String technology) {
+        String msg = technologyManagementDao.addNewTechnology(technology);
+        return msg;
     }
 
     @Override
-    public String removeExsistingTechnology(String userName, String user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String deleteExsistingTechnology(String techName, String version) {
+        String msg = technologyManagementDao.deleteExsistingTechnology(techName, version);
+        return msg;
     }
 
     @Override
     public ArrayList getExsistingTechnologies() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList msg = technologyManagementDao.getExsistingTechnologies();
+        return msg;
     }
 
     @Override
     public ArrayList getExsistingTechnologies(String catogery) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         ArrayList msg = technologyManagementDao.getExsistingTechnologies(catogery);
+        return msg;
     }
 
     @Override
-    public String getExsistingTechnology(String technologyName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getExsistingTechnology(String techName, String version) {
+         String msg = technologyManagementDao.getExsistingTechnology(techName, version);
+        return msg;
     }
 
       

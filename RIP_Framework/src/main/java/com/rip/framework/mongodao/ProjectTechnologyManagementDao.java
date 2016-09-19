@@ -8,7 +8,7 @@ public interface ProjectTechnologyManagementDao {
         
         String updateProjectTechnologySpeck(String proTechnologySpeck);
         
-        String deleetProjectTechnologySpeck(String appName, String version);
+        String deleteProjectTechnologySpeck(String appName, String version);
         
         String getProjectTechnologySpeck(String appName, String version);
 

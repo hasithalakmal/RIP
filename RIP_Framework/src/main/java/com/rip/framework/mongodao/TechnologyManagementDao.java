@@ -6,15 +6,15 @@ import java.util.ArrayList;
 
 public interface TechnologyManagementDao {
      
-        String introduceNewTechnology(String technology);
+        String addNewTechnology(String technology);
         
-        String removeExsistingTechnology(String userName, String user);
+        String deleteExsistingTechnology(String techname, String version);
         
         ArrayList getExsistingTechnologies();
         
         ArrayList getExsistingTechnologies(String catogery);
         
-        String getExsistingTechnology(String technologyName);
+        String getExsistingTechnology(String techName, String version);
 
 
 }
