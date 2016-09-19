@@ -37,7 +37,17 @@ public class LoginController implements Initializable {
         user = new User();
         if(user.authenticateUser(username, password)){
             msgLabel.setText("");
-            ((Node)event.getSource()).getScene().getWindow().hide();
+            this.openMainApplication(event);
+            
+        }else{
+            msgLabel.setText("Invalid username or password");
+        }
+        
+        //label.setText("Hello World!");
+    }
+    
+    public void openMainApplication(ActionEvent event) throws IOException{
+        ((Node)event.getSource()).getScene().getWindow().hide();
             Stage stage = new Stage();
             
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/Application.fxml"));
@@ -48,12 +58,6 @@ public class LoginController implements Initializable {
             stage.setTitle("RIP Application");
             stage.setScene(scene);
             stage.show();
-            
-        }else{
-            msgLabel.setText("Invalid username or password");
-        }
-        
-        //label.setText("Hello World!");
     }
     
     @Override

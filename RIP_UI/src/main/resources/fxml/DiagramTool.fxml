@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="com.rip.rip_ui.application.wizard.diagram_tool.controllers.DiagramToolController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rip.rip_ui.application.wizard.diagram_tool.controllers.DiagramToolController">
    <children>
-      <BorderPane prefHeight="600.0" prefWidth="800.0">
+      <BorderPane prefHeight="639.0" prefWidth="800.0">
          <top>
             <MenuBar BorderPane.alignment="CENTER">
               <menus>
@@ -49,21 +53,44 @@
             </MenuBar>
          </top>
          <left>
-            <AnchorPane prefHeight="575.0" prefWidth="305.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="575.0" prefWidth="293.0" BorderPane.alignment="CENTER">
                <children>
                   <Accordion layoutX="11.0" layoutY="6.0" prefHeight="560.0" prefWidth="282.0">
                     <panes>
-                      <TitledPane animated="false" text="Resource">
+                      <TitledPane animated="false" prefWidth="282.0" text="Resource">
                         <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="280.0">
+                                 <children>
+                                    <Label layoutX="15.0" layoutY="19.0" text="Resource Name" />
+                                    <TextField fx:id="resourceNameInput" layoutX="14.0" layoutY="43.0" prefHeight="25.0" prefWidth="254.0" />
+                                    <Label layoutX="15.0" layoutY="81.0" text="URI" />
+                                    <TextField fx:id="uriInput" layoutX="14.0" layoutY="105.0" prefHeight="25.0" prefWidth="254.0" />
+                                    <Label layoutX="15.0" layoutY="146.0" text="Methods" />
+                                    <CheckBox fx:id="postInput" layoutX="14.0" layoutY="171.0" mnemonicParsing="false" text="POST" />
+                                    <CheckBox fx:id="getInput" layoutX="78.0" layoutY="171.0" mnemonicParsing="false" text="GET" />
+                                    <CheckBox fx:id="putInput" layoutX="134.0" layoutY="171.0" mnemonicParsing="false" text="PUT" />
+                                    <CheckBox fx:id="patchInput" layoutX="14.0" layoutY="201.0" mnemonicParsing="false" text="PATCH" />
+                                    <CheckBox fx:id="deleteInput" layoutX="78.0" layoutY="201.0" mnemonicParsing="false" text="DELETE" />
+                                    <Button layoutX="13.0" layoutY="240.0" mnemonicParsing="false" onAction="#createResource" text="Create Resource" />
+                                 </children></AnchorPane>
                         </content>
                       </TitledPane>
+                        <TitledPane animated="false" text="Resource Association">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                           </content>
+                        </TitledPane>
                       <TitledPane animated="false" text="Table">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                         </content>
                       </TitledPane>
                         <TitledPane animated="false" text="Table Attribute">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" text="Foreign Key">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                            </content>
@@ -83,11 +110,120 @@
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                            </content>
                         </TitledPane>
+                        <TitledPane animated="false" text="Class Association">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" text="Resource - Class Link">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" text="Resource - Table Link">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                           </content>
+                        </TitledPane>
                     </panes>
                   </Accordion>
                </children>
             </AnchorPane>
          </left>
+         <center>
+            <AnchorPane prefHeight="736.0" prefWidth="507.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ScrollPane layoutX="8.0" layoutY="7.0" prefHeight="558.0" prefWidth="495.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="558.0" prefWidth="490.0">
+                           <children>
+                              <Accordion layoutX="29.0" layoutY="30.0">
+                                <panes>
+                                  <TitledPane animated="false" prefWidth="202.0" text="Resources">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                    </content>
+                                  </TitledPane>
+                                </panes>
+                              </Accordion>
+                              <Accordion layoutX="262.0" layoutY="31.0" prefHeight="204.0" prefWidth="202.0">
+                                <panes>
+                                  <TitledPane animated="false" text="Classes">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                    </content>
+                                  </TitledPane>
+                                </panes>
+                              </Accordion>
+                              <Accordion layoutX="29.0" layoutY="262.0" prefHeight="204.0" prefWidth="202.0">
+                                 <panes>
+                                    <TitledPane animated="false" text="Tables">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                       </content>
+                                    </TitledPane>
+                                 </panes>
+                              </Accordion>
+                              <Accordion layoutX="262.0" layoutY="262.0" prefHeight="203.0" prefWidth="202.0">
+                                 <panes>
+                                    <TitledPane animated="false" text="Foreign Keys">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                       </content>
+                                    </TitledPane>
+                                 </panes>
+                              </Accordion>
+                              <Label layoutX="29.0" layoutY="14.0" text="Resources" />
+                              <Label layoutX="262.0" layoutY="14.0" text="Classes" />
+                              <Label layoutX="29.0" layoutY="246.0" text="Tables" />
+                              <Label layoutX="262.0" layoutY="245.0" text="Foreign Keys" />
+                              <Accordion layoutX="29.0" layoutY="492.0" prefHeight="77.0" prefWidth="202.0">
+                                 <panes>
+                                    <TitledPane animated="false" text="Associations">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                       </content>
+                                    </TitledPane>
+                                 </panes>
+                              </Accordion>
+                              <Accordion layoutX="262.0" layoutY="491.0" prefHeight="78.0" prefWidth="202.0">
+                                 <panes>
+                                    <TitledPane animated="false" text="Associations">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                       </content>
+                                    </TitledPane>
+                                 </panes>
+                              </Accordion>
+                              <Label layoutX="29.0" layoutY="474.0" text="Resource Association" />
+                              <Label layoutX="262.0" layoutY="474.0" text="Class Association" />
+                              <Accordion layoutX="29.0" layoutY="605.0" prefHeight="77.0" prefWidth="202.0">
+                                 <panes>
+                                    <TitledPane animated="false" text="Links">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                       </content>
+                                    </TitledPane>
+                                 </panes>
+                              </Accordion>
+                              <Accordion layoutX="262.0" layoutY="605.0" prefHeight="77.0" prefWidth="202.0">
+                                 <panes>
+                                    <TitledPane animated="false" text="Links">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                       </content>
+                                    </TitledPane>
+                                 </panes>
+                              </Accordion>
+                              <Label layoutX="29.0" layoutY="588.0" text="Resource-Class Links" />
+                              <Label layoutX="262.0" layoutY="588.0" text="Resource-Table Links" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>
