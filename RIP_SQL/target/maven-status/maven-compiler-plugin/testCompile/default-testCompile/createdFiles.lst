@@ -1,5 +1,0 @@
-com\rip\sql\controller\AppControllerTest.class
-com\rip\sql\dao\EntityDaoImplTest.class
-com\rip\sql\configuration\HibernateTestConfiguration.class
-com\rip\sql\service\EmployeeServiceImplTest.class
-com\rip\sql\dao\EmployeeDaoImplTest.class

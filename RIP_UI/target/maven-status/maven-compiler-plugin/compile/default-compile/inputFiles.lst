@@ -1,15 +1,25 @@
-E:\4thYearProject\GIT\RIP_UI\src\main\java\com\rip\sql\configuration\HibernateConfiguration.java
-E:\4thYearProject\GIT\RIP_UI\src\main\java\com\rip\sql\dao\EmployeeDaoImpl.java
-E:\4thYearProject\GIT\RIP_UI\src\main\java\com\rip\sql\controller\test.java
-E:\4thYearProject\GIT\RIP_UI\src\main\java\com\rip\sql\configuration\AppInitializer.java
-E:\4thYearProject\GIT\RIP_UI\src\main\java\com\rip\sql\model\Employee.java
-E:\4thYearProject\GIT\RIP_UI\src\main\java\com\rip\sql\aspect\LogingAspect.java
-E:\4thYearProject\GIT\RIP_UI\src\main\java\com\rip\sql\configuration\AppController.java
-E:\4thYearProject\GIT\RIP_UI\src\main\java\com\rip\sql\util\API_keyGenarator.java
-E:\4thYearProject\GIT\RIP_UI\src\main\java\com\rip\sql\service\EmployeeService.java
-E:\4thYearProject\GIT\RIP_UI\src\main\java\com\rip\sql\configuration\AppConfig.java
-E:\4thYearProject\GIT\RIP_UI\src\main\java\com\rip\sql\dao\AbstractDao.java
-E:\4thYearProject\GIT\RIP_UI\src\main\java\com\rip\sql\util\PasswordHasher.java
-E:\4thYearProject\GIT\RIP_UI\src\main\java\com\rip\sql\configuration\CORSFilter.java
-E:\4thYearProject\GIT\RIP_UI\src\main\java\com\rip\sql\service\EmployeeServiceImpl.java
-E:\4thYearProject\GIT\RIP_UI\src\main\java\com\rip\sql\dao\EmployeeDao.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\controllers\MainApp.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\templates\DatabaseTemplate.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\controllers\ApplicationController.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\diagram_tool\models\ElementFactory.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\diagram_tool\templates\DeleteQuery.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\diagram_tool\templates\View.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\diagram_tool\controllers\DiagramToolController.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\models\FileHandler.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\templates\RestClientTemplate.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\diagram_tool\templates\UpdateQuery.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\templates\Template.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\controllers\WizardController.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\controllers\LoginController.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\diagram_tool\templates\SelectQuery.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\templates\RestApiTemplate.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\templates\RequestDetailsTemplate.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\diagram_tool\templates\Table.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\models\User.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\diagram_tool\templates\InsertQuery.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\diagram_tool\templates\ForeignKey.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\models\ProjectHandler.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\templates\QueryTemplate.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\diagram_tool\templates\TableField.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\templates\ProjectTemplate.java
+F:\REST in Peace - 4th Year Project\RIP\RIP_UI\src\main\java\com\rip\rip_ui\application\wizard\templates\TechSpecTemplate.java

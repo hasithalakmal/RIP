@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rip.rip_ui.application.controllers.ApplicationController">
+   <children>
+      <Button layoutX="66.0" layoutY="138.0" mnemonicParsing="false" onAction="#initializeWizard" prefHeight="115.0" prefWidth="255.0" style="-fx-font-size: 36;" text="Get Started" textAlignment="CENTER">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Separator layoutX="339.0" layoutY="137.0" orientation="VERTICAL" prefHeight="115.0" prefWidth="0.0" />
+      <Label layoutX="356.0" layoutY="129.0" text="Recent Projects">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Hyperlink layoutX="356.0" layoutY="171.0" text="Project 01" />
+      <Hyperlink layoutX="356.0" layoutY="201.0" text="Project 02" />
+      <Hyperlink layoutX="356.0" layoutY="230.0" text="Project 03" />
+      <Separator layoutX="66.0" layoutY="79.0" prefHeight="2.0" prefWidth="472.0" />
+      <Circle fill="#b9b9b9" layoutX="356.0" layoutY="55.0" radius="17.0" stroke="WHITE" strokeType="INSIDE" />
+      <ComboBox layoutX="387.0" layoutY="43.0" prefWidth="150.0" promptText="Custom User" />
+      <Separator layoutX="66.0" layoutY="298.0" prefHeight="3.0" prefWidth="472.0" />
+      <Hyperlink layoutX="66.0" layoutY="320.0" text="Demos" />
+      <Hyperlink layoutX="130.0" layoutY="320.0" text="Video Tutorials" />
+      <Hyperlink layoutX="233.0" layoutY="320.0" text="Wiki" />
+      <Hyperlink layoutX="278.0" layoutY="320.0" text="Github" />
+   </children>
+</AnchorPane>
