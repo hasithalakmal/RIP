@@ -29,7 +29,6 @@ public class TechnologyManagementDaoImpl implements TechnologyManagementDao {
 
     @Override
     public String addProjectTechnologySpeck(String proTechnologySpeck, String appName, String version) {
-        System.out.println("Test");
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
