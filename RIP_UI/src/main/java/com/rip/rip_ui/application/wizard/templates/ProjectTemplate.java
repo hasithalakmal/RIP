@@ -5,6 +5,8 @@
  */
 package com.rip.rip_ui.application.wizard.templates;
 
+import com.rip.rip_ui.application.wizard.diagram_tool.templates.ClassAttrTemplate;
+import com.rip.rip_ui.application.wizard.diagram_tool.templates.ClassTemplate;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.ResourceTemplate;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.TableFieldTemplate;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.TableTemplate;
@@ -86,6 +88,22 @@ public class ProjectTemplate extends Template {
 
     public int getTableFieldSize(String tableName) {
         return database.getTableFieldSize(tableName);
+    }
+
+    public int getClassesSize() {
+        return rest_api.getClasseListSize();
+    }
+
+    public void addClass(int classId, ClassTemplate classObj) {
+        rest_api.addClass(classId,classObj);
+    }
+
+    public int getAttrListSize(String classAttr) {
+        return rest_api.getAttrListSize(classAttr);
+    }
+
+    public void addClassAttr(String className, int classAttrId, ClassAttrTemplate classAttrObj) {
+        rest_api.addClassAttr(className, classAttrId, classAttrObj);
     }
 
     

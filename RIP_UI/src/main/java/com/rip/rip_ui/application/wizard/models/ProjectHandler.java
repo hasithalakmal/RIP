@@ -5,6 +5,8 @@
  */
 package com.rip.rip_ui.application.wizard.models;
 
+import com.rip.rip_ui.application.wizard.diagram_tool.templates.ClassAttrTemplate;
+import com.rip.rip_ui.application.wizard.diagram_tool.templates.ClassTemplate;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.ResourceTemplate;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.TableFieldTemplate;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.TableTemplate;
@@ -86,6 +88,10 @@ public class ProjectHandler {
             return this.createTableObject();
         }
         
+        else if(commandArray[1].equals("class")){
+            return this.createClassObject();
+        }
+        
         else{
             return "";
         }
@@ -99,7 +105,11 @@ public class ProjectHandler {
         }
         
         else if(commandArray[1].equals("link")){
-            return this.createTableObject();
+            return this.createLinkObject();
+        }
+        
+        else if(commandArray[1].equals("class_attr")){
+            return this.addClassAttrObj();
         }
         
         else{
@@ -160,6 +170,26 @@ public class ProjectHandler {
         
     }
     
+    private String createLinkObject(){
+        
+        String tableName = commandArray[2];
+        String resourceName = commandArray[3];
+        return "";
+    }
+    
+    private String createClassObject() {
+        String className = commandArray[2];
+        int classId = project.getClassesSize();
+        ClassTemplate classObj = new ClassTemplate(id,classId);
+        classObj.setClass_name(commandArray[2]);
+        
+        project.addClass(classId, classObj);
+        //resourceElements.add(tableId,table);
+        this.writeToProject();
+        
+        return "Class: "+className+" created";
+    }
+    
     
     public void writeToProject(){
         fileHandler = new FileHandler();
@@ -182,6 +212,26 @@ public class ProjectHandler {
     public void setProjectName(String projectName) {
         this.projectName = projectName;
     }
+
+    private String addClassAttrObj() {
+        String classAttr = commandArray[4];
+        String className = commandArray[6];
+       
+        int classAttrId = project.getAttrListSize(classAttr);
+        ClassAttrTemplate classAttrObj = new ClassAttrTemplate(id,classAttrId);
+        
+        classAttrObj.setAttribute(commandArray[4]);
+        classAttrObj.setAccess_modifier(commandArray[2]);
+        classAttrObj.setType(commandArray[3]);
+        
+        
+        project.addClassAttr(className, classAttrId, classAttrObj);
+        this.writeToProject();
+            
+        return "Class Attribute: "+classAttr+" created in "+className;
+    }
+
+    
 
     
 }
