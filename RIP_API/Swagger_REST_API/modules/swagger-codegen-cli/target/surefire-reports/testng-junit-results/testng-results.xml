@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Surefire suite" duration-ms="31" started-at="2016-09-20T05:50:19Z" finished-at="2016-09-20T05:50:19Z">
+    <groups>
+    </groups>
+    <test name="Surefire test" duration-ms="31" started-at="2016-09-20T05:50:19Z" finished-at="2016-09-20T05:50:19Z">
+      <class name="io.swagger.codegen.cmd.utils.OptionUtilsTest">
+        <test-method status="PASS" signature="splitCommaSeparatedList()[pri:0, instance:splitCommaSeparatedList(io.swagger.codegen.cmd.utils.OptionUtilsTest)]" name="splitCommaSeparatedList" duration-ms="4" started-at="2016-09-20T11:20:19Z" finished-at="2016-09-20T11:20:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- splitCommaSeparatedList -->
+        <test-method status="PASS" signature="testParseCommaSeparatedTuples()[pri:0, instance:testParseCommaSeparatedTuples(io.swagger.codegen.cmd.utils.OptionUtilsTest)]" name="testParseCommaSeparatedTuples" duration-ms="3" started-at="2016-09-20T11:20:19Z" finished-at="2016-09-20T11:20:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testParseCommaSeparatedTuples -->
+      </class> <!-- io.swagger.codegen.cmd.utils.OptionUtilsTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>
