@@ -3,3 +3,7 @@
 /RIP_API/target/
 /RIP_SQL/target/
 /RIP_Test/target/
+/Swagger_REST_API/modules/swagger-codegen-cli/target/
+/Swagger_REST_API/modules/swagger-codegen-maven-plugin/target/
+/Swagger_REST_API/modules/swagger-codegen/target/
+/Swagger_REST_API/modules/swagger-generator/target/

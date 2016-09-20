@@ -50,10 +50,24 @@ public class DiagramToolController implements Initializable {
     
     @FXML
     public void executeQuery(ActionEvent event){
+        
+        warningLabel.setText("");
+        responseLabel.setText("");
+        
         commandLine = commandInput.getText();
         commandLine.toLowerCase();
         String[] splitArray = commandLine.split("\\s+");
+        
         responseString = projectHandler.analyzeCommand(splitArray);
+        
+        if(!responseString.equals("")){
+            responseLabel.setText(responseString);
+        }
+        else{
+            warningLabel.setText("Invalid Input");
+        }
+        
+        commandInput.clear();
     }
 
 }
