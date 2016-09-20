@@ -34,5 +34,6 @@ public class SwaggerCodegen {
                 );
 
         builder.build().parse(args).run();
+        System.out.println("testing");
     }
 }
