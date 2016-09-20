@@ -33,8 +33,8 @@
       <file leaf-file-name="SwaggerCodegen.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RIP_API/Swagger_REST_API/modules/swagger-codegen-cli/src/main/java/io/swagger/codegen/SwaggerCodegen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
+            <state relative-caret-position="510">
+              <caret line="35" column="42" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -1232,12 +1232,12 @@
       <workItem from="1473667519573" duration="808000" />
       <workItem from="1473748053801" duration="206000" />
       <workItem from="1474349743232" duration="147000" />
-      <workItem from="1474353382753" duration="603000" />
+      <workItem from="1474353382753" duration="835000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7519000" />
+    <option name="totallyTimeSpent" value="7751000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1400,8 +1400,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RIP_API/Swagger_REST_API/modules/swagger-codegen-cli/src/main/java/io/swagger/codegen/SwaggerCodegen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
+        <state relative-caret-position="510">
+          <caret line="35" column="42" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
           <folding />
         </state>
       </provider>
