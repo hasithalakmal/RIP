@@ -6,7 +6,8 @@
 package com.rip.rip_ui.application.wizard.templates;
 
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.ForeignKey;
-import com.rip.rip_ui.application.wizard.diagram_tool.templates.Table;
+import com.rip.rip_ui.application.wizard.diagram_tool.templates.TableFieldTemplate;
+import com.rip.rip_ui.application.wizard.diagram_tool.templates.TableTemplate;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.View;
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ public class DatabaseTemplate extends Template {
     private String db_name;
     
     //list of tables in db
-    private ArrayList<Table> tables = new ArrayList<Table>();
+    private ArrayList<TableTemplate> tables = new ArrayList<TableTemplate>();
     
     //list of foreign keys in db
     private ArrayList<ForeignKey> foreign_keys = new ArrayList<ForeignKey>();
@@ -43,6 +44,37 @@ public class DatabaseTemplate extends Template {
     @Override
     public void createId(String id) {
         this.setId(id+"-DB");
+    }
+
+    int getTablesListSize() {
+        return tables.size();
+    }
+
+    void addTable(int id, TableTemplate table) {
+        tables.add(id, table);
+    }
+
+    void addTableField(String tableName,int tableFieldId, TableFieldTemplate tableFieldObj) {
+        
+        for(int i=0;i<tables.size();i++){
+            TableTemplate table = tables.get(i);
+            if(table.getTable_name().equals(tableName)){
+                table.addTableField(tableFieldId, tableFieldObj);
+                break;
+            }
+        }
+    }
+
+    public int getTableFieldSize(String tableName) {
+        for(int i=0;i<tables.size();i++){
+            TableTemplate table = tables.get(i);
+            if(table.getTable_name().equals(tableName)){
+                return table.getTableFieldSize();
+               
+            }
+        }
+        
+        return -1;
     }
     
     

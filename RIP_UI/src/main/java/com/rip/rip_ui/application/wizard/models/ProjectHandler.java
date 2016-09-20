@@ -6,6 +6,8 @@
 package com.rip.rip_ui.application.wizard.models;
 
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.ResourceTemplate;
+import com.rip.rip_ui.application.wizard.diagram_tool.templates.TableFieldTemplate;
+import com.rip.rip_ui.application.wizard.diagram_tool.templates.TableTemplate;
 import com.rip.rip_ui.application.wizard.templates.ProjectTemplate;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,6 +25,7 @@ public class ProjectHandler {
     private String dbName;
     
     private ArrayList<String> resourceElements = new ArrayList<String>();
+    private ArrayList<String> tableElements = new ArrayList<String>();
 
     
     private ProjectTemplate project;
@@ -52,7 +55,7 @@ public class ProjectHandler {
         this.commandArray = commandArray;
         
         if(commandArray[0].equals("create")){
-            return analyzeElement();
+            return analyzeCreateElement();
         }
         
         else if(commandArray[0].equals("edit")){
@@ -63,8 +66,8 @@ public class ProjectHandler {
             return "";
         }
         
-        else if(commandArray[0].equals("open")){
-            return "";
+        else if(commandArray[0].equals("add")){
+            return analyzeAddElement();
         }
         
         else{
@@ -72,11 +75,39 @@ public class ProjectHandler {
         }
     }
 
-    //analyze the second word of command
-    private String analyzeElement() {
+    //analyze the creation string of command
+    private String analyzeCreateElement() {
                 
         if(commandArray[1].equals("resource")){
-            
+            return this.createResourceObject();
+        }
+        
+        else if(commandArray[1].equals("table")){
+            return this.createTableObject();
+        }
+        
+        else{
+            return "";
+        }
+    }
+    
+    //analyze the addition string of command
+    private String analyzeAddElement() {
+                
+        if(commandArray[1].equals("table_field")){
+            return this.addTableFieldObject();
+        }
+        
+        else if(commandArray[1].equals("link")){
+            return this.createTableObject();
+        }
+        
+        else{
+            return "";
+        }
+    }
+    
+    public String createResourceObject(){
             String resource = commandArray[2];
             String uri = commandArray[3];
                         
@@ -88,13 +119,45 @@ public class ProjectHandler {
             resourceObj.setMethods(Arrays.copyOfRange(commandArray, 4, commandArray.length));
             
             project.addResource(resourceId, resourceObj);
-            resourceElements.add("aaa");
+            resourceElements.add(resourceId,resource);
             this.writeToProject();
             
-            
-        }
+            return "Resource: "+resource+" created";
+    }
+    
+    private String createTableObject() {
+        String table = commandArray[2];
         
-        return "";
+        int tableId = project.getTablesSize();
+        TableTemplate tableObj = new TableTemplate(id,tableId);
+        tableObj.setTable_name(commandArray[2]);
+        
+        project.addTable(tableId, tableObj);
+        resourceElements.add(tableId,table);
+        this.writeToProject();
+            
+        return "Table: "+table+" created";
+        
+    }
+    
+    
+    private String addTableFieldObject() {
+        String tableField = commandArray[2];
+        String tableName = commandArray[4];
+       
+        int tableFieldId = project.getTableFieldSize(tableName);
+        TableFieldTemplate tableFieldObj = new TableFieldTemplate(id,tableFieldId);
+        
+        tableFieldObj.setField_name(commandArray[2]);
+        tableFieldObj.setData_type(commandArray[3]);
+        tableFieldObj.setSize(commandArray[4]);
+        tableFieldObj.setPrimary_key(commandArray[5]);
+        
+        project.addTableField(commandArray[4], tableFieldId, tableFieldObj);
+        this.writeToProject();
+            
+        return "Table Field: "+tableField+" created in "+tableName;
+        
     }
     
     
@@ -119,4 +182,6 @@ public class ProjectHandler {
     public void setProjectName(String projectName) {
         this.projectName = projectName;
     }
+
+    
 }
