@@ -34,6 +34,5 @@ public class SwaggerCodegen {
                 );
 
         builder.build().parse(args).run();
-        // testing Git
     }
 }
