@@ -4,10 +4,10 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.rip</groupId>
-    <artifactId>RIP_SQL</artifactId>
+    <artifactId>RIP_UI_Gen</artifactId>
     <packaging>war</packaging>
     <version>1.0.0</version>
-    <name>RIP_SQL</name>
+    <name>RIP_UI_Gen</name>
 
     <properties>
         <springframework.version>4.3.1.RELEASE</springframework.version>
@@ -200,12 +200,7 @@
             <version>${dbunit.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20140107</version>
-            <type>jar</type>
-        </dependency>
+        
     </dependencies>
 
     <build>
@@ -226,13 +221,13 @@
                     <version>2.4</version>
                     <configuration>
                         <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                        <warName>RIP_SQL</warName>
+                        <warName>RIP_UI_Gen</warName>
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
-        <finalName>RIP_SQL</finalName>
+        <finalName>RIP_UI_Gen</finalName>
     </build>
 </project>
 

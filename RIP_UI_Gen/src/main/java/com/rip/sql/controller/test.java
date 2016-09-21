@@ -34,11 +34,12 @@ public class test {
         return new ResponseEntity<>(x, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "test-report", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    @RequestMapping(value = "rest-client-app", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> genarate(@RequestBody String RIP_JSON) {
-        String msg = "RIP Test_Env is Currently Not Implemented.\n You will have it as soon as possible.\n";
+        String msg = "RIP UI_Gen is Currently Not Implemented.\n You will have it as soon as possible.\n";
         return new ResponseEntity<>(msg, HttpStatus.CREATED);
 
     }
+   
 
 }

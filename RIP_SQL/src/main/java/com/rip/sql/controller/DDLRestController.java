@@ -5,13 +5,14 @@
  */
 package com.rip.sql.controller;
 
-import com.rip.sql.model.Employee;
-import com.rip.sql.service.EmployeeService;
-import java.util.List;
+import com.rip.sql.service.DDLManagementService;
+import java.util.ArrayList;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,20 +24,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Component
-public class test {
+public class DDLRestController {
 
     @Autowired
-    EmployeeService employeeService;
+    DDLManagementService DDLManagementService;
 
-    @RequestMapping(value = "test", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<Employee>> test() {
-        List<Employee> x = employeeService.findAllEmployees();
-        return new ResponseEntity<>(x, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "test-report", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    @RequestMapping(value = "sql-file", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> genarate(@RequestBody String RIP_JSON) {
-        String msg = "RIP Test_Env is Currently Not Implemented.\n You will have it as soon as possible.\n";
+        String msg = DDLManagementService.genarate(RIP_JSON);
         return new ResponseEntity<>(msg, HttpStatus.CREATED);
 
     }

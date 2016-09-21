@@ -6,7 +6,6 @@
 package com.rip.framework.controller;
 
 import com.rip.framework.service.ClientRequestHandlerService;
-import com.rip.framework.service.ProjectManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +26,7 @@ public class ClientRequestHandlerRestController {
     @Autowired
     ClientRequestHandlerService clientRequestHandlerService;
 
-    @RequestMapping(value = "generate", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    @RequestMapping(value = "rest-in-peace", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> generateProject(@RequestBody String RIP_JSON) {
         String msg = clientRequestHandlerService.genarateClientResponse(RIP_JSON);
         return new ResponseEntity<>(msg, HttpStatus.OK);

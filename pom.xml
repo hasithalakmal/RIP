@@ -29,6 +29,7 @@
         <module>RIP_SQL</module>
         <module>RIP_Test</module>
         <module>RIP_UI</module>
+		<module>RIP_UI_Gen</module>
     </modules>
 
   
