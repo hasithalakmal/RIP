@@ -82,6 +82,40 @@ public class ClientRequestHandlerServiceImpl implements ClientRequestHandlerServ
         } catch (MalformedURLException e) {
         } catch (IOException e) {
         }
+        
+        
+        try {
+            URL url = new URL("http://localhost:8084/RIP_API/swager");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+
+            String input = RIP_JSON;
+
+            OutputStream os = conn.getOutputStream();
+            os.write(input.getBytes());
+            os.flush();
+
+            if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                throw new RuntimeException("Failed : HTTP error code : "
+                        + conn.getResponseCode());
+            }
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                    (conn.getInputStream())));
+
+            String output;
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ Output from RIP_API_GEN ~~~~  >>>>>>>>>>>>>>>>>>>>>>>\n");
+            while ((output = br.readLine()) != null) {
+                System.out.println(output);
+            }
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ END RIP_API_GEN Output  ~~~~ >>>>>>>>>>>>>>>>>>>>>>>\n");
+            conn.disconnect();
+
+        } catch (MalformedURLException e) {
+        } catch (IOException e) {
+        }
 
         return msg;
     }
