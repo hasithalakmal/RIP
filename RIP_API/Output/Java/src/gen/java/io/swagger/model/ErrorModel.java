@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2016-09-21T10:33:35.196+05:30")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2016-09-21T11:23:43.793+05:30")
 public class ErrorModel   {
   
   private Integer code = null;

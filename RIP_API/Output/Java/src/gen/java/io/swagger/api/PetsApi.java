@@ -21,7 +21,7 @@ import javax.ws.rs.*;
 @Path("/pets")
 @Consumes({ "application/json" })
 @Produces({ "application/json" })
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2016-09-21T10:33:35.196+05:30")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2016-09-21T11:23:43.699+05:30")
 public class PetsApi  {
    private final PetsApiService delegate = PetsApiServiceFactory.getPetsApi();
 
