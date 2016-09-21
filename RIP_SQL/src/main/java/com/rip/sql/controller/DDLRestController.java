@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.rip.framework.controller;
+package com.rip.sql.controller;
 
-import com.rip.framework.service.ClientRequestHandlerService;
+import com.rip.sql.service.DDLManagementService;
+import java.util.ArrayList;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,15 +24,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Component
-public class ClientRequestHandlerRestController {
+public class DDLRestController {
 
     @Autowired
-    ClientRequestHandlerService clientRequestHandlerService;
+    DDLManagementService DDLManagementService;
 
-    @RequestMapping(value = "generate", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> generateProject(@RequestBody String RIP_JSON) {
-        String msg = clientRequestHandlerService.genarateClientResponse(RIP_JSON);
-        return new ResponseEntity<>(msg, HttpStatus.OK);
+    @RequestMapping(value = "genarate", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    public ResponseEntity<String> genarate(@RequestBody String RIP_JSON) {
+        String msg = DDLManagementService.genarate(RIP_JSON);
+        return new ResponseEntity<>(msg, HttpStatus.CREATED);
+
     }
-    
+
 }
