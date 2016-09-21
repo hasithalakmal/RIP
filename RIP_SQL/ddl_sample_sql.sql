@@ -1,0 +1,55 @@
+CREATE TABLE tbl1 (
+  tbl1col1 INT NOT NULL AUTO_INCREMENT,
+  tbl1col2 VARCHAR(45) NOT NULL,
+  tbl1col3 FLOAT NULL,
+  tbl1col4 DOUBLE NULL,
+  tbl1col5 CHAR(10) NULL,
+  tbl1col6 DATE NULL,
+  tbl1col7 DATETIME NULL,
+  tbl1col8 TIMESTAMP NULL,
+  PRIMARY KEY (tbl1col1),
+  UNIQUE INDEX tbl1col_UNIQUE (tbl1col2 ASC));
+
+
+CREATE TABLE tbl2 (
+  tbl2col1 INT NOT NULL AUTO_INCREMENT,
+  tbl2col2 INT NULL DEFAULT 1,
+  tbl2col3 VARCHAR(45) NULL DEFAULT 'rip test',
+  tbl2col4 BLOB NULL,
+  tbl2col5 DOUBLE NULL DEFAULT 12.34,
+  tbl2col6 FLOAT NULL DEFAULT 1.2345,
+  tbl2col7 DATE NULL,
+  tbl2col8 DATETIME NULL,
+  tbl2col9 TIMESTAMP NULL DEFAULT now(),
+  tbl2col10 CHAR(10) NULL DEFAULT 'hasi',
+  PRIMARY KEY (tbl2col1));
+
+  
+  
+CREATE TABLE tbl3 (
+  tbl3col1 INT NOT NULL AUTO_INCREMENT,
+  tbl3col2 VARCHAR(45) NULL,
+  tbl3col3 VARCHAR(45) NULL,
+  tbl3col4 INT NULL,
+  PRIMARY KEY (tbl3col1));
+  
+  
+ALTER TABLE tbl3 
+ADD INDEX fk1_idx (tbl3col4 ASC);
+ALTER TABLE tbl3
+ADD CONSTRAINT fk1
+  FOREIGN KEY (tbl3col4)
+  REFERENCES tbl1 (tbl1col1)
+  ON DELETE CASCADE
+  ON UPDATE NO ACTION;
+  
+  
+CREATE TABLE tbl4 (
+  idtbl4 INT NOT NULL,
+  tbl4col INT NOT NULL,
+  PRIMARY KEY (idtbl4, tbl4col),
+  CONSTRAINT fk2
+    FOREIGN KEY (idtbl4)
+    REFERENCES tbl1 (tbl1col1)
+    ON DELETE NO ACTION
+    ON UPDATE RESTRICT);

@@ -27,15 +27,17 @@
         <module name="RIP_SQL" />
         <module name="RIP_Test" />
         <module name="RIP_UI" />
+        <module name="rip_ui" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="RIP" target="1.8" />
       <module name="RIP_API" target="1.7" />
-      <module name="RIP_Framework" target="1.7" />
-      <module name="RIP_SQL" target="1.7" />
-      <module name="RIP_Test" target="1.7" />
+      <module name="RIP_Framework" target="1.5" />
+      <module name="RIP_SQL" target="1.5" />
+      <module name="RIP_Test" target="1.5" />
       <module name="RIP_UI" target="1.7" />
+      <module name="rip_ui" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
