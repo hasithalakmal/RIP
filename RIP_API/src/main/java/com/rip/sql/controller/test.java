@@ -8,11 +8,8 @@ package com.rip.sql.controller;
 import com.rip.sql.model.Employee;
 import com.rip.sql.service.EmployeeService;
 
-import java.io.*;
 import java.util.List;
 
-import org.hibernate.annotations.SourceType;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,7 +44,10 @@ public class test {
         JSONObject technicalSpecification = json.getJSONObject("Technical_Spec");
         JSONObject restAPISpecification = json.getJSONObject("RestAPI_Design");*/
        // System.out.println(restAPISpecification);
-        String basePath = "";
+        String gitPath = "E:\\4thYearProject\\GIT";
+        String inputPath ="E:\\4thYearProject\\GIT\\RIP_API";
+        String outputPath="E:\\4thYearProject\\GIT\\RIP_API\\Output\\Java";
+        String clientPath="E:\\4thYearProject\\GIT\\RIP_API\\Output\\Html";
         try {
 /*            File theDir = new File("E:\\UCSC_Work\\Testing\\"+appDetails.getInt("app_id"));
             if (!theDir.exists()) {
@@ -64,7 +64,9 @@ public class test {
             System.out.println("Finished creating REST API");*/
 
             //System.out.println("Starting to create REST API");
-            //Runtime.getRuntime().exec("java -jar E:\\UCSC_Work\\Git\\RIP_API\\Swagger_REST_API\\modules\\swagger-codegen-cli\\target\\swagger-codegen-cli.jar generate -i E:\\UCSC_Work\\Testing\\example.json -l jaxrs-resteasy -o E:\\UCSC_Work\\Testing\\Java");
+            Runtime.getRuntime().exec("java -jar "+gitPath+"\\RIP_API\\Swagger_REST_API\\modules\\swagger-codegen-cli\\target\\swagger-codegen-cli.jar generate -i "+inputPath+"\\example.json -l jaxrs-resteasy -o "+outputPath);
+          //  Runtime.getRuntime().exec("java -jar "+gitPath+"\\RIP_API\\Swagger_REST_API\\modules\\swagger-codegen-cli\\target\\swagger-codegen-cli.jar generate -i "+inputPath+"\\example.json -l jaxrs-resteasy -o "+clientPath);
+            
             //System.out.println("Finished creating REST API");
         }catch (Exception e) {
             e.printStackTrace();
