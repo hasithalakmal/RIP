@@ -6,6 +6,7 @@
 package com.rip.rip_ui.application.wizard.templates;
 
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.ClassAttrTemplate;
+import com.rip.rip_ui.application.wizard.diagram_tool.templates.ClassMethodTemplate;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.ClassTemplate;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.ResourceTemplate;
 import java.util.ArrayList;
@@ -60,6 +61,20 @@ public class RestApiTemplate extends Template {
         
         return -1;
     }
+    
+      int getMethodListSize(String className) {
+        for(int i=0;i<classes.size();i++){
+            ClassTemplate classObj = classes.get(i);
+            if(classObj.getClass_name().equals(className)){
+                return classObj.getMethodListSize();
+               
+            }
+        }
+        
+        return -1;
+    }
+    
+
 
     void addClassAttr(String className, int classAttrId, ClassAttrTemplate classAttrObj) {
         for(int i=0;i<classes.size();i++){
@@ -72,6 +87,59 @@ public class RestApiTemplate extends Template {
         
         
     }
+
+    void addClassMethodObj(String className, int classMethodId, ClassMethodTemplate classMethodObj) {
+        for(int i=0;i<classes.size();i++){
+            ClassTemplate classObj = classes.get(i);
+            if(classObj.getClass_name().equals(className)){
+                classObj.addClassMethod(classMethodId,classMethodObj);
+               
+            }
+        }
+    }
+
+    void setClassReference(String className,String tableName) {
+        for(int i=0;i<classes.size();i++){
+            ClassTemplate classObj = classes.get(i);
+            if(classObj.getClass_name().equals(className)){
+                classObj.addTableReference(tableName);
+                break;
+            }
+        }
+
+    }
+
+    void setClassResourceReference(String className, String resourceName) {
+        for(int i=0;i<classes.size();i++){
+            ClassTemplate classObj = classes.get(i);
+            if(classObj.getClass_name().equals(className)){
+                classObj.addResourceReference(resourceName);
+                break;
+            }
+        }
+    }
+
+    void setResourceClassReference(String resourceName, String className) {
+        for(int i=0;i<classes.size();i++){
+            ResourceTemplate resourceObj = resources.get(i);
+            if(resourceObj.getResource_name().equals(resourceName)){
+                resourceObj.addResourceReference(className);
+                break;
+            }
+        }
+    }
+
+    void setRequestReference(String resource, String request) {
+        for(int i=0;i<classes.size();i++){
+            ResourceTemplate resourceObj = resources.get(i);
+            if(resourceObj.getResource_name().equals(resource)){
+                resourceObj.addRequestResourceReference(request);
+                break;
+            }
+        }
+    }
+
+  
 
     
     

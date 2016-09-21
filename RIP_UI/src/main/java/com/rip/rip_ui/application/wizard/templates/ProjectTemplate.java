@@ -6,7 +6,10 @@
 package com.rip.rip_ui.application.wizard.templates;
 
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.ClassAttrTemplate;
+import com.rip.rip_ui.application.wizard.diagram_tool.templates.ClassMethodTemplate;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.ClassTemplate;
+import com.rip.rip_ui.application.wizard.diagram_tool.templates.ForeignKeyTemplate;
+import com.rip.rip_ui.application.wizard.diagram_tool.templates.RequestTemplate;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.ResourceTemplate;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.TableFieldTemplate;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.TableTemplate;
@@ -22,7 +25,7 @@ public class ProjectTemplate extends Template {
     private TechSpecTemplate technical_spec;
     private DatabaseTemplate database;
     private RestApiTemplate rest_api;
-    
+    private RestClientTemplate rest_client;
     
     public ProjectTemplate(String id, String dbName){
         this.createId(id);
@@ -30,6 +33,7 @@ public class ProjectTemplate extends Template {
         this.technical_spec = new TechSpecTemplate(this.getId());
         this.database = new DatabaseTemplate(this.getId(),dbName);
         this.rest_api = new RestApiTemplate(this.getId());
+        this.rest_client = new RestClientTemplate(this.getId());
     }
      
     public void setReqDetails(String projectId,String projectName, String version, String datetime){
@@ -98,12 +102,47 @@ public class ProjectTemplate extends Template {
         rest_api.addClass(classId,classObj);
     }
 
-    public int getAttrListSize(String classAttr) {
-        return rest_api.getAttrListSize(classAttr);
+    public int getAttrListSize(String className) {
+        return rest_api.getAttrListSize(className);
     }
 
     public void addClassAttr(String className, int classAttrId, ClassAttrTemplate classAttrObj) {
         rest_api.addClassAttr(className, classAttrId, classAttrObj);
+    }
+
+    public int getMethodListSize(String className) {
+        return rest_api.getMethodListSize(className);
+    }
+
+    public void addClassMethodObj(String className, int classMethodId, ClassMethodTemplate classMethodObj) {
+        rest_api.addClassMethodObj(className, classMethodId, classMethodObj);
+    }
+
+    public void setCTReference(String className, String tableName) {
+        rest_api.setClassReference(className,tableName);
+        database.setTableReference(tableName,className);
+    }
+
+    public void setRCReference(String resourceName, String className) {
+        rest_api.setClassResourceReference(className,resourceName);
+        rest_api.setResourceClassReference(resourceName,className);
+    }
+
+    public int getRequestListSize() {
+        return rest_client.getRequestListSize();
+    }
+
+    public void addRequest(int requestId, RequestTemplate requestObj) {
+        rest_client.addRequest(requestId,requestObj);
+    }
+
+    public void setRRReference(String request, String resource) {
+        rest_client.setResourceReference(request,resource);
+        rest_api.setRequestReference(resource,request);
+    }
+
+    public void addFKObj(ForeignKeyTemplate fkObj) {
+        database.addFKObj(fkObj);
     }
 
     

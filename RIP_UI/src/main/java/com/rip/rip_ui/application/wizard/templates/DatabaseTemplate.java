@@ -5,7 +5,7 @@
  */
 package com.rip.rip_ui.application.wizard.templates;
 
-import com.rip.rip_ui.application.wizard.diagram_tool.templates.ForeignKey;
+import com.rip.rip_ui.application.wizard.diagram_tool.templates.ForeignKeyTemplate;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.TableFieldTemplate;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.TableTemplate;
 import com.rip.rip_ui.application.wizard.diagram_tool.templates.View;
@@ -23,7 +23,7 @@ public class DatabaseTemplate extends Template {
     private ArrayList<TableTemplate> tables = new ArrayList<TableTemplate>();
     
     //list of foreign keys in db
-    private ArrayList<ForeignKey> foreign_keys = new ArrayList<ForeignKey>();
+    private ArrayList<ForeignKeyTemplate> foreign_keys = new ArrayList<ForeignKeyTemplate>();
 
     public String getDb_name() {
         return db_name;
@@ -75,6 +75,21 @@ public class DatabaseTemplate extends Template {
         }
         
         return -1;
+    }
+
+    void setTableReference(String tableName, String className) {
+         for(int i=0;i<tables.size();i++){
+            TableTemplate classObj = tables.get(i);
+            if(classObj.getTable_name().equals(className)){
+                classObj.addClassReference(className);
+                break;
+            }
+        }
+        
+    }
+
+    void addFKObj(ForeignKeyTemplate fkObj) {
+        foreign_keys.add(fkObj);
     }
     
     

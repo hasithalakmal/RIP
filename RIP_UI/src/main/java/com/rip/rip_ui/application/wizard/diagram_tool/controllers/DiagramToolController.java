@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -68,6 +69,14 @@ public class DiagramToolController implements Initializable {
         }
         
         commandInput.clear();
+    }
+    
+    @FXML
+    public void createProject(ActionEvent event){
+        
+        projectHandler.writeToProject();
+        ((Node)event.getSource()).getScene().getWindow().hide();
+        
     }
 
 }

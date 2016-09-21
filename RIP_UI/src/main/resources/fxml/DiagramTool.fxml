@@ -10,7 +10,7 @@
    <children>
       <TextField fx:id="commandInput" layoutX="42.0" layoutY="78.0" prefHeight="25.0" prefWidth="448.0" promptText="Insert Coommands Here" />
       <Button layoutX="499.0" layoutY="78.0" mnemonicParsing="false" onAction="#executeQuery" text="Execute" />
-      <Button layoutX="221.0" layoutY="128.0" mnemonicParsing="false" text="Submit Project" />
+      <Button layoutX="221.0" layoutY="128.0" mnemonicParsing="false" onAction="#createProject" text="Submit Project" />
       <Separator layoutX="46.0" layoutY="118.0" prefHeight="0.0" prefWidth="505.0" />
       <Separator layoutX="45.0" layoutY="59.0" prefHeight="0.0" prefWidth="505.0" />
       <Button layoutX="323.0" layoutY="128.0" mnemonicParsing="false" text="Cancel" />

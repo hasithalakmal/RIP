@@ -16,11 +16,13 @@ public class TableTemplate extends Template {
     
     private String table_name;
     private ArrayList<TableFieldTemplate> fields;
+    private ArrayList<String> class_references;
 
     public TableTemplate(String id, int tableId) {
         this.createId(id);
         this.setId(id+tableId+"-T");
         fields = new ArrayList<TableFieldTemplate>();
+        class_references = new ArrayList<String>();
     }
     
     public String getTable_name() {
@@ -42,6 +44,10 @@ public class TableTemplate extends Template {
     @Override
     public void createId(String id) {
         this.setId(id);
+    }
+
+    public void addClassReference(String className) {
+        class_references.add(className);
     }
 
 
