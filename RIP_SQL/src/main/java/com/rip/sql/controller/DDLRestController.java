@@ -29,7 +29,7 @@ public class DDLRestController {
     @Autowired
     DDLManagementService DDLManagementService;
 
-    @RequestMapping(value = "genarate", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    @RequestMapping(value = "sql-file", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> genarate(@RequestBody String RIP_JSON) {
         String msg = DDLManagementService.genarate(RIP_JSON);
         return new ResponseEntity<>(msg, HttpStatus.CREATED);

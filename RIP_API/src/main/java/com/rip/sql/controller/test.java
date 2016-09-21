@@ -42,11 +42,11 @@ public class test {
     @RequestMapping(value = "rest-api", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> generateRESTAPI(@RequestBody String ripJSON) {
 
-        JSONObject json = new JSONObject(ripJSON);
+     /*   JSONObject json = new JSONObject(ripJSON);
         JSONObject appDetails = json.getJSONObject("Request_details");
         JSONObject technicalSpecification = json.getJSONObject("Technical_Spec");
-        JSONObject restAPISpecification = json.getJSONObject("RestAPI_Design");
-        System.out.println(restAPISpecification);
+        JSONObject restAPISpecification = json.getJSONObject("RestAPI_Design");*/
+       // System.out.println(restAPISpecification);
         String basePath = "";
         try {
 /*            File theDir = new File("E:\\UCSC_Work\\Testing\\"+appDetails.getInt("app_id"));
@@ -63,9 +63,9 @@ public class test {
             Runtime.getRuntime().exec("java -jar E:\\UCSC_Work\\Git\\RIP_API\\Swagger_REST_API\\modules\\swagger-codegen-cli\\target\\swagger-codegen-cli.jar generate -i E:\\UCSC_Work\\Testing\\example.json -l jaxrs-resteasy -o E:\\UCSC_Work\\Testing\\Java");
             System.out.println("Finished creating REST API");*/
 
-            System.out.println("Starting to create REST API");
-            Runtime.getRuntime().exec("java -jar E:\\UCSC_Work\\Git\\RIP_API\\Swagger_REST_API\\modules\\swagger-codegen-cli\\target\\swagger-codegen-cli.jar generate -i E:\\UCSC_Work\\Testing\\example.json -l jaxrs-resteasy -o E:\\UCSC_Work\\Testing\\Java");
-            System.out.println("Finished creating REST API");
+            //System.out.println("Starting to create REST API");
+            //Runtime.getRuntime().exec("java -jar E:\\UCSC_Work\\Git\\RIP_API\\Swagger_REST_API\\modules\\swagger-codegen-cli\\target\\swagger-codegen-cli.jar generate -i E:\\UCSC_Work\\Testing\\example.json -l jaxrs-resteasy -o E:\\UCSC_Work\\Testing\\Java");
+            //System.out.println("Finished creating REST API");
         }catch (Exception e) {
             e.printStackTrace();
         }

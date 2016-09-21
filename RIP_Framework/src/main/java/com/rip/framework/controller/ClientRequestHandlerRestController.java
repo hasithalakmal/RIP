@@ -26,7 +26,7 @@ public class ClientRequestHandlerRestController {
     @Autowired
     ClientRequestHandlerService clientRequestHandlerService;
 
-    @RequestMapping(value = "generate", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    @RequestMapping(value = "rest-in-peace", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> generateProject(@RequestBody String RIP_JSON) {
         String msg = clientRequestHandlerService.genarateClientResponse(RIP_JSON);
         return new ResponseEntity<>(msg, HttpStatus.OK);

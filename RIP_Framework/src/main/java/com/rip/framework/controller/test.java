@@ -56,5 +56,13 @@ public class test {
         String msg = "xxx";
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
+    
+    
+    @RequestMapping(value = "zip-file", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    public ResponseEntity<String> genarate(@RequestBody String RIP_JSON) {
+        String msg = "RIP File Handler is Currently Not Implemented.\n You will have it as soon as possible.\n";
+        return new ResponseEntity<>(msg, HttpStatus.CREATED);
+
+    }
 
 }

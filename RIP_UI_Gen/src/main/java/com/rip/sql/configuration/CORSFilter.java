@@ -13,15 +13,24 @@ public class CORSFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-        System.out.println("Filtering on...........................................................");
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ~~~~  RIP UI_Gen got Request ~~~~  >>>>>>>>>>>>>>>>>>>>>>\n " + req);
         HttpServletResponse response = (HttpServletResponse) res;
         response.setHeader("Access-Control-Allow-Origin", "*");
-      //  response.setHeader("Access-Control-Allow-Credentials", "true");
+        //  response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
-       // response.setHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization, Origin, Accept, Access-Control-Request-Method, Access-Control-Request-Headers");
-       response.setHeader("Access-Control-Allow-Headers", "x-requested-with, Content-Type"); 
-       chain.doFilter(req, res);
+        // response.setHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization, Origin, Accept, Access-Control-Request-Method, Access-Control-Request-Headers");
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with, Content-Type");
+        chain.doFilter(req, res);
+        System.out.println("RIP UI_Gen Response Character Encoding ~~~~ " + res.getCharacterEncoding());
+        System.out.println("RIP UI_Gen Response Chain ~~~~ " + chain.toString());
+        System.out.println("RIP UI_Gen Response Content Type ~~~~ " + response.getContentType());
+        System.out.println("RIP UI_Gen Response Header Names ~~~~ " + response.getHeaderNames());
+        System.out.println("RIP UI_Gen Response Buffer Size ~~~~ " + response.getBufferSize());
+        System.out.println("RIP UI_Gen Response Output Stream ~~~~ " + response.getOutputStream().toString());
+        System.out.println("RIP UI_Gen Response Status ~~~~ " + response.getStatus());
+        System.out.println("RIP UI_Gen Response Locale ~~~~ " + response.getLocale());
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ~~~~  RIP UI_Gen Send Response  ~~~~ >>>>>>>>>>>>>>>>>>>>\n");
     }
 
     @Override
