@@ -17,15 +17,17 @@ public class ClassMethodTemplate extends Template{
     private String access_modifier;
     private String return_type;
     private String method;
-    private ArrayList<String> parameters;
+    private String[] parameters;
+
+    
     private String isFinal = "false";
     private String isStatic = "false";
     private String isAbstract = "false";
        
-    public ClassMethodTemplate(String id, String classMethodId){
+    public ClassMethodTemplate(String id, int classMethodId) {
         this.createId(id);
         this.setId(id+classMethodId+"-M");
-    
+        
     }
     
     public String getAccess_modifier() {
@@ -74,6 +76,14 @@ public class ClassMethodTemplate extends Template{
 
     public void setIsAbstract(String isAbstract) {
         this.isAbstract = isAbstract;
+    }
+    
+    public String[] getParameters() {
+        return parameters;
+    }
+
+    public void setParameters(String[] parameters) {
+        this.parameters = parameters;
     }
 
     @Override

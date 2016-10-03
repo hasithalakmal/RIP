@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +34,11 @@ public class test {
         return new ResponseEntity<>(x, HttpStatus.OK);
     }
 
-   
+    @RequestMapping(value = "test-report", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    public ResponseEntity<String> genarate(@RequestBody String RIP_JSON) {
+        String msg = "RIP Test_Env is Currently Not Implemented.\n You will have it as soon as possible.\n";
+        return new ResponseEntity<>(msg, HttpStatus.CREATED);
+
+    }
 
 }

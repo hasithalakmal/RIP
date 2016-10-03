@@ -6,6 +6,7 @@
 package com.rip.rip_ui.application.wizard.diagram_tool.templates;
 
 import com.rip.rip_ui.application.wizard.templates.Template;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,11 +17,14 @@ public class ResourceTemplate extends Template {
     private String resource_name;
     private String uri;
     private String[] methods;
+    private ArrayList<String> class_references;
+    private ArrayList<String> request_references;
     
     
     public ResourceTemplate(String id,int resId){
         this.createId(id);
         this.setId(this.getId()+"-"+Integer.toString(resId)+"-R");
+        class_references = new ArrayList<String>();
     }
 
 
@@ -53,6 +57,14 @@ public class ResourceTemplate extends Template {
     @Override
     public void createId(String id) {
         this.setId(id);
+    }
+
+    public void addResourceReference(String className) {
+        class_references.add(className);
+    }
+
+    public void addRequestResourceReference(String request) {
+        request_references.add(request);
     }
     
 }

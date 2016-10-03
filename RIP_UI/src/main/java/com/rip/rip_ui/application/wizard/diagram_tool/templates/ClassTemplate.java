@@ -19,10 +19,18 @@ public class ClassTemplate extends Template{
     
     ArrayList<ClassAttrTemplate> attributes;
     ArrayList<ClassMethodTemplate> methods;
+    ArrayList<String> table_references;
+    ArrayList<String> resource_references;
+    
 
     public ClassTemplate(String id, int classId) {
         this.createId(id);
         this.setId(id+classId+"-C");
+        
+        attributes = new ArrayList<ClassAttrTemplate>();
+        methods = new ArrayList<ClassMethodTemplate>();
+        table_references = new ArrayList<String>();
+        resource_references = new ArrayList<String>();
     }
     
     public String getClass_name() {
@@ -44,6 +52,23 @@ public class ClassTemplate extends Template{
 
     public void addClassAttr(int classAttrId,ClassAttrTemplate classAttrObj) {
         attributes.add(classAttrId,classAttrObj);
+    }
+
+    public int getMethodListSize() {
+        return methods.size();
+    }
+
+    public void addClassMethod(int classMethodId, ClassMethodTemplate classMethodObj) {
+        
+        methods.add(classMethodId,classMethodObj);
+    }
+    
+    public void addTableReference(String tableName){
+        table_references.add(tableName);
+    }
+
+    public void addResourceReference(String resourceName) {
+        resource_references.add(resourceName);
     }
     
 }
