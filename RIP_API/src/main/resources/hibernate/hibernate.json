@@ -1,0 +1,20 @@
+{
+  "MySQL" :{
+    "dialect" : "org.hibernate.dialect.MySQLDialect",
+    "driverClass" : "com.mysql.jdbc.Driver",
+    "url" : "jdbc:mysql:",
+    "defaultUrl" : "jdbc:mysql://localhost:3306/"
+    },
+  "Oracle" : {
+    "dialect" : "org.hibernate.dialect.OracleDialect",
+    "driverClass" : "oracle.jdbc.driver.OracleDriver",
+    "url" : "jdbc\\:oracle\\:thin\\:",
+    "defaultUrl" : "jdbc\\:oracle\\:thin\\:@localhost\\:1521\\:"
+    },
+  "PostgreSQL" : {
+    "dialect" : "org.hibernate.dialect.PostgreSQLDialect",
+    "driverClass" : "org.postgresql.Driver",
+    "url" : "jdbc:postgresql:",
+    "defaultUrl" : "jdbc:postgresql://127.0.0.1:5432/"
+    }
+}

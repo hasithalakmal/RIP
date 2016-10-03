@@ -161,7 +161,6 @@ public class MetaGenerator extends AbstractGenerator {
                             })
                             .defaultValue("")
                             .compile(template);
-
                     writeToFile(outputFilename, tmpl.execute(data));
                     files.add(new File(outputFilename));
                 } else {

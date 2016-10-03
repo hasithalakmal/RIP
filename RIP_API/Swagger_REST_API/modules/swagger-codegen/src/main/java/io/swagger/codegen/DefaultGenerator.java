@@ -579,7 +579,6 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
                                         })
                                         .defaultValue("")
                                         .compile(template);
-
                                 writeToFile(outputFilename, tmpl.execute(bundle));
                                 files.add(new File(outputFilename));
                             } else {
@@ -662,7 +661,11 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
                     })
                     .defaultValue("")
                     .compile(template);
-
+            if(outputFilename.endsWith("ServiceImpl.java")|| outputFilename.endsWith("ServiceFactory.java") || outputFilename.endsWith("Api.java") )
+            {
+                templateData.put("myPackage",templateData.get("package").toString().substring(0,templateData.get("package").toString().lastIndexOf('.')));
+            }
+            //System.out.println(templateData);
             writeToFile(outputFilename, tmpl.execute(templateData));
             return new File(outputFilename);
         }

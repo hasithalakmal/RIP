@@ -178,7 +178,6 @@ public class JavaResteasyServerCodegen extends AbstractJavaJAXRSServerCodegen {
     @Override
     public Map<String, Object> postProcessModelsEnum(Map<String, Object> objs) {
         objs = super.postProcessModelsEnum(objs);
-
         //Add imports for Jackson
         List<Map<String, String>> imports = (List<Map<String, String>>)objs.get("imports");
         List<Object> models = (List<Object>) objs.get("models");
@@ -193,7 +192,6 @@ public class JavaResteasyServerCodegen extends AbstractJavaJAXRSServerCodegen {
                 imports.add(item);
             }
         }
-
         return objs;
     }
 }

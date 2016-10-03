@@ -165,6 +165,7 @@ public abstract class AbstractJavaJAXRSServerCodegen extends AbstractJavaCodegen
                 }
             }
         }
+        System.out.println("AbstractJavaJAXRSServerCodegen   "+objs);
         return objs;
     }
 
@@ -198,7 +199,8 @@ public abstract class AbstractJavaJAXRSServerCodegen extends AbstractJavaCodegen
     }
 
     private String implFileFolder(String output) {
-        return outputFolder + "/" + output + "/" + apiPackage().replace('.', '/');
+        //apiPackage().substring(0,apiPackage().lastIndexOf('.')).replace('.', '/');
+        return outputFolder + "/" + output + "/" + apiPackage().substring(0,apiPackage().lastIndexOf('.')).replace('.', '/');
     }
 
     @Override

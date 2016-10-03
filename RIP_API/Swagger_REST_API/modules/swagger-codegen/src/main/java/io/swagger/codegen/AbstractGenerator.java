@@ -21,6 +21,7 @@ public abstract class AbstractGenerator {
 
     @SuppressWarnings("static-method")
     public File writeToFile(String filename, String contents) throws IOException {
+        //Thread.dumpStack(); //////////////////////////////////////////////////////////////////
         LOGGER.info("writing file " + filename);
         File output = new File(filename);
 
