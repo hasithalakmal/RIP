@@ -134,7 +134,7 @@ public class ObjcClientCodegen extends DefaultCodegen implements CodegenConfig {
                     "do", "int", "struct", "_Packed",
                     "double", "protocol", "interface", "implementation",
                     "NSObject", "NSInteger", "NSNumber", "CGFloat",
-                    "property", "nonatomic", "retain", "strong",
+                    "Property", "nonatomic", "retain", "strong",
                     "weak", "unsafe_unretained", "readwrite", "readonly",
                     "description"
                 ));
@@ -327,12 +327,12 @@ public class ObjcClientCodegen extends DefaultCodegen implements CodegenConfig {
             if (innerTypeDeclaration.endsWith("*")) {
                 innerTypeDeclaration = innerTypeDeclaration.substring(0, innerTypeDeclaration.length() - 1);
             }
-            // In this condition, type of property p is array of primitive,
+            // In this condition, type of Property p is array of primitive,
             // return container type with pointer, e.g. `NSArray*<NSString*>*'
             if (languageSpecificPrimitives.contains(innerTypeDeclaration)) {
                 return getSwaggerType(p) +  "<" + innerTypeDeclaration + "*>*";
             }
-            // In this condition, type of property p is array of model,
+            // In this condition, type of Property p is array of model,
             // return container type combine inner type with pointer, e.g. `NSArray<SWGTag>*'
             else {
                 for (String sd : advancedMapingTypes) {
@@ -614,10 +614,10 @@ public class ObjcClientCodegen extends DefaultCodegen implements CodegenConfig {
     }
 
     /**
-     * Return the default value of the property
+     * Return the default value of the Property
      *
-     * @param p Swagger property object
-     * @return string presentation of the default value of the property
+     * @param p Swagger Property object
+     * @return string presentation of the default value of the Property
      */
     @Override
     public String toDefaultValue(Property p) {

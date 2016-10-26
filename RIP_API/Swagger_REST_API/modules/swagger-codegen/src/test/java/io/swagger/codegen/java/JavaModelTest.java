@@ -86,7 +86,7 @@ public class JavaModelTest {
         Assert.assertTrue(property3.isNotContainer);
     }
 
-    @Test(description = "convert a model with list property")
+    @Test(description = "convert a model with list Property")
     public void listPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -115,7 +115,7 @@ public class JavaModelTest {
         Assert.assertTrue(property.isContainer);
     }
 
-    @Test(description = "convert a model with a map property")
+    @Test(description = "convert a model with a map Property")
     public void mapPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -143,7 +143,7 @@ public class JavaModelTest {
         Assert.assertTrue(property.isContainer);
     }
 
-    @Test(description = "convert a model with a map with complex list property")
+    @Test(description = "convert a model with a map with complex list Property")
     public void mapWithListPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -171,7 +171,7 @@ public class JavaModelTest {
         Assert.assertTrue(property.isContainer);
     }
 
-    @Test(description = "convert a model with a 2D list property")
+    @Test(description = "convert a model with a 2D list Property")
     public void list2DPropertyTest() {
         final Model model = new ModelImpl().name("sample").property("list2D", new ArrayProperty().items(
                 new ArrayProperty().items(new RefProperty("Pet"))));
@@ -217,7 +217,7 @@ public class JavaModelTest {
         Assert.assertTrue(property.isNotContainer);
     }
 
-    @Test(description = "convert a model with complex list property")
+    @Test(description = "convert a model with complex list Property")
     public void complexListPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -244,7 +244,7 @@ public class JavaModelTest {
         Assert.assertTrue(property.isContainer);
     }
 
-    @Test(description = "convert a model with complex map property")
+    @Test(description = "convert a model with complex map Property")
     public void complexMapPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -308,10 +308,10 @@ public class JavaModelTest {
         Assert.assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("ApiModel", "Map", "HashMap", "Children")).size(), 4);
     }
 
-    @Test(description = "convert a model with upper-case property names")
+    @Test(description = "convert a model with upper-case Property names")
     public void upperCaseNamesTest() {
         final Model model = new ModelImpl()
-                .description("a model with upper-case property names")
+                .description("a model with upper-case Property names")
                 .property("NAME", new StringProperty())
                 .required("NAME");
         final DefaultCodegen codegen = new JavaClientCodegen();
@@ -334,10 +334,10 @@ public class JavaModelTest {
         Assert.assertTrue(property.isNotContainer);
     }
 
-    @Test(description = "convert a model with a 2nd char upper-case property names")
+    @Test(description = "convert a model with a 2nd char upper-case Property names")
     public void secondCharUpperCaseNamesTest() {
         final Model model = new ModelImpl()
-                .description("a model with a 2nd char upper-case property names")
+                .description("a model with a 2nd char upper-case Property names")
                 .property("pId", new StringProperty())
                 .required("pId");
         final DefaultCodegen codegen = new JavaClientCodegen();
@@ -425,7 +425,7 @@ public class JavaModelTest {
     @Test(description = "translate an invalid param name")
     public void invalidParamNameTest() {
         final Model model = new ModelImpl()
-                .description("a model with a 2nd char upper-case property names")
+                .description("a model with a 2nd char upper-case Property names")
                 .property("_", new StringProperty());
         final DefaultCodegen codegen = new JavaClientCodegen();
         final CodegenModel cm = codegen.fromModel("sample", model);

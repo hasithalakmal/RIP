@@ -263,7 +263,7 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
             Map<String, Object> mo = (Map<String, Object>) _mo;
             CodegenModel cm = (CodegenModel) mo.get("model");
             for (CodegenProperty var : cm.vars) {
-                // check to see if model name is same as the property name
+                // check to see if model name is same as the Property name
                 // which will result in compilation error
                 // if found, prepend with _ to workaround the limitation
                 if (var.name.equalsIgnoreCase(cm.name)) {
@@ -409,10 +409,10 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
     }
 
     /**
-     * Return the example value of the property
+     * Return the example value of the Property
      *
-     * @param p Swagger property object
-     * @return string presentation of the example value of the property
+     * @param p Swagger Property object
+     * @return string presentation of the example value of the Property
      */
     @Override
     public String toExampleValue(Property p) {
@@ -456,10 +456,10 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
     }
 
     /**
-     * Return the default value of the property
+     * Return the default value of the Property
      *
-     * @param p Swagger property object
-     * @return string presentation of the default value of the property
+     * @param p Swagger Property object
+     * @return string presentation of the default value of the Property
      */
     @Override
     public String toDefaultValue(Property p) {
@@ -641,8 +641,8 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
 
     /*
     @Override
-    public String toEnumName(CodegenProperty property) {
-        String enumName = sanitizeName(property.name);
+    public String toEnumName(CodegenProperty Property) {
+        String enumName = sanitizeName(Property.name);
         if (!StringUtils.isEmpty(modelNamePrefix)) {
             enumName = modelNamePrefix + "_" + enumName;
         }

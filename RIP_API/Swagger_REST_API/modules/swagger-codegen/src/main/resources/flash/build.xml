@@ -8,9 +8,9 @@
     <property name="FLEX_HOME" value="${FLEX4_SDK_HOME}"/>
     <property name="FLEX4_HOME" value="${FLEX4_SDK_HOME}"/>
 
-    <!--<property name="flexunit.swc" value="../lib/ext/flexunit-4.1.0_RC2-28-flex_3.5.0.12683.swc" />
-    <property name="flexunit-uilistener.swc" value="../lib/ext/flexunit-uilistener-4.1.0_RC2-28-flex_3.5.0.12683.swc" />
-    <property name="flexunit-cilistener.swc" value="../lib/ext/flexunit-cilistener-4.1.0_RC2-28-flex_3.5.0.12683.swc" />-->
+    <!--<Property name="flexunit.swc" value="../lib/ext/flexunit-4.1.0_RC2-28-flex_3.5.0.12683.swc" />
+    <Property name="flexunit-uilistener.swc" value="../lib/ext/flexunit-uilistener-4.1.0_RC2-28-flex_3.5.0.12683.swc" />
+    <Property name="flexunit-cilistener.swc" value="../lib/ext/flexunit-cilistener-4.1.0_RC2-28-flex_3.5.0.12683.swc" />-->
 
     <!-- Flex Ant Tasks used to perform compc and mxml compiling more info at http://labs.adobe.com/wiki/index.php/Flex_Ant_Tasks -->
     <taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>

@@ -248,7 +248,7 @@ public class CppRestClientCodegen extends DefaultCodegen implements CodegenConfi
     /**
      * Optional - type declaration. This is a String which is used by the
      * templates to instantiate your types. There is typically special handling
-     * for different property types
+     * for different Property types
      *
      * @return a string value used as the `dataType` field for model templates,
      *         `returnType` for api templates
@@ -331,7 +331,7 @@ public class CppRestClientCodegen extends DefaultCodegen implements CodegenConfi
      * a `Property` into either language specific types via `typeMapping` or
      * into complex models if there is not a mapping.
      *
-     * @return a string value of the type or complex model for this property
+     * @return a string value of the type or complex model for this Property
      * @see io.swagger.models.properties.Property
      */
     @Override

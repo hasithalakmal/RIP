@@ -227,7 +227,7 @@ public class DefaultCodegen {
                 cm.allowableValues.put("enumVars", enumVars);
             }
 
-            // update codegen property enum with proper naming convention
+            // update codegen Property enum with proper naming convention
             // and handling of numbers, special characters
             for (CodegenProperty var : cm.vars) {
                 updateCodegenPropertyEnum(var);
@@ -660,7 +660,7 @@ public class DefaultCodegen {
      * Return the parameter name by removing invalid characters and proper escaping if
      * it's a reserved word.
      *
-     * @param name Codegen property object
+     * @param name Codegen Property object
      * @return the sanitized parameter name
      */
     public String toParamName(String name) {
@@ -674,7 +674,7 @@ public class DefaultCodegen {
     /**
      * Return the Enum name (e.g. StatusEnum given 'status')
      *
-     * @param property Codegen property
+     * @param property Codegen Property
      * @return the Enum name
      */
     @SuppressWarnings("static-method")
@@ -913,10 +913,10 @@ public class DefaultCodegen {
     }
 
     /**
-     * Return the instantiation type of the property, especially for map and array
+     * Return the instantiation type of the Property, especially for map and array
      *
-     * @param p Swagger property object
-     * @return string presentation of the instantiation type of the property
+     * @param p Swagger Property object
+     * @return string presentation of the instantiation type of the Property
      */
     public String toInstantiationType(Property p) {
         if (p instanceof MapProperty) {
@@ -941,17 +941,17 @@ public class DefaultCodegen {
     /**
      * Return the example value of the parameter. 
      *
-     * @param p Swagger property object
+     * @param p Swagger Property object
      */
     public void setParameterExampleValue(CodegenParameter p) {
 
     }
 
     /**
-     * Return the example value of the property
+     * Return the example value of the Property
      *
-     * @param p Swagger property object
-     * @return string presentation of the example value of the property
+     * @param p Swagger Property object
+     * @return string presentation of the example value of the Property
      */
     public String toExampleValue(Property p) {
         if(p.getExample() != null) {
@@ -995,10 +995,10 @@ public class DefaultCodegen {
     }
 
     /**
-     * Return the default value of the property
+     * Return the default value of the Property
      *
-     * @param p Swagger property object
-     * @return string presentation of the default value of the property
+     * @param p Swagger Property object
+     * @return string presentation of the default value of the Property
      */
     @SuppressWarnings("static-method")
     public String toDefaultValue(Property p) {
@@ -1040,12 +1040,12 @@ public class DefaultCodegen {
     }
 
     /**
-     * Return the property initialized from a data object
+     * Return the Property initialized from a data object
      * Useful for initialization with a plain object in Javascript
      *
-     * @param name Name of the property object
-     * @param p Swagger property object
-     * @return string presentation of the default value of the property
+     * @param name Name of the Property object
+     * @param p Swagger Property object
+     * @return string presentation of the default value of the Property
      */
     @SuppressWarnings("static-method")
     public String toDefaultValueWithParam(String name, Property p) {
@@ -1053,8 +1053,8 @@ public class DefaultCodegen {
     }
 
     /**
-     * returns the swagger type for the property
-     * @param p Swagger property object
+     * returns the swagger type for the Property
+     * @param p Swagger Property object
      * @return string presentation of the type
      **/
     @SuppressWarnings("static-method")
@@ -1142,10 +1142,10 @@ public class DefaultCodegen {
     }
 
     /**
-     * Output the type declaration of the property
+     * Output the type declaration of the Property
      *
      * @param p Swagger Property object
-     * @return a string presentation of the property type
+     * @return a string presentation of the Property type
      */
     public String getTypeDeclaration(Property p) {
         String swaggerType = getSwaggerType(p);
@@ -1368,13 +1368,13 @@ public class DefaultCodegen {
     /**
      * Convert Swagger Property object to Codegen Property object
      *
-     * @param name name of the property
-     * @param p Swagger property object
+     * @param name name of the Property
+     * @param p Swagger Property object
      * @return Codegen Property object
      */
     public CodegenProperty fromProperty(String name, Property p) {
         if (p == null) {
-            LOGGER.error("unexpected missing property for name " + name);
+            LOGGER.error("unexpected missing Property for name " + name);
             return null;
         }
 
@@ -1449,16 +1449,16 @@ public class DefaultCodegen {
             property.isInteger = true;
             /*if (sp.getEnum() != null) {
                 List<Integer> _enum = sp.getEnum();
-                property._enum = new ArrayList<String>();
+                Property._enum = new ArrayList<String>();
                 for(Integer i : _enum) {
-                  property._enum.add(i.toString());
+                  Property._enum.add(i.toString());
                 }
-                property.isEnum = true;
+                Property.isEnum = true;
 
                 // legacy support
                 Map<String, Object> allowableValues = new HashMap<String, Object>();
                 allowableValues.put("values", _enum);
-                property.allowableValues = allowableValues;
+                Property.allowableValues = allowableValues;
             }*/
         }
 
@@ -1518,16 +1518,16 @@ public class DefaultCodegen {
             property.isFloat = true;
             /*if (sp.getEnum() != null) {
                 List<Double> _enum = sp.getEnum();
-                property._enum = new ArrayList<String>();
+                Property._enum = new ArrayList<String>();
                 for(Double i : _enum) {
-                  property._enum.add(i.toString());
+                  Property._enum.add(i.toString());
                 }
-                property.isEnum = true;
+                Property.isEnum = true;
 
                 // legacy support
                 Map<String, Object> allowableValues = new HashMap<String, Object>();
                 allowableValues.put("values", _enum);
-                property.allowableValues = allowableValues;
+                Property.allowableValues = allowableValues;
             }*/
         }
 
@@ -1620,7 +1620,7 @@ public class DefaultCodegen {
             property.isListContainer = true;
             property.containerType = "array";
             property.baseType = getSwaggerType(p);
-            // handle inner property
+            // handle inner Property
             ArrayProperty ap = (ArrayProperty) p;
             CodegenProperty cp = fromProperty(property.name, ap.getItems());
             updatePropertyForArray(property, cp);
@@ -1629,7 +1629,7 @@ public class DefaultCodegen {
             property.isMapContainer = true;
             property.containerType = "map";
             property.baseType = getSwaggerType(p);
-            // handle inner property
+            // handle inner Property
             MapProperty ap = (MapProperty) p;
             CodegenProperty cp = fromProperty("inner", ap.getAdditionalProperties());
             updatePropertyForMap(property, cp);
@@ -1640,13 +1640,13 @@ public class DefaultCodegen {
     }
 
     /**
-     * Update property for array(list) container
-     * @param property Codegen property
-     * @param innerProperty Codegen inner property of map or list
+     * Update Property for array(list) container
+     * @param property Codegen Property
+     * @param innerProperty Codegen inner Property of map or list
      */
     protected void updatePropertyForArray(CodegenProperty property, CodegenProperty innerProperty) {
         if (innerProperty == null) {
-            LOGGER.warn("skipping invalid array property " + Json.pretty(property));
+            LOGGER.warn("skipping invalid array Property " + Json.pretty(property));
         } else {
             if (!languageSpecificPrimitives.contains(innerProperty.baseType)) {
                 property.complexType = innerProperty.baseType;
@@ -1669,13 +1669,13 @@ public class DefaultCodegen {
     }
 
     /**
-     * Update property for map container
-     * @param property Codegen property
-     * @param innerProperty Codegen inner property of map or list
+     * Update Property for map container
+     * @param property Codegen Property
+     * @param innerProperty Codegen inner Property of map or list
      */
     protected void updatePropertyForMap(CodegenProperty property, CodegenProperty innerProperty) {
         if (innerProperty == null) {
-            LOGGER.warn("skipping invalid map property " + Json.pretty(property));
+            LOGGER.warn("skipping invalid map Property " + Json.pretty(property));
             return;
         } else {
             if (!languageSpecificPrimitives.contains(innerProperty.baseType)) {
@@ -1700,8 +1700,8 @@ public class DefaultCodegen {
     }
 
     /**
-     * Update property for map container
-     * @param property Codegen property
+     * Update Property for map container
+     * @param property Codegen Property
      * @return True if the inner most type is enum
      */
     protected Boolean isPropertyInnerMostEnum(CodegenProperty property) {
@@ -1727,7 +1727,7 @@ public class DefaultCodegen {
 
     /**
      * Update datatypeWithEnum for array container
-     * @param property Codegen property
+     * @param property Codegen Property
      */
     protected void updateDataTypeWithEnumForArray(CodegenProperty property) {
         CodegenProperty baseItem = property.items;
@@ -1750,7 +1750,7 @@ public class DefaultCodegen {
 
     /**
      * Update datatypeWithEnum for map container
-     * @param property Codegen property
+     * @param property Codegen Property
      */
     protected void updateDataTypeWithEnumForMap(CodegenProperty property) {
         CodegenProperty baseItem = property.items;
@@ -2296,7 +2296,7 @@ public class DefaultCodegen {
                 } else {
                     Property prop = PropertyBuilder.build(impl.getType(), impl.getFormat(), null);
                     prop.setRequired(bp.getRequired());
-                    CodegenProperty cp = fromProperty("property", prop);
+                    CodegenProperty cp = fromProperty("Property", prop);
                     if (cp != null) {
                         p.baseType = cp.baseType;
                         p.dataType = cp.datatype;
@@ -2309,9 +2309,9 @@ public class DefaultCodegen {
                 }
             } else if (model instanceof ArrayModel) {
                 // to use the built-in model parsing, we unwrap the ArrayModel
-                // and get a single property from it
+                // and get a single Property from it
                 ArrayModel impl = (ArrayModel) model;
-                // get the single property
+                // get the single Property
                 ArrayProperty ap = new ArrayProperty().items(impl.getItems());
                 ap.setRequired(param.getRequired());
                 CodegenProperty cp = fromProperty("inner", ap);
@@ -2765,7 +2765,7 @@ public class DefaultCodegen {
             final Property prop = entry.getValue();
 
             if (prop == null) {
-                LOGGER.warn("null property for " + key);
+                LOGGER.warn("null Property for " + key);
             } else {
                 final CodegenProperty cp = fromProperty(key, prop);
                 cp.required = mandatory.contains(key) ? true : null;
@@ -2776,7 +2776,7 @@ public class DefaultCodegen {
                     m.hasEnums = true;
                 }
 
-                // set model's hasOnlyReadOnly to false if the property is read-only
+                // set model's hasOnlyReadOnly to false if the Property is read-only
                 if (!Boolean.TRUE.equals(cp.isReadOnly)) {
                     m.hasOnlyReadOnly = false;
                 }
@@ -2804,7 +2804,7 @@ public class DefaultCodegen {
                 // if required, add to the list "requiredVars"
                 if (Boolean.TRUE.equals(cp.required)) {
                     m.requiredVars.add(cp);
-                } else { // else add to the list "optionalVars" for optional property
+                } else { // else add to the list "optionalVars" for optional Property
                     m.optionalVars.add(cp);
                 }
 
@@ -2851,7 +2851,7 @@ public class DefaultCodegen {
     }
 
     /**
-     * Camelize name (parameter, property, method, etc) with upper case for first letter
+     * Camelize name (parameter, Property, method, etc) with upper case for first letter
      * copied from Twitter elephant bird
      * https://github.com/twitter/elephant-bird/blob/master/core/src/main/java/com/twitter/elephantbird/util/Strings.java
      *
@@ -2863,7 +2863,7 @@ public class DefaultCodegen {
     }
 
     /**
-     * Camelize name (parameter, property, method, etc)
+     * Camelize name (parameter, Property, method, etc)
      *
      * @param word string to be camelize
      * @param lowercaseFirstLetter lower case for first letter if set to true
@@ -3072,7 +3072,7 @@ public class DefaultCodegen {
     }
 
     /**
-     * Sanitize name (parameter, property, method, etc)
+     * Sanitize name (parameter, Property, method, etc)
      *
      * @param name string to be sanitize
      * @return sanitized string
@@ -3168,7 +3168,7 @@ public class DefaultCodegen {
      * Set CodegenParameter boolean flag using CodegenProperty.
      *
      * @param parameter Codegen Parameter
-     * @param property  Codegen property
+     * @param property  Codegen Property
      */
     public void setParameterBooleanFlagWithCodegenProperty(CodegenParameter parameter, CodegenProperty property) {
         if (parameter == null) {
@@ -3218,7 +3218,7 @@ public class DefaultCodegen {
 
 
     /**
-     * Update codegen property's enum by adding "enumVars" (with name and value)
+     * Update codegen Property's enum by adding "enumVars" (with name and value)
      * 
      * @param var list of CodegenProperty
      */

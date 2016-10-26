@@ -52,7 +52,7 @@ public class JavaScriptModelEnumTest {
         final StringProperty subEnumProperty = new StringProperty();
         subEnumProperty.setEnum(Arrays.asList("SUB1", "SUB2", "SUB3"));
 
-        // Add one enum property to the parent
+        // Add one enum Property to the parent
         final Map<String, Property> parentProperties = new HashMap<String, Property>();
         parentProperties.put("sharedThing", identicalEnumProperty);
 

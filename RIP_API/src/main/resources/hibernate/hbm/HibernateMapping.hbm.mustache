@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="{{defaultPackage}}" >
+    <class name="{{className}}Entity" table="{{tableName}}">
+        {{#id}}
+        {{>Id.hbm.mustache}}
+        {{/id}}
+        {{#compositeId}}
+        {{>CompositeId.hbm.mustache}}
+        {{/compositeId}}
+        {{#properties}}
+        {{>Property.hbm.mustache}}
+        {{/properties}}
+        {{#OneToOnes}}
+        {{>OneToOne.hbm.mustache}}
+        {{/OneToOnes}}
+        {{#ManyToOnes}}
+        {{>ManyToOne.hbm.mustache}}
+        {{/ManyToOnes}}
+    </class>
+</hibernate-mapping>

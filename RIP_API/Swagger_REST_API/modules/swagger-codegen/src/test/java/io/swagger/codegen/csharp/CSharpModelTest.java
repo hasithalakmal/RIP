@@ -26,7 +26,7 @@ import java.util.Map;
 @SuppressWarnings("static-method")
 public class CSharpModelTest {
 
-    @Test(description = "convert a model with array property to default List<T>")
+    @Test(description = "convert a model with array Property to default List<T>")
     public void arrayPropertyTest() {
         final Model model = getArrayTestModel();
 
@@ -51,7 +51,7 @@ public class CSharpModelTest {
         Assert.assertTrue(property.isContainer);
     }
 
-    @Test(description = "convert a model with array property to Collection<T>")
+    @Test(description = "convert a model with array Property to Collection<T>")
     public void arrayPropertyCollectionOptionTest() {
         final Model model = getArrayTestModel();
 
@@ -74,7 +74,7 @@ public class CSharpModelTest {
         Assert.assertTrue(property.isContainer);
     }
 
-    @Test(description = "convert a model with array property to Collection<T>")
+    @Test(description = "convert a model with array Property to Collection<T>")
     public void arrayPropertyICollectionOptionTest() {
         final Model model = getArrayTestModel();
 
@@ -91,10 +91,10 @@ public class CSharpModelTest {
         Assert.assertEquals(property.baseName, "examples");
         Assert.assertEquals(property.name, "Examples");
         Assert.assertEquals(property.datatype, "Collection<string>",
-                "returnICollection option should not modify property datatype");
+                "returnICollection option should not modify Property datatype");
         Assert.assertEquals(property.defaultValue, null);
         Assert.assertEquals(property.baseType, "Collection",
-                "returnICollection option should not modify property baseType");
+                "returnICollection option should not modify Property baseType");
         Assert.assertEquals(property.containerType, "array");
         Assert.assertNull(property.required);
         Assert.assertTrue(property.isContainer);
@@ -158,7 +158,7 @@ public class CSharpModelTest {
         Assert.assertTrue(property3.isNotContainer);
     }
 
-    @Test(description = "convert a model with list property")
+    @Test(description = "convert a model with list Property")
     public void listPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -198,7 +198,7 @@ public class CSharpModelTest {
         Assert.assertTrue(property2.isContainer);
     }
 
-    @Test(description = "convert a model with a map property")
+    @Test(description = "convert a model with a map Property")
     public void mapPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -224,7 +224,7 @@ public class CSharpModelTest {
         Assert.assertTrue(property1.isPrimitiveType);
     }
 
-    @Test(description = "convert a model with complex property")
+    @Test(description = "convert a model with complex Property")
     public void complexPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -246,7 +246,7 @@ public class CSharpModelTest {
         Assert.assertTrue(property1.isNotContainer);
     }
 
-    @Test(description = "convert a model with complex list property")
+    @Test(description = "convert a model with complex list Property")
     public void complexListPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -271,7 +271,7 @@ public class CSharpModelTest {
         Assert.assertTrue(property1.isContainer);
     }
 
-    @Test(description = "convert a model with complex map property")
+    @Test(description = "convert a model with complex map Property")
     public void complexMapPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")

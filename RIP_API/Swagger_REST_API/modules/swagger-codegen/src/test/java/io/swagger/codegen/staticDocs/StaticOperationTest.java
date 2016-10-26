@@ -17,11 +17,11 @@ public class StaticOperationTest {
     public void stringParameterTest() {
         final StringProperty property = new StringProperty();
         final DefaultCodegen codegen = new StaticDocCodegen();
-        final CodegenProperty cp = codegen.fromProperty("property", property);
+        final CodegenProperty cp = codegen.fromProperty("Property", property);
 
-        Assert.assertEquals(cp.baseName, "property");
+        Assert.assertEquals(cp.baseName, "Property");
         Assert.assertEquals(cp.datatype, "String");
-        Assert.assertEquals(cp.name, "property");
+        Assert.assertEquals(cp.name, "Property");
         Assert.assertEquals(cp.baseType, "string");
         Assert.assertTrue(cp.isNotContainer);
     }
@@ -30,14 +30,14 @@ public class StaticOperationTest {
     public void complexParameterTest() {
         final RefProperty property = new RefProperty("Children");
         final DefaultCodegen codegen = new StaticDocCodegen();
-        final CodegenProperty cp = codegen.fromProperty("property", property);
+        final CodegenProperty cp = codegen.fromProperty("Property", property);
 
-        Assert.assertEquals(cp.baseName, "property");
+        Assert.assertEquals(cp.baseName, "Property");
         Assert.assertEquals(cp.complexType, "Children");
         Assert.assertEquals(cp.getter, "getProperty");
         Assert.assertEquals(cp.setter, "setProperty");
         Assert.assertEquals(cp.datatype, "Children");
-        Assert.assertEquals(cp.name, "property");
+        Assert.assertEquals(cp.name, "Property");
         Assert.assertEquals(cp.defaultValue, "null");
         Assert.assertEquals(cp.baseType, "Children");
         Assert.assertTrue(cp.isNotContainer);
@@ -47,14 +47,14 @@ public class StaticOperationTest {
     public void listParameterTest() {
         final ArrayProperty property = new ArrayProperty().items(new RefProperty("Children"));
         final DefaultCodegen codegen = new StaticDocCodegen();
-        final CodegenProperty cp = codegen.fromProperty("property", property);
+        final CodegenProperty cp = codegen.fromProperty("Property", property);
 
-        Assert.assertEquals(cp.baseName, "property");
+        Assert.assertEquals(cp.baseName, "Property");
         Assert.assertEquals(cp.complexType, "Children");
         Assert.assertEquals(cp.getter, "getProperty");
         Assert.assertEquals(cp.setter, "setProperty");
         Assert.assertEquals(cp.datatype, "List");
-        Assert.assertEquals(cp.name, "property");
+        Assert.assertEquals(cp.name, "Property");
         Assert.assertEquals(cp.baseType, "array");
         Assert.assertEquals(cp.containerType, "array");
         Assert.assertTrue(cp.isContainer);

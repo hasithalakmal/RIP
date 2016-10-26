@@ -74,7 +74,7 @@ public class GoModelTest {
         Assert.assertTrue(property3.isNotContainer);
     }
 
-    @Test(description = "convert a model with list property")
+    @Test(description = "convert a model with list Property")
     public void listPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -113,7 +113,7 @@ public class GoModelTest {
         Assert.assertTrue(property2.isContainer);
     }
 
-    @Test(description = "convert a model with a map property")
+    @Test(description = "convert a model with a map Property")
     public void mapPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -139,7 +139,7 @@ public class GoModelTest {
         Assert.assertTrue(property1.isPrimitiveType);
     }
 
-    @Test(description = "convert a model with complex property")
+    @Test(description = "convert a model with complex Property")
     public void complexPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -161,7 +161,7 @@ public class GoModelTest {
         Assert.assertTrue(property1.isNotContainer);
     }
 
-    @Test(description = "convert a model with complex list property")
+    @Test(description = "convert a model with complex list Property")
     public void complexListProperty() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -185,7 +185,7 @@ public class GoModelTest {
         Assert.assertTrue(property1.isContainer);
     }
 
-    @Test(description = "convert a model with complex map property")
+    @Test(description = "convert a model with complex map Property")
     public void complexMapProperty() {
         final Model model = new ModelImpl()
                 .description("a sample model")

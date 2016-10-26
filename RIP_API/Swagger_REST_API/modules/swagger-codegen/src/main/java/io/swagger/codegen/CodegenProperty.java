@@ -23,7 +23,7 @@ public class CodegenProperty implements Cloneable {
      */
     public String pattern;
     /**
-     * A free-form property to include an example of an instance for this schema.
+     * A free-form Property to include an example of an instance for this schema.
      */
     public String example;
 
@@ -45,8 +45,8 @@ public class CodegenProperty implements Cloneable {
     public Map<String, Object> vendorExtensions;
     public Boolean hasValidation; // true if pattern, maximum, etc are set (only used in the mustache template)
     public Boolean isInherited;
-    public String nameInCamelCase; // property name in camel case
-    // enum name based on the property name, usually use as a prefix (e.g. VAR_NAME) for enum name (e.g. VAR_NAME_VALUE1)
+    public String nameInCamelCase; // Property name in camel case
+    // enum name based on the Property name, usually use as a prefix (e.g. VAR_NAME) for enum name (e.g. VAR_NAME_VALUE1)
     public String enumName; 
 
     @Override

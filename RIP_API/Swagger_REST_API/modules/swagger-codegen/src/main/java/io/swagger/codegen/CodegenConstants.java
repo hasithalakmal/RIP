@@ -87,7 +87,7 @@ public class CodegenConstants {
     public static final String OPTIONAL_PROJECT_GUID_DESC = "The GUID that will be associated with the C# project";
     
     public static final String MODEL_PROPERTY_NAMING = "modelPropertyNaming";
-    public static final String MODEL_PROPERTY_NAMING_DESC = "Naming convention for the property: 'camelCase', 'PascalCase', 'snake_case' and 'original', which keeps the original name";
+    public static final String MODEL_PROPERTY_NAMING_DESC = "Naming convention for the Property: 'camelCase', 'PascalCase', 'snake_case' and 'original', which keeps the original name";
 
     public static final String DOTNET_FRAMEWORK = "targetFramework";
     public static final String DOTNET_FRAMEWORK_DESC = "The target .NET framework version.";
@@ -131,6 +131,6 @@ public class CodegenConstants {
     public static final String HIDE_GENERATION_TIMESTAMP_DESC = "Hides the generation timestamp.";
 
     public static final String GENERATE_PROPERTY_CHANGED = "generatePropertyChanged";
-    public static final String GENERATE_PROPERTY_CHANGED_DESC = "Specifies that models support raising property changed events.";
+    public static final String GENERATE_PROPERTY_CHANGED_DESC = "Specifies that models support raising Property changed events.";
 
 }

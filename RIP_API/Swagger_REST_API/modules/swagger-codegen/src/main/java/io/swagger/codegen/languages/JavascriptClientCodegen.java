@@ -896,7 +896,7 @@ public class JavascriptClientCodegen extends DefaultCodegen implements CodegenCo
             Map<String, Object> mo = (Map<String, Object>) _mo;
             CodegenModel cm = (CodegenModel) mo.get("model");
 
-            // Collect each model's required property names in *document order*.
+            // Collect each model's required Property names in *document order*.
             // NOTE: can't use 'mandatory' as it is built from ModelImpl.getRequired(), which sorts names
             // alphabetically and in any case the document order of 'required' and 'properties' can differ.
             List<CodegenProperty> required = new ArrayList<>();
@@ -905,7 +905,7 @@ public class JavascriptClientCodegen extends DefaultCodegen implements CodegenCo
             cm.vendorExtensions.put("x-all-required", allRequired);
 
             for (CodegenProperty var : cm.vars) {
-                // Add JSDoc @type value for this property.
+                // Add JSDoc @type value for this Property.
                 String jsDocType = getJSDocType(cm, var);
                 var.vendorExtensions.put("x-jsdoc-type", jsDocType);
 

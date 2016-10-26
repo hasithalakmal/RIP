@@ -91,8 +91,8 @@ public class PythonClientCodegen extends DefaultCodegen implements CodegenConfig
                     // local variable name used in API methods (endpoints)
                     "all_params", "resource_path", "path_params", "query_params",
                     "header_params", "form_params", "local_var_files", "body_params",  "auth_settings",
-                    // @property
-                    "property",
+                    // @Property
+                    "Property",
                     // python reserved words
                     "and", "del", "from", "not", "while", "as", "elif", "global", "or", "with",
                     "assert", "else", "if", "pass", "yield", "break", "except", "import",
@@ -490,10 +490,10 @@ public class PythonClientCodegen extends DefaultCodegen implements CodegenConfig
     }
 
     /**
-     * Return the default value of the property
+     * Return the default value of the Property
      *
-     * @param p Swagger property object
-     * @return string presentation of the default value of the property
+     * @param p Swagger Property object
+     * @return string presentation of the default value of the Property
      */
     @Override
     public String toDefaultValue(Property p) {

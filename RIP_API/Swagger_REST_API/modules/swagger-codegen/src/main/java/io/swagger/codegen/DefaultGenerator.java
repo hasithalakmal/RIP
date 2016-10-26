@@ -835,6 +835,14 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
                 op.nickname += "_" + counter;
             }
             opIds.add(opId);
+
+            List<CodegenParameter> allParamsWithoutDataType = new ArrayList<CodegenParameter>();
+            for (CodegenParameter pr: op.allParams){
+                CodegenParameter prCopy = pr.copy();
+                prCopy.dataType = "";
+                allParamsWithoutDataType.add(prCopy);
+            }
+            op.allParamsWithoutDataType = allParamsWithoutDataType;
         }
         objs.put("operation", ops);
 

@@ -235,7 +235,7 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
             "PascalCase".equals(naming) || "snake_case".equals(naming)) {
             this.modelPropertyNaming = naming;
         } else {
-            throw new IllegalArgumentException("Invalid model property naming '" +
+            throw new IllegalArgumentException("Invalid model Property naming '" +
                                                naming + "'. Must be 'original', 'camelCase', " +
                                                "'PascalCase' or 'snake_case'");
         }
@@ -251,7 +251,7 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
             case camelCase:   return camelize(name, true);
             case PascalCase:  return camelize(name);
             case snake_case:  return underscore(name);
-            default:          throw new IllegalArgumentException("Invalid model property naming '" +
+            default:          throw new IllegalArgumentException("Invalid model Property naming '" +
                                                                  name + "'. Must be 'original', 'camelCase', " +
                                                                  "'PascalCase' or 'snake_case'");
         }

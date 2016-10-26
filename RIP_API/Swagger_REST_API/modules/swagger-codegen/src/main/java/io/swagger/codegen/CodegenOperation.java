@@ -36,6 +36,7 @@ public class CodegenOperation {
     public Map<String, Object> vendorExtensions;
     public String nickname; // legacy support
     public String operationIdLowerCase; // for mardown documentation
+    public List<CodegenParameter> allParamsWithoutDataType = new ArrayList<CodegenParameter>();
 
     /**
      * Check if there's at least one parameter

@@ -86,7 +86,7 @@ public class JavaScriptModelTest {
         Assert.assertTrue(property3.isNotContainer);
     }
 
-    @Test(description = "convert a model with list property")
+    @Test(description = "convert a model with list Property")
     public void listPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -108,7 +108,7 @@ public class JavaScriptModelTest {
         Assert.assertEquals(property.setter, "setUrls");
         Assert.assertEquals(property.datatype, "[String]");
         Assert.assertEquals(property.name, "urls");
-        // FIXME: should an array property have an empty array as its default value? What if the property is required?
+        // FIXME: should an array Property have an empty array as its default value? What if the Property is required?
         Assert.assertEquals(property.defaultValue, /*"[]"*/null);
         Assert.assertEquals(property.baseType, "Array");
         Assert.assertEquals(property.containerType, "array");
@@ -116,7 +116,7 @@ public class JavaScriptModelTest {
         Assert.assertTrue(property.isContainer);
     }
 
-    @Test(description = "convert a model with a map property")
+    @Test(description = "convert a model with a map Property")
     public void mapPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -137,7 +137,7 @@ public class JavaScriptModelTest {
         Assert.assertEquals(property.setter, "setTranslations");
         Assert.assertEquals(property.datatype, "{String: String}");
         Assert.assertEquals(property.name, "translations");
-        // FIXME: should a map property have an empty object as its default value? What if the property is required?
+        // FIXME: should a map Property have an empty object as its default value? What if the Property is required?
         Assert.assertEquals(property.defaultValue, /*"{}"*/null);
         Assert.assertEquals(property.baseType, "Object");
         Assert.assertEquals(property.containerType, "map");
@@ -145,7 +145,7 @@ public class JavaScriptModelTest {
         Assert.assertTrue(property.isContainer);
     }
 
-    @Test(description = "convert a model with a map with complex list property")
+    @Test(description = "convert a model with a map with complex list Property")
     public void mapWithListPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -166,7 +166,7 @@ public class JavaScriptModelTest {
         Assert.assertEquals(property.setter, "setTranslations");
         Assert.assertEquals(property.datatype, "{String: [Pet]}");
         Assert.assertEquals(property.name, "translations");
-        // FIXME: should a map property have an empty object as its default value? What if the property is required?
+        // FIXME: should a map Property have an empty object as its default value? What if the Property is required?
         Assert.assertEquals(property.defaultValue, /*"{}"*/null);
         Assert.assertEquals(property.baseType, "Object");
         Assert.assertEquals(property.containerType, "map");
@@ -174,7 +174,7 @@ public class JavaScriptModelTest {
         Assert.assertTrue(property.isContainer);
     }
 
-    @Test(description = "convert a model with a 2D list property")
+    @Test(description = "convert a model with a 2D list Property")
     public void list2DPropertyTest() {
         final Model model = new ModelImpl().name("sample").property("list2D", new ArrayProperty().items(
                 new ArrayProperty().items(new RefProperty("Pet"))));
@@ -189,7 +189,7 @@ public class JavaScriptModelTest {
         Assert.assertEquals(property.setter, "setList2D");
         Assert.assertEquals(property.datatype, "[[Pet]]");
         Assert.assertEquals(property.name, "list2D");
-        // FIXME: should an array property have an empty array as its default value? What if the property is required?
+        // FIXME: should an array Property have an empty array as its default value? What if the Property is required?
         Assert.assertEquals(property.defaultValue, /*"[]"*/null);
         Assert.assertEquals(property.baseType, "Array");
         Assert.assertEquals(property.containerType, "array");
@@ -221,7 +221,7 @@ public class JavaScriptModelTest {
         Assert.assertTrue(property.isNotContainer);
     }
 
-    @Test(description = "convert a model with complex list property")
+    @Test(description = "convert a model with complex list Property")
     public void complexListPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -240,9 +240,9 @@ public class JavaScriptModelTest {
         Assert.assertEquals(property.getter, "getChildren");
         Assert.assertEquals(property.setter, "setChildren");
         // FIXME: what should datatype be for a JavaScript array? 
-//        Assert.assertEquals(property.datatype, "Array<Children>");
+//        Assert.assertEquals(Property.datatype, "Array<Children>");
         Assert.assertEquals(property.name, "children");
-        // FIXME: should an array property have an empty array as its default value? What if the property is required?
+        // FIXME: should an array Property have an empty array as its default value? What if the Property is required?
         Assert.assertEquals(property.defaultValue, /*"[]"*/null);
         Assert.assertEquals(property.baseType, "Array");
         Assert.assertEquals(property.containerType, "array");
@@ -250,7 +250,7 @@ public class JavaScriptModelTest {
         Assert.assertTrue(property.isContainer);
     }
 
-    @Test(description = "convert a model with complex map property")
+    @Test(description = "convert a model with complex map Property")
     public void complexMapPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -272,7 +272,7 @@ public class JavaScriptModelTest {
         // TODO: create a functional test to see whether map properties actually work.
         Assert.assertEquals(property.datatype, /*"Object<String, Children>"*/"{String: Children}");
         Assert.assertEquals(property.name, "children");
-        // FIXME: should a map property have an empty object as its default value? What if the property is required?
+        // FIXME: should a map Property have an empty object as its default value? What if the Property is required?
         Assert.assertEquals(property.defaultValue, /*"{}"*/ null);
         Assert.assertEquals(property.baseType, "Object");
         Assert.assertEquals(property.containerType, "map");
@@ -315,10 +315,10 @@ public class JavaScriptModelTest {
         Assert.assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
     }
 
-    @Test(description = "convert a model with uppercase property names")
+    @Test(description = "convert a model with uppercase Property names")
     public void upperCaseNamesTest() {
         final Model model = new ModelImpl()
-                .description("a model with uppercase property names")
+                .description("a model with uppercase Property names")
                 .property("NAME", new StringProperty())
                 .required("NAME");
         final DefaultCodegen codegen = new JavascriptClientCodegen();
@@ -341,10 +341,10 @@ public class JavaScriptModelTest {
         Assert.assertTrue(property.isNotContainer);
     }
 
-    @Test(description = "convert a model with a 2nd char uppercase property names")
+    @Test(description = "convert a model with a 2nd char uppercase Property names")
     public void secondCharUpperCaseNamesTest() {
         final Model model = new ModelImpl()
-                .description("a model with a 2nd char uppercase property names")
+                .description("a model with a 2nd char uppercase Property names")
                 .property("pId", new StringProperty())
                 .required("pId");
         final DefaultCodegen codegen = new JavascriptClientCodegen();
@@ -432,7 +432,7 @@ public class JavaScriptModelTest {
     @Test(description = "translate an invalid param name")
     public void invalidParamNameTest() {
         final Model model = new ModelImpl()
-                .description("a model with a 2nd char uppercase property name")
+                .description("a model with a 2nd char uppercase Property name")
                 .property("_", new StringProperty());
         final DefaultCodegen codegen = new JavascriptClientCodegen();
         final CodegenModel cm = codegen.fromModel("sample", model);

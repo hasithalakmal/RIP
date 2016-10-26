@@ -69,7 +69,7 @@ public class TypeScriptAngular2ModelTest {
         Assert.assertTrue(property3.isNotContainer);
     }
 
-    @Test(description = "convert a model with list property")
+    @Test(description = "convert a model with list Property")
     public void listPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -104,7 +104,7 @@ public class TypeScriptAngular2ModelTest {
         Assert.assertTrue(property2.isContainer);
     }
 
-    @Test(description = "convert a model with complex property")
+    @Test(description = "convert a model with complex Property")
     public void complexPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")
@@ -127,7 +127,7 @@ public class TypeScriptAngular2ModelTest {
         Assert.assertTrue(property1.isNotContainer);
     }
 
-    @Test(description = "convert a model with complex list property")
+    @Test(description = "convert a model with complex list Property")
     public void complexListPropertyTest() {
         final Model model = new ModelImpl()
                 .description("a sample model")

@@ -507,10 +507,10 @@ public class PhpClientCodegen extends DefaultCodegen implements CodegenConfig {
     }
 
     /**
-     * Return the default value of the property
+     * Return the default value of the Property
      *
-     * @param p Swagger property object
-     * @return string presentation of the default value of the property
+     * @param p Swagger Property object
+     * @return string presentation of the default value of the Property
      */
     @Override
     public String toDefaultValue(Property p) {

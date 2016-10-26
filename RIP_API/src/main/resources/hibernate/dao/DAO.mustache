@@ -1,0 +1,12 @@
+package {{package}}persistence.dao;
+
+{{#Imports}}
+import {{importName}};
+{{/Imports}}
+import javax.ws.rs.core.SecurityContext;
+
+public interface {{className}}ApiDAO {
+{{#Operations}}
+    public {{returnType}} {{operationName}}({{#Parameters}}{{type}} {{name}}{{delimiter}} {{/Parameters}},SecurityContext securityContext);
+{{/Operations}}
+}
