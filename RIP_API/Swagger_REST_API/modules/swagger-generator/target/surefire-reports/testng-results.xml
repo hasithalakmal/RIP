@@ -2,24 +2,24 @@
 <testng-results skipped="2" failed="0" total="4" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Surefire suite" duration-ms="289" started-at="2016-10-26T13:58:56Z" finished-at="2016-10-26T13:58:56Z">
+  <suite name="Surefire suite" duration-ms="213" started-at="2016-12-23T08:12:19Z" finished-at="2016-12-23T08:12:19Z">
     <groups>
     </groups>
-    <test name="Surefire test" duration-ms="289" started-at="2016-10-26T13:58:56Z" finished-at="2016-10-26T13:58:56Z">
+    <test name="Surefire test" duration-ms="213" started-at="2016-12-23T08:12:19Z" finished-at="2016-12-23T08:12:19Z">
       <class name="io.swagger.generator.online.OnlineJavaClientOptionsTest">
-        <test-method status="PASS" signature="getOptionsTest()[pri:0, instance:io.swagger.generator.online.OnlineJavaClientOptionsTest@3ffc5af1]" name="getOptionsTest" duration-ms="155" started-at="2016-10-26T19:28:56Z" finished-at="2016-10-26T19:28:56Z">
+        <test-method status="PASS" signature="getOptionsTest()[pri:0, instance:io.swagger.generator.online.OnlineJavaClientOptionsTest@3ffc5af1]" name="getOptionsTest" duration-ms="119" started-at="2016-12-23T13:42:19Z" finished-at="2016-12-23T13:42:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getOptionsTest -->
       </class> <!-- io.swagger.generator.online.OnlineJavaClientOptionsTest -->
       <class name="io.swagger.generator.GeneratorInputTest">
-        <test-method status="PASS" signature="writeObjectTest()[pri:0, instance:io.swagger.generator.GeneratorInputTest@cc285f4]" name="writeObjectTest" duration-ms="31" started-at="2016-10-26T19:28:56Z" description="write an object" finished-at="2016-10-26T19:28:56Z">
+        <test-method status="PASS" signature="writeObjectTest()[pri:0, instance:io.swagger.generator.GeneratorInputTest@cc285f4]" name="writeObjectTest" duration-ms="19" started-at="2016-12-23T13:42:19Z" description="write an object" finished-at="2016-12-23T13:42:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- writeObjectTest -->
       </class> <!-- io.swagger.generator.GeneratorInputTest -->
       <class name="io.swagger.generator.online.OnlineGeneratorOptionsTest">
-        <test-method status="SKIP" signature="generateOptionsTest(io.swagger.codegen.options.OptionsProvider)[pri:0, instance:io.swagger.generator.online.OnlineGeneratorOptionsTest@29774679]" name="generateOptionsTest" duration-ms="0" started-at="2016-10-26T19:28:56Z" data-provider="optionsProvider" finished-at="2016-10-26T19:28:56Z">
+        <test-method status="SKIP" signature="generateOptionsTest(io.swagger.codegen.options.OptionsProvider)[pri:0, instance:io.swagger.generator.online.OnlineGeneratorOptionsTest@29774679]" name="generateOptionsTest" duration-ms="0" started-at="2016-12-23T13:42:19Z" data-provider="optionsProvider" finished-at="2016-12-23T13:42:19Z">
           <exception class="java.lang.RuntimeException">
             <message>
               <![CDATA[java.lang.NullPointerException]]>
@@ -68,7 +68,7 @@ Caused by: java.lang.NullPointerException
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generateOptionsTest -->
-        <test-method status="SKIP" signature="getOptionsTest(io.swagger.codegen.options.OptionsProvider)[pri:0, instance:io.swagger.generator.online.OnlineGeneratorOptionsTest@29774679]" name="getOptionsTest" duration-ms="0" started-at="2016-10-26T19:28:56Z" data-provider="optionsProvider" finished-at="2016-10-26T19:28:56Z">
+        <test-method status="SKIP" signature="getOptionsTest(io.swagger.codegen.options.OptionsProvider)[pri:0, instance:io.swagger.generator.online.OnlineGeneratorOptionsTest@29774679]" name="getOptionsTest" duration-ms="0" started-at="2016-12-23T13:42:19Z" data-provider="optionsProvider" finished-at="2016-12-23T13:42:19Z">
           <exception class="java.lang.RuntimeException">
             <message>
               <![CDATA[java.lang.NullPointerException]]>
