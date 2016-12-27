@@ -1,4 +1,4 @@
-package com.rip.sql.configuration;
+package com.rip.tester.configuration;
 
 import javax.servlet.Filter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;

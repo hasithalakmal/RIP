@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.rip.sql.aspect;
+package com.rip.tester.aspect;
 
 import java.util.Arrays;
 import org.aspectj.lang.JoinPoint;
