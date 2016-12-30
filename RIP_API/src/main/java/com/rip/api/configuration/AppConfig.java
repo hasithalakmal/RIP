@@ -10,5 +10,4 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableAspectJAutoProxy
 @ComponentScan(basePackages = "com.rip.api")
 public class AppConfig {
-    Log4jConfig log4jConfig = new Log4jConfig();
 }
