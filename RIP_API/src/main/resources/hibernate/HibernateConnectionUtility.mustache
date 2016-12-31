@@ -1,0 +1,93 @@
+package {{package}}.util;
+
+import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+/**
+* This is the hibernate connection utility class.
+*
+*/
+public class HibernateConnectionUtility {
+
+private static final Logger LOGGER = Logger.getLogger(HibernateConnectionUtility.class);
+
+private static HibernateConnectionUtility instance = new HibernateConnectionUtility();
+
+private SessionFactory sessionFactory;
+
+private HibernateConnectionUtility() {
+}
+
+public static HibernateConnectionUtility getInstance() {
+return instance;
+}
+
+/**
+* Creates the hibernate session factory.
+*/
+public void buildSessionFactory() {
+
+InputStream inputStream = null;
+
+try {
+
+inputStream = getClass().getResourceAsStream(Constants.HIBERNATE_PROPERTIES_FILE_PATH);
+Properties properties = new Properties();
+properties.load(inputStream);
+
+Configuration configuration = new Configuration().addProperties(properties).configure(Constants.HIBERNATE_CONFIGURATION_FILE_PATH);
+
+ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+
+sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+
+LOGGER.info("Hibernate session factory built successfully.");
+
+} catch (IOException exception) {
+LOGGER.error(exception.getMessage(), exception);
+} catch (HibernateException exception) {
+LOGGER.error(exception.getMessage(), exception);
+} finally {
+if (inputStream != null) {
+try {
+inputStream.close();
+} catch (IOException exception) {
+LOGGER.error(exception.getMessage(), exception);
+}
+}
+}
+
+}
+
+/**
+* Getter for the session factory.
+*
+* @return The built session factory for the application.
+*/
+public SessionFactory getSessionFactory() {
+return sessionFactory;
+}
+
+/**
+* Destroys the hibernate session factory.
+*/
+public void closeSessionFactory() {
+
+try {
+sessionFactory.close();
+LOGGER.info("Hibernate session factory closed successfully.");
+} catch (HibernateException exception) {
+LOGGER.error(exception.getMessage(), exception);
+}
+
+}
+
+}

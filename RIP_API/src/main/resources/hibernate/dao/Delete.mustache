@@ -1,0 +1,25 @@
+baseSession.beginTransaction();
+    String returnString = null;
+    try{
+
+    Session session = baseSession.getSession();
+    {{#CompositeId}}
+        {{compositeEntityId}} id = new {{compositeEntityId}}({{#Parameters}}{{name}}{{delimiter}} {{/Parameters}});
+    {{/CompositeId}}
+    {{entity}} entity = ({{entity}})session.get({{entity}}.class , {{id}});
+    session.delete(entity);
+    session.flush();
+    returnString = "success";
+    baseSession.endTransaction();
+
+    }catch(RuntimeException re){
+    LOGGER.error(re.getMessage(), re);
+    baseSession.rollbackTransaction();
+    } /*finally {
+    if (baseSession != null) {
+    LOGGER.error("Transaction rollbacked");
+    baseSession.rollbackTransaction();
+    }
+    }*/
+
+    return returnString;

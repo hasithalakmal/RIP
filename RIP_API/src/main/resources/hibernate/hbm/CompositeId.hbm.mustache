@@ -1,0 +1,7 @@
+<composite-id name="{{identifierName}}" class="{{className}}" >
+{{#columns}}
+    <key-property name="{{name}}" type="{{type}}" column="{{column}}" >
+        <meta attribute="use-in-equals">true</meta>
+    </key-property>
+{{/columns}}
+</composite-id>

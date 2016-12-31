@@ -1,0 +1,29 @@
+baseSession.newStatelessSession();
+    {{returnTypeDTO}} dto = null;
+
+    try{
+
+    StatelessSession statelessSession = baseSession.getStatelessSession();
+    Criteria criteria = statelessSession.createCriteria({{entity}}.class)
+    {{#Aliases}}
+        .createAlias("{{entityFieldName}}", "{{entityFieldName}}")
+    {{/Aliases}}
+    {{#Restrictions}}
+        .add(Restrictions.eq("{{entityFieldName}}", {{restrictionVariableName}}))
+    {{/Restrictions}}
+        .setProjection(Projections.projectionList()
+            {{#Projections}}
+                .add(Projections.property("{{entityFieldName}}").as("{{dtoFieldName}}"))
+            {{/Projections}}
+            );
+
+    dto = ({{returnTypeDTO}})criteria.setResultTransformer(Transformers.aliasToBean({{returnTypeDTO}}.class)).uniqueResult();
+
+    baseSession.closeStatelessSession();
+
+    }catch(RuntimeException re){
+    LOGGER.error(re.getMessage(), re);
+    baseSession.rollbackTransaction();
+    }
+
+    return dto;

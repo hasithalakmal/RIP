@@ -1,0 +1,23 @@
+package {{package}}.util;
+
+import org.hibernate.Session;
+import org.hibernate.StatelessSession;
+import org.hibernate.HibernateException;
+
+public interface HibernateSessionManager {
+
+public void beginTransaction() throws HibernateException;
+
+public void endTransaction() throws HibernateException;
+
+public void rollbackTransaction();
+
+public void newStatelessSession();
+
+public void closeStatelessSession();
+
+public Session getSession();
+
+public StatelessSession getStatelessSession();
+
+}

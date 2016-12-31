@@ -1,0 +1,50 @@
+package {{package}}persistence.daoimpl;
+
+{{#Imports}}
+import {{importName}};
+{{/Imports}}
+
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Property;
+import org.hibernate.Session;
+import org.hibernate.StatelessSession;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.Transformers;
+
+import {{package}}persistence.dao.{{className}}ApiDAO;
+import {{package}}util.HibernateSessionManager;
+import {{package}}util.HibernateSessionManagerImpl;
+import {{package}}persistence.entity.{{className}}Entity;
+{{#ImportsDAOImpl}}
+import {{importName}};
+{{/ImportsDAOImpl}}
+import javax.ws.rs.core.SecurityContext;
+
+public class {{className}}ApiDAOImpl implements {{className}}ApiDAO {
+
+    private static final Logger LOGGER = Logger.getLogger({{className}}ApiDAOImpl.class);
+
+{{#Operations}}
+
+    public {{returnType}} {{operationName}}({{#Parameters}}{{type}} {{name}}{{delimiter}} {{/Parameters}},SecurityContext securityContext){
+    HibernateSessionManager baseSession = new HibernateSessionManagerImpl();
+    {{#Insert}}
+    {{>Insert.mustache}}
+    {{/Insert}}
+    {{#Update}}
+    {{>Update.mustache}}
+    {{/Update}}
+    {{#Select}}
+    {{>Select.mustache}}
+    {{/Select}}
+    {{#SelectUnique}}
+    {{>SelectUnique.mustache}}
+    {{/SelectUnique}}
+    {{#Delete}}
+    {{>Delete.mustache}}
+    {{/Delete}}
+    }
+{{/Operations}}
+}

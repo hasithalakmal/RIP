@@ -1,0 +1,45 @@
+baseSession.newStatelessSession();
+    List<{{returnTypeDTO}}> dtoList = null;
+
+    try{
+
+    StatelessSession statelessSession = baseSession.getStatelessSession();
+    Criteria criteria = statelessSession.createCriteria({{entity}}.class)
+    {{#Paging}}
+        .setFirstResult((currentPage - 1) * numberOfRows)
+        .setMaxResults(numberOfRows)
+    {{/Paging}}
+    {{#Limit}}
+        .setMaxResults({{limitName}})
+    {{/Limit}}
+    {{#Aliases}}
+        .createAlias("{{entityFieldName}}", "{{entityFieldName}}")
+    {{/Aliases}}
+    {{#Restrictions}}
+        .add(Restrictions.eq("{{entityFieldName}}", {{restrictionVariableName}}))
+    {{/Restrictions}}
+        .setProjection(Projections.projectionList()
+            {{#Projections}}
+                .add(Projections.property("{{entityFieldName}}").as("{{dtoFieldName}}"))
+            {{/Projections}}
+            );
+    {{#Order}}
+    Order order = null;
+    if (sortOrder.equals("asc")) {
+    order = Order.asc(sortColumn);
+    } else if (sortOrder.equals("desc")) {
+    order = Order.desc(sortColumn);
+    }
+    criteria.addOrder(order);
+    {{/Order}}
+
+    dtoList = criteria.setResultTransformer(Transformers.aliasToBean({{returnTypeDTO}}.class)).list();
+
+    baseSession.closeStatelessSession();
+
+    }catch(RuntimeException re){
+    LOGGER.error(re.getMessage(), re);
+    baseSession.rollbackTransaction();
+    }
+
+    return dtoList;

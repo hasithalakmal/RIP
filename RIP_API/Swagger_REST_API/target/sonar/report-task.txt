@@ -1,0 +1,5 @@
+projectKey=io.swagger:swagger-codegen-project
+serverUrl=http://localhost:9000
+dashboardUrl=http://localhost:9000/dashboard/index/io.swagger:swagger-codegen-project
+ceTaskId=AVlKEs_LsCYwTAgIPNor
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AVlKEs_LsCYwTAgIPNor

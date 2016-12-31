@@ -1,0 +1,114 @@
+package {{package}}.util;
+
+import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.StatelessSession;
+
+import {{package}}.util.HibernateSessionManager;
+import {{package}}.util.HibernateConnectionUtility;
+
+/**
+* This is the hibernate session management class.
+*
+*/
+public class HibernateSessionManagerImpl implements HibernateSessionManager {
+
+private static final Logger LOGGER = Logger.getLogger(HibernateSessionManagerImpl.class);
+
+private Session session;
+protected StatelessSession statelessSession;
+
+/**
+* Base constructor.
+*/
+public HibernateSessionManagerImpl() {
+}
+
+/**
+* Opens the hibernate session.
+*
+*/
+public void beginTransaction() throws HibernateException {
+
+try {
+SessionFactory sessionFactory = HibernateConnectionUtility.getInstance().getSessionFactory();
+if (sessionFactory == null) {
+throw new HibernateException("Session factory is null.");
+}
+
+session = sessionFactory.openSession();
+session.beginTransaction();
+} catch (HibernateException exception) {
+LOGGER.error(exception.getMessage(), exception);
+throw exception;
+}catch (Exception exception) {
+LOGGER.error(exception.getMessage(), exception);
+throw new HibernateException(exception);
+}
+
+}
+
+/**
+* Closes the hibernate session.
+*
+*/
+public void endTransaction() throws HibernateException {
+
+try {
+if ((session != null) && (session.isOpen())) {
+session.getTransaction().commit();
+session.close();
+}
+} catch (HibernateException exception) {
+LOGGER.error(exception.getMessage(), exception);
+throw exception;
+}catch (Exception exception) {
+LOGGER.error(exception.getMessage(), exception);
+throw new HibernateException(exception);
+}
+
+}
+
+/**
+* Rollback the hibernate session.
+*/
+public void rollbackTransaction() {
+
+try {
+if ((session != null) && (session.isOpen())) {
+session.getTransaction().rollback();
+session.close();
+}
+} catch (HibernateException exception) {
+LOGGER.error(exception.getMessage(), exception);
+} catch (Exception exception) {
+LOGGER.error(exception.getMessage(), exception);
+}
+
+}
+
+/**
+* Create a new stateless session.
+*/
+public void newStatelessSession() {
+statelessSession = HibernateConnectionUtility.getInstance().getSessionFactory().openStatelessSession();
+}
+
+/**
+* Close stateless session.
+*/
+public void closeStatelessSession() {
+statelessSession.close();
+}
+
+public Session getSession() {
+return session;
+}
+
+public StatelessSession getStatelessSession() {
+return statelessSession;
+}
+
+}
