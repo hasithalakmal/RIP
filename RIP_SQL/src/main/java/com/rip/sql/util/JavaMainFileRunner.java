@@ -42,7 +42,7 @@ public class JavaMainFileRunner {
     public static void buildProcess(File dir, String argument) throws IOException {
         System.out.println("");
         String line;
-        ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", argument);
+        ProcessBuilder builder = new ProcessBuilder("mvn", "/c", argument);
 //        Process process = new ProcessBuilder().command("D:\\Software Setups\\Software Engineering\\Configerations\\apache-maven-3.3.9-bin\\apache-maven-3.3.9\\bin","/c", "clean")
 //                .directory(dir).redirectErrorStream(true).start();
         if (dir != null) {
@@ -83,7 +83,9 @@ public class JavaMainFileRunner {
         //String command0 = "javac D:\\Accademic\\4thYearProject\\Dev\\ExternalResource\\SQLScriptGen\\src\\main\\java\\com\\rip\\sqlscriptgen\\JsonFileReader.java";
         //  String command1 = "javac D:\\Accademic\\4thYearProject\\Dev\\ExternalResource\\SQLScriptGen\\src\\main\\java\\com\\rip\\sqlscriptgen\\" + className.trim() + ".java";
         //  String command2 = "java -cp D:\\Accademic\\4thYearProject\\Dev\\ExternalResource\\SQLScriptGen\\target\\classes\\com\\rip\\sqlscriptgen " + className;
-        String command2 = "mvn -cp D:\\\\Accademic\\\\4thYearProject\\\\Dev\\\\ExternalResource\\\\SQLScriptGen exec:java -Dexec.mainClass=\"com.rip.sqlscriptgen.MySQLScriptGen\" ";
+        
+       // String command2 = "mvn -cp D:\\Accademic\\4thYearProject\\Dev\\ExternalResource\\SQLScriptGen exec:java -Dexec.mainClass=\"com.rip.sqlscriptgen.MySQLScriptGen\" ";
+        String command2 = "mvn --version";
        // String command2 = "mvn install";
         try {
             // this.runProcess(command0);

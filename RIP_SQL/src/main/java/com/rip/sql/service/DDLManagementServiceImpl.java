@@ -2,6 +2,7 @@ package com.rip.sql.service;
 
 import com.rip.sql.ddl.DDL_Genarator;
 import com.rip.sql.util.JavaMainFileRunner;
+import com.rip.sql.util.MavenProjectRunner;
 import com.rip.sql.util.WriteToJSONFile;
 import org.json.JSONObject;
 
@@ -13,12 +14,12 @@ public class DDLManagementServiceImpl implements DDLManagementService {
 
     @Autowired
     DDL_Genarator dDL_Genarator;
-    
+
     @Autowired
     WriteToJSONFile writeToJSONFile;
-    
+
     @Autowired
-    JavaMainFileRunner javaMainFileRunner;
+    MavenProjectRunner MavenProjectRunner;
 
     @Override
     public String genarate(String ddlJSON) {
@@ -245,7 +246,7 @@ public class DDLManagementServiceImpl implements DDLManagementService {
                 + "        ]\n"
                 + "      }\n"
                 + "    ],\n"
-                + "    \"forign_keys\": [\n"
+                + "    \"rip_sql_forign_keys\": [\n"
                 + "      {\n"
                 + "        \"rip_sql_fk_name\": \"emp_fk\",\n"
                 + "        \"rip_sql_base_table\": \"employee_workson_project\",\n"
@@ -393,12 +394,26 @@ public class DDLManagementServiceImpl implements DDLManagementService {
                 + "  \"Reload_details\": {}\n"
                 + "}";
         JSONObject platformIndependentModel = new JSONObject(pim);
-        
+
         writeToJSONFile.createJsonFile("pim", platformIndependentModel.toString());
-        javaMainFileRunner.TestCode();
+        String script = MavenProjectRunner.runMavenProject("MySQLScriptGen");
+        System.out.println("##################################################################");
+        System.out.println(script);
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        String startString = ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RIP_SQL_GEN_BEGIN>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+        int start = script.indexOf(startString);
+        int start1 = startString.length();
+        System.out.println("start = "+start+" start1 = "+start1);
+        
+         String endString = ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RIP_SQL_GEN_END>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+        int end = script.indexOf(endString);
+        int end1 = endString.length();
+        System.out.println();
+         System.out.println("end = "+end+" end1 = "+end1);
+        CharSequence sub = script.subSequence((start+start1), (end));
 //        String script = javaMainFileRunner.runClass("MySQLScriptGen");
 //        System.out.println(script);
-        return "msg";
+        return sub.toString();
     }
 
 }
