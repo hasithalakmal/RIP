@@ -9,9 +9,9 @@ public class Constants {
     }
 
     public static final String LOG4J_PROPERTIES_FILE_PATH = "log4j.properties";
-    public static final String HIBERNATE_TOOLS_PATH = "E:\\UCSC_Work\\Git\\RIP_API\\lib\\hibernate";
-    public static final String PROJECT_OUTPUT_PATH_PREFIX = "E:\\UCSC_Work\\Testing\\";
-    public static final String REST_API_GENERATOR_PATH = "E:\\UCSC_Work\\Git\\RIP_API\\Swagger_REST_API\\modules\\swagger-codegen-cli\\target\\swagger-codegen-cli.jar";
+    public static final String HIBERNATE_TOOLS_PATH = "D:\\Accademic\\4thYearProject\\Dev\\GIT\\RIP_API\\lib\\hibernate";
+    public static final String PROJECT_OUTPUT_PATH_PREFIX = "D:\\Accademic\\4thYearProject\\Dev\\Output\\";
+    public static final String REST_API_GENERATOR_PATH = "D:\\Accademic\\4thYearProject\\Dev\\GIT\\RIP_API\\Swagger_REST_API\\modules\\swagger-codegen-cli\\target\\swagger-codegen-cli.jar";
     //public static final String POSTMAN_GENERATOR_PATH = "E:\\UCSC_Work\\Git\\RIP_API\\lib";
 
     public static final String HIBERNATE_JSON_FILE_PATH = "hibernate/hibernate.json";

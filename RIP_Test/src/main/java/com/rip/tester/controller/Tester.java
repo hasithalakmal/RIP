@@ -31,10 +31,10 @@ public class Tester {
         try {
             ConfigDetails configDetails = ConfigDetailExtractor.getConfigDetails(ripJsonString);
             AbstractProcessBuilder.buildProcess(new File(configDetails.getPostmanGeneratorPath()), "java -jar " + "swagger2postman.jar " + configDetails.getInputJsonPath() + " " + configDetails.getPostmanCollectionPath() +" "+configDetails.getProjectName()+ " Content-Type=application/json"); // generate Postman Test collection
-            AbstractProcessBuilder.buildSQLProcess(new File(configDetails.getDbSQLPath()),configDetails.getDbName()); // create database
-            AbstractProcessBuilder.buildProcess(new File(configDetails.getOutputPath()), "mvn clean package tomcat7:deploy"); // Deploy in tomcat
-            AbstractProcessBuilder.buildProcess(new File(configDetails.getPostmanCollectionPath()), "newman run postman.json -r html --reporter-html-export results.html"); // Execute Postman Test collection
-            AbstractProcessBuilder.buildProcess(new File(configDetails.getOutputPath()), "mvn tomcat7:undeploy clean");
+            //AbstractProcessBuilder.buildSQLProcess(new File(configDetails.getDbSQLPath()),configDetails.getDbName()); // create database
+            //AbstractProcessBuilder.buildProcess(new File(configDetails.getOutputPath()), "mvn clean package tomcat7:deploy"); // Deploy in tomcat
+            //AbstractProcessBuilder.buildProcess(new File(configDetails.getPostmanCollectionPath()), "newman run postman.json -r html --reporter-html-export results.html"); // Execute Postman Test collection
+            //AbstractProcessBuilder.buildProcess(new File(configDetails.getOutputPath()), "mvn tomcat7:undeploy clean");
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
             msg = "{" + "    \"response\": \"Error\"" + "  }";

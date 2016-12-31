@@ -1,7 +1,6 @@
 package com.rip.sql.service;
 
 import com.rip.sql.ddl.DDL_Genarator;
-import com.rip.sql.util.JavaMainFileRunner;
 import com.rip.sql.util.MavenProjectRunner;
 import com.rip.sql.util.WriteToJSONFile;
 import org.json.JSONObject;

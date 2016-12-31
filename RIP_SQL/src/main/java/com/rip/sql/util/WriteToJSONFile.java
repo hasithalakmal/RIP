@@ -12,12 +12,12 @@ package com.rip.sql.util;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 @Component
 public class WriteToJSONFile {
-
-	
+    private static final Logger LOGGER = Logger.getLogger(WriteToJSONFile.class);
 
 	public int createJsonFile(String fileName, String jsonObject) {
              int state = 0;
@@ -34,12 +34,10 @@ public class WriteToJSONFile {
 			bw = new BufferedWriter(fw);
 			bw.write(content);
                         state = 1;
-			System.out.println("Done");
+
 
 		} catch (IOException e) {
-
-			e.printStackTrace();
-
+                    LOGGER.error(e.getMessage(), e);
 		} finally {
 
 			try {
@@ -51,9 +49,7 @@ public class WriteToJSONFile {
 					fw.close();
 
 			} catch (IOException ex) {
-
-				ex.printStackTrace();
-
+                            LOGGER.error(ex.getMessage(), ex);
 			}
 
 		}

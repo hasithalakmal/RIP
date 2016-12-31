@@ -12,55 +12,50 @@ package com.rip.sql.util;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import org.jboss.logging.Logger;
 import org.springframework.stereotype.Component;
 
 @Component
 public class WriteToJavaFile {
+private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(WriteToJSONFile.class);
+    public int createJavaFile(String fileName, String javaCode) {
+        int state = 0;
+        final String FILENAME = "D:\\Accademic\\4thYearProject\\Dev\\ExternalResource\\SQLScriptGen\\src\\main\\java\\com\\rip\\sqlscriptgen\\" + fileName + ".java";
 
-	
+        BufferedWriter bw = null;
+        FileWriter fw = null;
 
-	public int createJavaFile(String fileName, String javaCode) {
-             int state = 0;
-             final String FILENAME = "D:\\Accademic\\4thYearProject\\Dev\\ExternalResource\\SQLScriptGen\\src\\main\\java\\com\\rip\\sqlscriptgen\\"+fileName+".java";
+        try {
 
-		BufferedWriter bw = null;
-		FileWriter fw = null;
+            String content = javaCode;
 
-		try {
+            fw = new FileWriter(FILENAME);
+            bw = new BufferedWriter(fw);
+            bw.write(content);
+            state = 1;
 
-			String content = javaCode;
+        } catch (IOException e) {
+            LOGGER.error(e.getMessage(), e);
+        } finally {
 
-			fw = new FileWriter(FILENAME);
-			bw = new BufferedWriter(fw);
-			bw.write(content);
-                        state = 1;
-			System.out.println("Done");
+            try {
 
-		} catch (IOException e) {
+                if (bw != null) {
+                    bw.close();
+                }
 
-			e.printStackTrace();
+                if (fw != null) {
+                    fw.close();
+                }
 
-		} finally {
+            } catch (IOException ex) {
+                LOGGER.error(ex.getMessage(), ex);
+            }
 
-			try {
+        }
 
-				if (bw != null)
-					bw.close();
+        return state;
 
-				if (fw != null)
-					fw.close();
-
-			} catch (IOException ex) {
-
-				ex.printStackTrace();
-
-			}
-
-		}
-                
-               return state;
-                       
-
-	}
+    }
 
 }

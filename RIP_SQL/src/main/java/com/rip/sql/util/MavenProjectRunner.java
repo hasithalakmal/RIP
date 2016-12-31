@@ -8,11 +8,8 @@ package com.rip.sql.util;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,6 +19,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MavenProjectRunner {
 
+    private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(WriteToJSONFile.class);
     public static String buildProcess(File dir, String argument) throws IOException {
         String script = "";
         String line;
@@ -33,7 +31,6 @@ public class MavenProjectRunner {
             builder.directory(dir);
         }
         builder.redirectErrorStream(true);
-        //  builder.command("D:\\Software Setups\\Software Engineering\\Configerations\\apache-maven-3.3.9-bin\\apache-maven-3.3.9\\bin");
         Process process = builder.start();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -55,13 +52,11 @@ public class MavenProjectRunner {
         String script = "";
         try {
             File fi = new File("D:\\Accademic\\4thYearProject\\Dev\\ExternalResource\\SQLScriptGen");
-           // String command1 = "mvn clean install";
             String command2 = "mvn exec:java -Dexec.mainClass=\"com.rip.sqlscriptgen." + className + "\"";
-           // buildProcess(fi, command1);
             script = buildProcess(fi, command2);
 
         } catch (IOException ex) {
-            Logger.getLogger(JavaMainFileRunner.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.error(ex.getMessage(), ex);
         }
         return script;
     }
@@ -71,12 +66,9 @@ public class MavenProjectRunner {
         try {
             File fi = new File("D:\\Accademic\\4thYearProject\\Dev\\ExternalResource\\SQLScriptGen");
             String command1 = "mvn clean install";
-           // String command2 = "mvn exec:java -Dexec.mainClass=\"com.rip.sqlscriptgen." + className + "\"";
             buildProcess(fi, command1);
-            //script = buildProcess(fi, command2);
-
         } catch (IOException ex) {
-            Logger.getLogger(JavaMainFileRunner.class.getName()).log(Level.SEVERE, null, ex);
+           LOGGER.error(ex.getMessage(), ex);
         }
         return script;
     }
