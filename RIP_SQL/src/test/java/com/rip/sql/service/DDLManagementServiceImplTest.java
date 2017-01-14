@@ -27,33 +27,33 @@ public class DDLManagementServiceImplTest{
     @Mock
     private final MavenProjectRunner MavenProjectRunner = new MavenProjectRunner();
 
-    DDLManagementServiceImpl ddlManagementServiceImpl = new DDLManagementServiceImpl(dDL_Genarator, writeToJSONFile, MavenProjectRunner);
-   // DDLManagementServiceImpl ddlManagementServiceImpl;
-
-   
-
-    @Test
-    public void testGenarate() throws Exception {
-        final String actual = ddlManagementServiceImpl.genarate("xxxxx");
-        System.out.println(actual);
-        assertEquals("aaa", "aaa");
-
-    }
-    
-    @Test
-    public void testGenarate2() throws Exception {
-        final String actual = ddlManagementServiceImpl.genarate("xxxxx");
-        System.out.println(actual);
-        assertEquals("aaa", "aaa");
-
-    }
-    
-    @Test
-    public void testGenarate3() throws Exception {
-        final String actual = ddlManagementServiceImpl.genarate("xxxxx");
-        System.out.println(actual);
-        assertEquals("aaa", "aaa");
-
-    }
+//    DDLManagementServiceImpl ddlManagementServiceImpl = new DDLManagementServiceImpl(dDL_Genarator, writeToJSONFile, MavenProjectRunner);
+//   // DDLManagementServiceImpl ddlManagementServiceImpl;
+//
+//   
+//
+//    @Test
+//    public void testGenarate() throws Exception {
+//        final String actual = ddlManagementServiceImpl.genarate("xxxxx");
+//        System.out.println(actual);
+//        assertEquals("aaa", "aaa");
+//
+//    }
+//    
+//    @Test
+//    public void testGenarate2() throws Exception {
+//        final String actual = ddlManagementServiceImpl.genarate("xxxxx");
+//        System.out.println(actual);
+//        assertEquals("aaa", "aaa");
+//
+//    }
+//    
+//    @Test
+//    public void testGenarate3() throws Exception {
+//        final String actual = ddlManagementServiceImpl.genarate("xxxxx");
+//        System.out.println(actual);
+//        assertEquals("aaa", "aaa");
+//
+//    }
 
 }
