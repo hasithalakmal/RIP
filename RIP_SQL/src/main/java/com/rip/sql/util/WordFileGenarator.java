@@ -17,11 +17,13 @@ import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Hasitha Lakmal
  */
+@Service("WordFileGenarator")
 public class WordFileGenarator {
 
     public static void main(String[] args) throws IOException {

@@ -11,10 +11,5 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan(basePackages = "com.rip.framework")
 public class AppConfig {
 
-   /* @Bean
-    public UserServiceImpl userService() {
-        return new UserServiceImpl();
-    }*/
-
    
 }

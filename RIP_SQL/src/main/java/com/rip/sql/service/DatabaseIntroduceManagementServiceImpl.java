@@ -1,6 +1,6 @@
 package com.rip.sql.service;
 
-import com.rip.sql.ddl.DDL_Genarator;
+import com.rip.sql.scriptgen.DDL_Genarator;
 import com.rip.sql.util.WriteToJavaFile;
 import org.json.JSONObject;
 

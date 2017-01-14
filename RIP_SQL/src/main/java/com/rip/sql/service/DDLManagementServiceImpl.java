@@ -1,6 +1,6 @@
 package com.rip.sql.service;
 
-import com.rip.sql.ddl.DDL_Genarator;
+import com.rip.sql.scriptgen.DDL_Genarator;
 import com.rip.sql.util.MavenProjectRunner;
 import com.rip.sql.util.WriteToJSONFile;
 import org.json.JSONObject;
@@ -19,9 +19,17 @@ public class DDLManagementServiceImpl implements DDLManagementService {
 
     @Autowired
     MavenProjectRunner MavenProjectRunner;
+    
+    @Autowired
+    DDLManagementServiceImpl(DDL_Genarator dDL_Genarator,WriteToJSONFile writeToJSONFile,MavenProjectRunner MavenProjectRunner) {
+        this.dDL_Genarator = dDL_Genarator;
+        this.writeToJSONFile = writeToJSONFile;
+        this.MavenProjectRunner = MavenProjectRunner;
+    }
 
     @Override
     public String genarate(String ddlJSON) {
+        System.out.println("Test is working");
         String dsm = "{\n"
                 + "  \"rip_sql_dsm_details\": {\n"
                 + "    \"rip_sql_dsm_name\": \"MySql\",\n"
@@ -54,7 +62,7 @@ public class DDLManagementServiceImpl implements DDLManagementService {
 
         String pim = "{\n"
                 + "  \"Request_details\": {\n"
-                + "    \"project_name\": \"testapp\",\n"
+                + "    \"project_name\": \"testapp1\",\n"
                 + "    \"userName\": \"ghasithalakmal@gmail.com\",\n"
                 + "    \"version\": \"2.0.5\",\n"
                 + "    \"date_time\": \"2015-05-05 22:21:02\"\n"

@@ -47,5 +47,12 @@ public class DDLRestController {
         return new ResponseEntity<>(msg, HttpStatus.CREATED);
 
     }
+    
+    @RequestMapping(value = "test", method = RequestMethod.GET,  produces = "application/json")
+    public ResponseEntity<String> databaseIntroducer2() {
+        String msg = "hasitha lakmal";
+        return new ResponseEntity<>(msg, HttpStatus.OK);
+
+    }
 
 }

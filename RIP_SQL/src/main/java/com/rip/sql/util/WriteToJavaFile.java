@@ -14,8 +14,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import org.jboss.logging.Logger;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service("WriteToJavaFile")
 public class WriteToJavaFile {
 private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(WriteToJSONFile.class);
     public int createJavaFile(String fileName, String javaCode) {

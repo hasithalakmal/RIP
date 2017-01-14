@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.rip.sql.ddl;
+package com.rip.sql.scriptgen;
 
 /**
  *
  * @author Hasitha Lakmal
  */
-public class sampleClass {
+public interface DatabaseDDL {
 
-    void test() {
-        System.out.println("hello world");
-    }
+    String createDatabase(String dbName);
 
-    public static void main(String[] args) {
-        System.out.println("wada oi");
-    }
+    String dropDatabase(String dbName);
 
+    String useDatabase(String dbName);
+    
 }
