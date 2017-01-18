@@ -13,22 +13,21 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import org.apache.log4j.Logger;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service("WriteToJSONFile")
-public class WriteToJSONFile {
-    private static final Logger LOGGER = Logger.getLogger(WriteToJSONFile.class);
+@Service("WriteToSQLFile")
+public class WriteToSQLFile {
+    private static final Logger LOGGER = Logger.getLogger(WriteToSQLFile.class);
 
-	public int createJsonFile(String fileName, String jsonObject) {
+	public int createSQLFile(String fileName, String sql_code) {
              int state = 0;
-             final String FILENAME = "D:\\Accademic\\4thYearProject\\Dev\\ExternalResource\\"+fileName+".json";
+             final String FILENAME = "D:\\Accademic\\4thYearProject\\Dev\\FrameworkServerArea\\"+fileName+".sql";
 
 		BufferedWriter bw = null;
 		FileWriter fw = null;
 
 		try {
-			String content = jsonObject;
+			String content = sql_code;
 			fw = new FileWriter(FILENAME);
 			bw = new BufferedWriter(fw);
 			bw.write(content);
@@ -44,7 +43,7 @@ public class WriteToJSONFile {
 			} catch (IOException ex) {
                             LOGGER.error(ex.getMessage(), ex);
 			}
-		} 
+		}              
                return state;
 	}
 

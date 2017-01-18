@@ -52,7 +52,7 @@ public class MavenProjectRunner {
     public String runMavenProject(String className) {
         String script = "";
         try {
-            File fi = new File("D:\\Accademic\\4thYearProject\\Dev\\ExternalResource\\SQLScriptGen");
+            File fi = new File("D:\\Accademic\\4thYearProject\\Dev\\GIT\\SQLScriptGen");
             String command2 = "mvn exec:java -Dexec.mainClass=\"com.rip.sqlscriptgen." + className + "\"";
             script = buildProcess(fi, command2);
 

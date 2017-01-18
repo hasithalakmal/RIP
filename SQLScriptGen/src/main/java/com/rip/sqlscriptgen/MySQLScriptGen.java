@@ -23,7 +23,7 @@ public class MySQLScriptGen implements DatabasePulgginInterface {
         dataTypes.put("medium_string", "VARCHAR(45)");
         dataTypes.put("long_string", "VARCHAR(1500)");
         dataTypes.put("small_lnteger", "SMALLINT");
-        dataTypes.put("medium_integer", "MEDIUMINT");
+        dataTypes.put("medium_integer", "INT");
         dataTypes.put("big_integer", "BIGINT");
         dataTypes.put("float", "FLOAT(7,4)");
         dataTypes.put("date_with_tz", "DATETIME");
@@ -315,7 +315,7 @@ public class MySQLScriptGen implements DatabasePulgginInterface {
 
         for (int i = 0; i < rip_sql_tables.length(); i++) {
             JSONObject rip_sql_table = (JSONObject) rip_sql_tables.get(i);
-            String insert_script = this.createInsertQuery(rip_sql_table);
+            String insert_script = this.createSelectQuery(rip_sql_table);
             script = script + insert_script + "\n";
         }
 
@@ -341,15 +341,15 @@ public class MySQLScriptGen implements DatabasePulgginInterface {
         String ddl_script = databaseobject.createDDLScript(pim);
         String dml_script = databaseobject.createDMLScript(pim);
         String dql_script = databaseobject.createDQLScript(pim);
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RIP_SQL_GEN_BEGIN>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n\n");
+        System.out.println("RIP_SQL_GEN_DDL_BEGIN\n\n");
         System.out.println(ddl_script);
-        System.out.println("\n\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RIP_SQL_GEN_END>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        System.out.println("\n\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RIP_SQL_GEN_DML_BEGIN>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println("\n\nRIP_SQL_GEN_DDL_END");
+        System.out.println("\n\nRIP_SQL_GEN_DML_BEGIN");
         System.out.println(dml_script);
-        System.out.println("\n\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RIP_SQL_GEN_DML_END>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        System.out.println("\n\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RIP_SQL_GEN_DQL_BEGIN>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println("\n\nRIP_SQL_GEN_DML_END");
+        System.out.println("\n\nRIP_SQL_GEN_DQL_BEGIN");
         System.out.println(dql_script);
-        System.out.println("\n\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RIP_SQL_GEN_DQL_END>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println("\n\nRIP_SQL_GEN_DQL_END");
     }
 
 }

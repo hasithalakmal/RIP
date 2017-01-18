@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="RIP_Framework:war">
-    <output-path>$PROJECT_DIR$/RIP_Framework/target</output-path>
-    <root id="archive" name="RIP_Framework.war">
-      <element id="artifact" artifact-name="RIP_Framework:war exploded" />
-    </root>
-  </artifact>
-</component>

@@ -17,8 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ClientRequestHandlerServiceImpl implements ClientRequestHandlerService {
 
- 
-
     @Override
     public String createClientRequest(String design) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -42,10 +40,23 @@ public class ClientRequestHandlerServiceImpl implements ClientRequestHandlerServ
     @Override
     @Async
     public String genarateClientResponse(String RIP_JSON) {
-        String msg = "{\"msg\" : \"Success\"}";
+        JSONObject responceObject = new JSONObject();
+        String overall_state ="";
+        String downloardURL ="";
+        String SQLGen_state ="";
+        String SQLGen_responce ="";
+        String SQLGen_Result ="";
+        String APIGen_state ="";
+        String APIGen_responce ="";
+        String UIGen_state ="";
+        String UIGen_responce ="";
+        String TestEnv_state ="";
+        String TestEnv_responce ="";
         
-        JSONObject jason = new JSONObject(RIP_JSON);
-        Object Database_Design = jason.getJSONObject("Database_Design");
+        
+
+        JSONObject pim = new JSONObject(RIP_JSON);
+        Object Database_Design = pim.getJSONObject("Database_Design");
 
         //Calling RIP_SQL Gen
         try {
@@ -55,171 +66,185 @@ public class ClientRequestHandlerServiceImpl implements ClientRequestHandlerServ
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json");
 
-            String input = Database_Design.toString();
+            String input = pim.toString();
 
             OutputStream os = conn.getOutputStream();
             os.write(input.getBytes());
             os.flush();
 
             if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
-                throw new RuntimeException("Failed : HTTP error code : "
-                        + conn.getResponseCode());
+                System.out.println("************************************************************************");
+                System.out.println("************************************************************************");
+                System.out.println(conn.getResponseMessage());
+                SQLGen_state = Integer.toString(conn.getResponseCode());
+                SQLGen_responce = conn.getResponseMessage();
+                System.out.println("************************************************************************");
+                System.out.println("************************************************************************");
+                //throw new RuntimeException("Failed : HTTP error code : "+ conn.getResponseCode());
             }
 
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     (conn.getInputStream())));
 
             String output;
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ Output from RIP_SQL_GEN ~~~~  >>>>>>>>>>>>>>>>>>>>>>>\n");
+            
             while ((output = br.readLine()) != null) {
                 System.out.println(output);
+                SQLGen_Result = SQLGen_Result+ output;
             }
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ END RIP_SQL_GEN Output  ~~~~ >>>>>>>>>>>>>>>>>>>>>>>\n");
             conn.disconnect();
-
-        } catch (MalformedURLException e) {
-        } catch (IOException e) {
-        }
-        
-        //Calling RIP_API
-        try {
-            URL url = new URL("http://localhost:8084/RIP_API/rest-api");
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setDoOutput(true);
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/json");
-
-            String input = RIP_JSON;
-
-            OutputStream os = conn.getOutputStream();
-            os.write(input.getBytes());
-            os.flush();
-
-            if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
-                throw new RuntimeException("Failed : HTTP error code : "
-                        + conn.getResponseCode());
-            }
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(
-                    (conn.getInputStream())));
-
-            String output;
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ Output from RIP_API_GEN ~~~~  >>>>>>>>>>>>>>>>>>>>>>>\n");
-            while ((output = br.readLine()) != null) {
-                System.out.println(output);
-            }
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ END RIP_API_GEN Output  ~~~~ >>>>>>>>>>>>>>>>>>>>>>>\n");
-            conn.disconnect();
-
-        } catch (MalformedURLException e) {
-        } catch (IOException e) {
-        }
-        
-        //Calling RIP_UI_Gen
-        try {
-            URL url = new URL("http://localhost:8084/RIP_UI_Gen/rest-client-app");
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setDoOutput(true);
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/json");
-
-            String input = RIP_JSON;
-
-            OutputStream os = conn.getOutputStream();
-            os.write(input.getBytes());
-            os.flush();
-
-            if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
-                throw new RuntimeException("Failed : HTTP error code : "
-                        + conn.getResponseCode());
-            }
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(
-                    (conn.getInputStream())));
-
-            String output;
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ Output from RIP_UI_Gen ~~~~  >>>>>>>>>>>>>>>>>>>>>>>\n");
-            while ((output = br.readLine()) != null) {
-                System.out.println(output);
-            }
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ END RIP_UI_Gen Output  ~~~~ >>>>>>>>>>>>>>>>>>>>>>>\n");
-            conn.disconnect();
-
-        } catch (MalformedURLException e) {
-        } catch (IOException e) {
-        }
-        
-        //Calling RIP Test Env
-        try {
-            URL url = new URL("http://localhost:8084/RIP_Test/test-report");
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setDoOutput(true);
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/json");
-
-            String input = RIP_JSON;
-
-            OutputStream os = conn.getOutputStream();
-            os.write(input.getBytes());
-            os.flush();
-
-            if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
-                throw new RuntimeException("Failed : HTTP error code : "
-                        + conn.getResponseCode());
-            }
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(
-                    (conn.getInputStream())));
-
-            String output;
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ Output from RIP_Test ~~~~  >>>>>>>>>>>>>>>>>>>>>>>\n");
-            while ((output = br.readLine()) != null) {
-                System.out.println(output);
-            }
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ END RIP_Test Output  ~~~~ >>>>>>>>>>>>>>>>>>>>>>>\n");
-            conn.disconnect();
-
-        } catch (MalformedURLException e) {
-        } catch (IOException e) {
-        }
-        
-        //Calling RIP File Handler in RIP_Framework
-        try {
-            URL url = new URL("http://localhost:8084/RIP_Framework/zip-file");
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setDoOutput(true);
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/json");
-
-            String input = RIP_JSON;
-
-            OutputStream os = conn.getOutputStream();
-            os.write(input.getBytes());
-            os.flush();
-
-            if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
-                throw new RuntimeException("Failed : HTTP error code : "
-                        + conn.getResponseCode());
-            }
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(
-                    (conn.getInputStream())));
-
-            String output;
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ Output from RIP_Framework File Handler ~~~~  >>>>>>>>>>>>>>>>>>>>>>>\n");
-            while ((output = br.readLine()) != null) {
-                System.out.println(output);
-            }
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ END RIP_Framework File Handler Output  ~~~~ >>>>>>>>>>>>>>>>>>>>>>>\n");
-            conn.disconnect();
-
         } catch (MalformedURLException e) {
         } catch (IOException e) {
         }
 
-        return msg;
+//        //Calling RIP_API
+//        try {
+//            URL url = new URL("http://localhost:8084/RIP_API/rest-api");
+//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//            conn.setDoOutput(true);
+//            conn.setRequestMethod("POST");
+//            conn.setRequestProperty("Content-Type", "application/json");
+//
+//            String input = RIP_JSON;
+//
+//            OutputStream os = conn.getOutputStream();
+//            os.write(input.getBytes());
+//            os.flush();
+//
+//            if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
+//                throw new RuntimeException("Failed : HTTP error code : "
+//                        + conn.getResponseCode());
+//            }
+//
+//            BufferedReader br = new BufferedReader(new InputStreamReader(
+//                    (conn.getInputStream())));
+//
+//            String output;
+//            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ Output from RIP_API_GEN ~~~~  >>>>>>>>>>>>>>>>>>>>>>>\n");
+//            while ((output = br.readLine()) != null) {
+//                System.out.println(output);
+//            }
+//            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ END RIP_API_GEN Output  ~~~~ >>>>>>>>>>>>>>>>>>>>>>>\n");
+//            conn.disconnect();
+//
+//        } catch (MalformedURLException e) {
+//        } catch (IOException e) {
+//        }
+//        
+//        //Calling RIP_UI_Gen
+//        try {
+//            URL url = new URL("http://localhost:8084/RIP_UI_Gen/rest-client-app");
+//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//            conn.setDoOutput(true);
+//            conn.setRequestMethod("POST");
+//            conn.setRequestProperty("Content-Type", "application/json");
+//
+//            String input = RIP_JSON;
+//
+//            OutputStream os = conn.getOutputStream();
+//            os.write(input.getBytes());
+//            os.flush();
+//
+//            if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
+//                throw new RuntimeException("Failed : HTTP error code : "
+//                        + conn.getResponseCode());
+//            }
+//
+//            BufferedReader br = new BufferedReader(new InputStreamReader(
+//                    (conn.getInputStream())));
+//
+//            String output;
+//            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ Output from RIP_UI_Gen ~~~~  >>>>>>>>>>>>>>>>>>>>>>>\n");
+//            while ((output = br.readLine()) != null) {
+//                System.out.println(output);
+//            }
+//            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ END RIP_UI_Gen Output  ~~~~ >>>>>>>>>>>>>>>>>>>>>>>\n");
+//            conn.disconnect();
+//
+//        } catch (MalformedURLException e) {
+//        } catch (IOException e) {
+//        }
+//        
+//        //Calling RIP Test Env
+//        try {
+//            URL url = new URL("http://localhost:8084/RIP_Test/test-report");
+//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//            conn.setDoOutput(true);
+//            conn.setRequestMethod("POST");
+//            conn.setRequestProperty("Content-Type", "application/json");
+//
+//            String input = RIP_JSON;
+//
+//            OutputStream os = conn.getOutputStream();
+//            os.write(input.getBytes());
+//            os.flush();
+//
+//            if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
+//                throw new RuntimeException("Failed : HTTP error code : "
+//                        + conn.getResponseCode());
+//            }
+//
+//            BufferedReader br = new BufferedReader(new InputStreamReader(
+//                    (conn.getInputStream())));
+//
+//            String output;
+//            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ Output from RIP_Test ~~~~  >>>>>>>>>>>>>>>>>>>>>>>\n");
+//            while ((output = br.readLine()) != null) {
+//                System.out.println(output);
+//            }
+//            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ END RIP_Test Output  ~~~~ >>>>>>>>>>>>>>>>>>>>>>>\n");
+//            conn.disconnect();
+//
+//        } catch (MalformedURLException e) {
+//        } catch (IOException e) {
+//        }
+//        
+//        //Calling RIP File Handler in RIP_Framework
+//        try {
+//            URL url = new URL("http://localhost:8084/RIP_Framework/zip-file");
+//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//            conn.setDoOutput(true);
+//            conn.setRequestMethod("POST");
+//            conn.setRequestProperty("Content-Type", "application/json");
+//
+//            String input = RIP_JSON;
+//
+//            OutputStream os = conn.getOutputStream();
+//            os.write(input.getBytes());
+//            os.flush();
+//
+//            if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
+//                throw new RuntimeException("Failed : HTTP error code : "
+//                        + conn.getResponseCode());
+//            }
+//
+//            BufferedReader br = new BufferedReader(new InputStreamReader(
+//                    (conn.getInputStream())));
+//
+//            String output;
+//            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ Output from RIP_Framework File Handler ~~~~  >>>>>>>>>>>>>>>>>>>>>>>\n");
+//            while ((output = br.readLine()) != null) {
+//                System.out.println(output);
+//            }
+//            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~~~~ END RIP_Framework File Handler Output  ~~~~ >>>>>>>>>>>>>>>>>>>>>>>\n");
+//            conn.disconnect();
+//
+//        } catch (MalformedURLException e) {
+//        } catch (IOException e) {
+//        }
+
+        responceObject.accumulate("overall_state", overall_state);
+        responceObject.accumulate("downloardURL", downloardURL);
+        responceObject.accumulate("SQLGen_state", SQLGen_state);
+        responceObject.accumulate("SQLGen_responce", SQLGen_responce);
+        responceObject.accumulate("SQLGen_Result", SQLGen_Result);
+        responceObject.accumulate("APIGen_state", APIGen_state);
+        responceObject.accumulate("APIGen_responce", APIGen_responce);
+        responceObject.accumulate("UIGen_state", UIGen_state);
+        responceObject.accumulate("UIGen_responce", UIGen_responce);
+        responceObject.accumulate("TestEnv_state", TestEnv_state);
+        responceObject.accumulate("TestEnv_responce", TestEnv_responce);
+        return responceObject.toString();
     }
-    
-    
 
 }

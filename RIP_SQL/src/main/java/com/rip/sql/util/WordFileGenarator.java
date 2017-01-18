@@ -28,219 +28,15 @@ import org.springframework.stereotype.Service;
 @Service("WordFileGenarator")
 public class WordFileGenarator {
 
-    public static void main(String[] args) throws IOException {
-
-        String sample_string1 = "{\n"
-                + "    \"rip_sql_database_name\": \"testdb\",\n"
-                + "    \"rip_sql_tables\": [\n"
-                + "      {\n"
-                + "        \"rip_sql_table_name\": \"employee\",\n"
-                + "        \"rip_sql_fileds\": [\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"emp_id\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_integer\",\n"
-                + "            \"rip_sql_primary_key\": true,\n"
-                + "            \"rip_sql_auto_incriment\": true,\n"
-                + "            \"rip_sql_not_null\": true,\n"
-                + "            \"rip_sql_unique\": true\n"
-                + "          },\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"emp_name\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_string\",\n"
-                + "            \"rip_sql_primary_key\": false,\n"
-                + "            \"rip_sql_auto_incriment\": false,\n"
-                + "            \"rip_sql_not_null\": true,\n"
-                + "            \"rip_sql_unique\": false\n"
-                + "          },\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"emp_phone\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_integer\",\n"
-                + "            \"rip_sql_primary_key\": false,\n"
-                + "            \"rip_sql_auto_incriment\": false,\n"
-                + "            \"rip_sql_not_null\": false,\n"
-                + "            \"rip_sql_unique\": true\n"
-                + "          },\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"emp_address\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_string\",\n"
-                + "            \"rip_sql_primary_key\": false,\n"
-                + "            \"rip_sql_auto_incriment\": false,\n"
-                + "            \"rip_sql_not_null\": false,\n"
-                + "            \"rip_sql_unique\": false\n"
-                + "          },\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"emp_dep_id\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_integer\",\n"
-                + "            \"rip_sql_primary_key\": false,\n"
-                + "            \"rip_sql_auto_incriment\": false,\n"
-                + "            \"rip_sql_not_null\": true,\n"
-                + "            \"rip_sql_unique\": true\n"
-                + "          }\n"
-                + "        ]\n"
-                + "      },\n"
-                + "      {\n"
-                + "        \"rip_sql_table_name\": \"vision\",\n"
-                + "        \"rip_sql_fileds\": [\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"vision_id\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_integer\",\n"
-                + "            \"rip_sql_primary_key\": true,\n"
-                + "            \"rip_sql_auto_incriment\": true,\n"
-                + "            \"rip_sql_not_null\": true,\n"
-                + "            \"rip_sql_unique\": true\n"
-                + "          },\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"vision_name\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_string\",\n"
-                + "            \"rip_sql_primary_key\": false,\n"
-                + "            \"rip_sql_auto_incriment\": false,\n"
-                + "            \"rip_sql_not_null\": true,\n"
-                + "            \"rip_sql_unique\": false\n"
-                + "          },\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"vision_des\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_string\",\n"
-                + "            \"rip_sql_primary_key\": false,\n"
-                + "            \"rip_sql_auto_incriment\": false,\n"
-                + "            \"rip_sql_not_null\": true,\n"
-                + "            \"rip_sql_unique\": false\n"
-                + "          }\n"
-                + "        ]\n"
-                + "      },\n"
-                + "      {\n"
-                + "        \"rip_sql_table_name\": \"department\",\n"
-                + "        \"rip_sql_fileds\": [\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"dep_id\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_integer\",\n"
-                + "            \"rip_sql_primary_key\": true,\n"
-                + "            \"rip_sql_auto_incriment\": true,\n"
-                + "            \"rip_sql_not_null\": true,\n"
-                + "            \"rip_sql_unique\": true\n"
-                + "          },\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"dep_name\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_string\",\n"
-                + "            \"rip_sql_primary_key\": false,\n"
-                + "            \"rip_sql_auto_incriment\": false,\n"
-                + "            \"rip_sql_not_null\": true,\n"
-                + "            \"rip_sql_unique\": false\n"
-                + "          },\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"dep_des\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_string\",\n"
-                + "            \"rip_sql_primary_key\": false,\n"
-                + "            \"rip_sql_auto_incriment\": false,\n"
-                + "            \"rip_sql_not_null\": true,\n"
-                + "            \"rip_sql_unique\": false\n"
-                + "          },\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"dep_vis\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_string\",\n"
-                + "            \"rip_sql_primary_key\": false,\n"
-                + "            \"rip_sql_auto_incriment\": false,\n"
-                + "            \"rip_sql_not_null\": true,\n"
-                + "            \"rip_sql_unique\": false\n"
-                + "          }\n"
-                + "        ]\n"
-                + "      },\n"
-                + "      {\n"
-                + "        \"rip_sql_table_name\": \"project\",\n"
-                + "        \"rip_sql_fileds\": [\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"pro_id\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_integer\",\n"
-                + "            \"rip_sql_primary_key\": true,\n"
-                + "            \"rip_sql_auto_incriment\": true,\n"
-                + "            \"rip_sql_not_null\": true,\n"
-                + "            \"rip_sql_unique\": true\n"
-                + "          },\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"pro_name\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_string\",\n"
-                + "            \"rip_sql_primary_key\": false,\n"
-                + "            \"rip_sql_auto_incriment\": false,\n"
-                + "            \"rip_sql_not_null\": true,\n"
-                + "            \"rip_sql_unique\": false\n"
-                + "          },\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"pro_des\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_string\",\n"
-                + "            \"rip_sql_primary_key\": false,\n"
-                + "            \"rip_sql_auto_incriment\": false,\n"
-                + "            \"rip_sql_not_null\": true,\n"
-                + "            \"rip_sql_unique\": false\n"
-                + "          }\n"
-                + "        ]\n"
-                + "      },\n"
-                + "      {\n"
-                + "        \"rip_sql_table_name\": \"employee_workson_project\",\n"
-                + "        \"rip_sql_fileds\": [\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"emp_id_ref\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_integer\",\n"
-                + "            \"rip_sql_primary_key\": true,\n"
-                + "            \"rip_sql_auto_incriment\": false,\n"
-                + "            \"rip_sql_not_null\": true,\n"
-                + "            \"rip_sql_unique\": true\n"
-                + "          },\n"
-                + "          {\n"
-                + "            \"rip_sql_feild_name\": \"pro_id_ref\",\n"
-                + "            \"rip_sql_data_type\": \"rip_sql_mediam_integer\",\n"
-                + "            \"rip_sql_primary_key\": true,\n"
-                + "            \"rip_sql_auto_incriment\": false,\n"
-                + "            \"rip_sql_not_null\": true,\n"
-                + "            \"rip_sql_unique\": true\n"
-                + "          }\n"
-                + "        ]\n"
-                + "      }\n"
-                + "    ],\n"
-                + "    \"rip_sql_forign_keys\": [\n"
-                + "      {\n"
-                + "        \"rip_sql_fk_name\": \"emp_fk\",\n"
-                + "        \"rip_sql_base_table\": \"employee_workson_project\",\n"
-                + "        \"rip_sql_bt_feild_name\": \"emp_id_ref\",\n"
-                + "        \"rip_sql_reference_table\": \"employee\",\n"
-                + "        \"rip_sql_rt_feild_name\": \"emp_id\",\n"
-                + "        \"rip_sql_on_delete\": \"CASCADE\",\n"
-                + "        \"rip_sql_on_update\": \"CASCADE\"\n"
-                + "      },\n"
-                + "      {\n"
-                + "        \"rip_sql_fk_name\": \"pro_fk\",\n"
-                + "        \"rip_sql_base_table\": \"employee_workson_project\",\n"
-                + "        \"rip_sql_bt_feild_name\": \"pro_id_ref\",\n"
-                + "        \"rip_sql_reference_table\": \"project\",\n"
-                + "        \"rip_sql_rt_feild_name\": \"pro_id\",\n"
-                + "        \"rip_sql_on_delete\": \"CASCADE\",\n"
-                + "        \"rip_sql_on_update\": \"CASCADE\"\n"
-                + "      },\n"
-                + "      {\n"
-                + "        \"rip_sql_fk_name\": \"dep_fk\",\n"
-                + "        \"rip_sql_base_table\": \"employee\",\n"
-                + "        \"rip_sql_bt_feild_name\": \"emp_dep_id\",\n"
-                + "        \"rip_sql_reference_table\": \"department\",\n"
-                + "        \"rip_sql_rt_feild_name\": \"dep_id\",\n"
-                + "        \"rip_sql_on_delete\": \"CASCADE\",\n"
-                + "        \"rip_sql_on_update\": \"CASCADE\"\n"
-                + "      },\n"
-                + "      {\n"
-                + "        \"rip_sql_fk_name\": \"vision_fk\",\n"
-                + "        \"rip_sql_base_table\": \"department\",\n"
-                + "        \"rip_sql_bt_feild_name\": \"dep_vis\",\n"
-                + "        \"rip_sql_reference_table\": \"vision\",\n"
-                + "        \"rip_sql_rt_feild_name\": \"vision_id\",\n"
-                + "        \"rip_sql_on_delete\": \"CASCADE\",\n"
-                + "        \"rip_sql_on_update\": \"CASCADE\"\n"
-                + "      }\n"
-                + "    ]\n"
-                + "  }";
+    public String createWordFile(String platformIndependentModelDBDesign) throws IOException {
+        String msg = "success";
 
         FileOutputStream out = null;
         try {
-            JSONObject example_1 = new JSONObject(sample_string1);
-            String rip_sql_database_name = example_1.getString("rip_sql_database_name");
-            JSONArray rip_sql_tables = example_1.getJSONArray("rip_sql_tables");
-            JSONArray rip_sql_fks = example_1.getJSONArray("rip_sql_forign_keys");
+            JSONObject example_1 = new JSONObject(platformIndependentModelDBDesign);
+            String rip_sql_database_name = example_1.getString("database_name");
+            JSONArray rip_sql_tables = example_1.getJSONArray("tables");
+            JSONArray rip_sql_fks = example_1.getJSONArray("foreign_keys");
             //Blank Document
             XWPFDocument document = new XWPFDocument();
 
@@ -276,25 +72,6 @@ public class WordFileGenarator {
             XWPFRun Q = q.createRun();
             Q.setText("This table contain all the tables , Primary keys & no of fields it has.");
 
-            //create topic 
-//            XWPFParagraph heading1 = document.createParagraph();
-//            XWPFRun paragraphOneRunOne1 = heading1.createRun();
-//            paragraphOneRunOne1.setBold(true);
-//            paragraphOneRunOne1.setFontSize(14);
-//            paragraphOneRunOne1.setText("Table Name");
-//            
-//            XWPFParagraph heading2 = document.createParagraph();
-//            XWPFRun paragraphOneRunOne2 = heading2.createRun();
-//            paragraphOneRunOne2.setBold(true);
-//            paragraphOneRunOne2.setFontSize(14);
-//            paragraphOneRunOne2.setText("Number Of Feilds");
-//            
-//            XWPFParagraph heading3 = document.createParagraph();
-//            XWPFRun paragraphOneRunOne3 = heading3.createRun();
-//            paragraphOneRunOne3.setBold(true);
-//            paragraphOneRunOne3.setFontSize(14);
-//            paragraphOneRunOne3.setText("Primary Key");
-//            
             //create table
             XWPFTable table = document.createTable();
             XWPFTableRow tableRowOne = table.getRow(0);
@@ -304,14 +81,14 @@ public class WordFileGenarator {
 
             for (int i = 1; i < rip_sql_tables.length() + 1; i++) {
                 JSONObject rip_sql_table = rip_sql_tables.getJSONObject(i - 1);
-                String table_name = rip_sql_table.getString("rip_sql_table_name");
-                JSONArray rip_sql_fileds = rip_sql_table.getJSONArray("rip_sql_fileds");
+                String table_name = rip_sql_table.getString("table_name");
+                JSONArray rip_sql_fileds = rip_sql_table.getJSONArray("fields");
                 String pkeyList = "";
                 for (int j = 0; j < rip_sql_fileds.length(); j++) {
                     JSONObject rip_sql_filed = rip_sql_fileds.getJSONObject(j);
-                    boolean rip_sql_primary_key = rip_sql_filed.getBoolean("rip_sql_primary_key");
+                    boolean rip_sql_primary_key = rip_sql_filed.getBoolean("primary_key");
                     if (rip_sql_primary_key) {
-                        pkeyList = pkeyList + rip_sql_filed.getString("rip_sql_feild_name") + ",";
+                        pkeyList = pkeyList + rip_sql_filed.getString("field_name") + ",";
                     }
                 }
 
@@ -320,24 +97,6 @@ public class WordFileGenarator {
                 tableRowTwo.getCell(1).setText(Integer.toString(rip_sql_fileds.length()));
                 tableRowTwo.getCell(2).setText(pkeyList);
             }
-            //create first row
-//            XWPFTableRow tableRowOne = table.getRow(0);
-//            //tableRowOne.getCell(0).setParagraph(heading);
-//            tableRowOne.getCell(0).setText("table name");
-//            tableRowOne.addNewTableCell().setText("no of fields");
-//            tableRowOne.addNewTableCell().setText("primary key");
-//            }
-//            //create second row
-//            XWPFTableRow tableRowTwo = table.createRow();
-//            tableRowTwo.getCell(0).setText("col one, row two");
-//            tableRowTwo.getCell(1).setText("col two, row two");
-//            tableRowTwo.getCell(2).setText("col three, row two");
-//
-//            //create third row
-//            XWPFTableRow tableRowThree = table.createRow();
-//            tableRowThree.getCell(0).setText("col one, row three");
-//            tableRowThree.getCell(1).setText("col two, row three");
-//            tableRowThree.getCell(2).setText("col three, row three");
 
             //Write the Document in file system
             XWPFParagraph a = document.createParagraph();
@@ -349,7 +108,7 @@ public class WordFileGenarator {
 
             XWPFParagraph d = document.createParagraph();
             XWPFRun D = d.createRun();
-            D.setText("This table contain Foreign key , Base table , Reference Table , Base colum , Reference colum . ");
+            D.setText("This table contain Foreign key, Base table, Reference Table , Base column, Reference column. ");
 
             XWPFTable tble = document.createTable();
             XWPFTableRow row1 = tble.getRow(0);
@@ -362,11 +121,11 @@ public class WordFileGenarator {
             for (int i = 0; i < rip_sql_fks.length(); i++) {
 
                 JSONObject rip_sql_forign_key = rip_sql_fks.getJSONObject(i);
-                String fk_name = rip_sql_forign_key.getString("rip_sql_fk_name");
-                String forign_key_bt = rip_sql_forign_key.getString("rip_sql_base_table");
-                String forign_key_rt = rip_sql_forign_key.getString("rip_sql_reference_table");
-                String forign_key_bf = rip_sql_forign_key.getString("rip_sql_bt_feild_name");
-                String forign_key_rf = rip_sql_forign_key.getString("rip_sql_rt_feild_name");
+                String fk_name = rip_sql_forign_key.getString("fk_name");
+                String forign_key_bt = rip_sql_forign_key.getString("base_table");
+                String forign_key_rt = rip_sql_forign_key.getString("reference_table");
+                String forign_key_bf = rip_sql_forign_key.getString("bt_field_name");
+                String forign_key_rf = rip_sql_forign_key.getString("rt_field_name");
 
                 XWPFTableRow row = tble.createRow();
                 row.getCell(0).setText(fk_name);
@@ -388,12 +147,12 @@ public class WordFileGenarator {
 
             for (int i = 0; i < rip_sql_tables.length(); i++) {
                 JSONObject rip_sql_table = rip_sql_tables.getJSONObject(i);
-                String table_name = rip_sql_table.getString("rip_sql_table_name");
-                JSONArray rip_sql_fileds = rip_sql_table.getJSONArray("rip_sql_fileds");
+                String table_name = rip_sql_table.getString("table_name");
+                JSONArray rip_sql_fileds = rip_sql_table.getJSONArray("fields");
 
                 XWPFParagraph tn = document.createParagraph();
                 XWPFRun TN = tn.createRun();
-                TN.setText("Strucrure of " + table_name);
+                TN.setText("Structure of " + table_name);
                 TN.setBold(true);
 
                 XWPFTable tble2 = document.createTable();
@@ -407,12 +166,12 @@ public class WordFileGenarator {
 
                 for (int j = 0; j < rip_sql_fileds.length(); j++) {
                     JSONObject rip_sql_field = rip_sql_fileds.getJSONObject(j);
-                    String field_name = rip_sql_field.getString("rip_sql_feild_name");
-                    String data_type = rip_sql_field.getString("rip_sql_data_type");
-                    boolean rip_sql_primary_key = rip_sql_field.getBoolean("rip_sql_primary_key");
-                    boolean rip_sql_auto_increment = rip_sql_field.getBoolean("rip_sql_auto_incriment");
-                    boolean rip_sql_not_null = rip_sql_field.getBoolean("rip_sql_not_null");
-                    boolean rip_sql_unique = rip_sql_field.getBoolean("rip_sql_unique");
+                    String field_name = rip_sql_field.getString("field_name");
+                    String data_type = rip_sql_field.getString("data_type");
+                    boolean rip_sql_primary_key = rip_sql_field.getBoolean("primary_key");
+                    boolean rip_sql_auto_increment = rip_sql_field.getBoolean("auto_increment");
+                    boolean rip_sql_not_null = rip_sql_field.getBoolean("not_null");
+                    boolean rip_sql_unique = rip_sql_field.getBoolean("unique");
 
                     XWPFTableRow row3 = tble2.createRow();
                     row3.getCell(0).setText(field_name);
@@ -432,7 +191,7 @@ public class WordFileGenarator {
 
             XWPFParagraph g = document.createParagraph();
             XWPFRun G = g.createRun();
-            G.setText("This table cointain all the Databases and its datatypes which can use for the system.");
+            G.setText("This table contain all the Databases and its datatypes which can use for the system.");
 
             XWPFTable tble3 = document.createTable();
             XWPFTableRow row3 = tble3.getRow(0);
@@ -561,12 +320,14 @@ public class WordFileGenarator {
             row21.getCell(3).setText("xxxxxxx");
             row21.getCell(4).setText("xxxxxxx");
 
-            out = new FileOutputStream(new File("D:\\Accademic\\4thYearProject\\Dev\\Output\\createdocument.docx"));
+            out = new FileOutputStream(new File("D:\\Accademic\\4thYearProject\\Dev\\FrameworkServerArea\\DatabaseDocumentation.docx"));
             document.write(out);
             out.close();
-            System.out.println("createdocument.docx written successully");
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(WordFileGenarator.class.getName()).log(Level.SEVERE, null, ex);
+            msg = "Some thing went wrong In word file Genarartion";
         }
+        return msg;
     }
 }

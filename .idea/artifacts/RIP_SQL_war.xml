@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="RIP_SQL:war">
-    <output-path>$PROJECT_DIR$/RIP_SQL/target</output-path>
-    <root id="archive" name="RIP_SQL.war">
-      <element id="artifact" artifact-name="RIP_SQL:war exploded" />
-    </root>
-  </artifact>
-</component>
