@@ -1,3 +1,38 @@
-.button {
-    -fx-font-weight: bold;
+#newProjectBtn {
+    -fx-graphic: url('../images/newProjectIcon.png');
+
 }
+
+#loadFromDiskBtn{
+    -fx-graphic: url('../images/loadFromDiskIcon.png');
+}
+
+#loadFromServerBtn{
+    -fx-graphic: url('../images/loadFromServerIcon.png');
+}
+
+#saveProjectBtn{
+    -fx-graphic: url('../images/saveProjectIcon.png');
+}
+
+#editProjectDetailsBtn{
+    -fx-graphic: url('../images/editProjectDetailsIcon.png');
+}
+
+#addTableBtn{
+    -fx-graphic: url('../images/addTableIcon.png');
+}
+
+#addResourceBtn{
+    -fx-graphic: url('../images/addResourceIcon.png');
+}
+
+#addFKBtn{
+    -fx-graphic: url('../images/addFKIcon.png');
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: #FFFFFF;
+}
+
+

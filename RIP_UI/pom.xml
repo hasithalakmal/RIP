@@ -3,21 +3,45 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.rip</groupId>
-    <artifactId>rip_ui</artifactId>
+    <artifactId>RIP_UI</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>rip_ui</name>
+    <name>RIP_UI</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mainClass>com.rip.rip_ui.application.controllers.MainApp</mainClass>
+        <mainClass>com.rip.rip_ui.MainApp</mainClass>
     </properties>
 
     <organization>
         <!-- Used as the 'Vendor' for JNLP generation -->
         <name>Your Organisation</name>
     </organization>
+    
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.controlsfx/controlsfx -->
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>8.40.12</version>
+        </dependency>     
+        
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.7</version>
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>20.0</version>
+        </dependency>
+   
+    </dependencies>
 
     <build>
         <plugins>
@@ -85,8 +109,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <compilerArguments>
                         <bootclasspath>${sun.boot.class.path}${path.separator}${java.home}/lib/jfxrt.jar</bootclasspath>
                     </compilerArguments>
@@ -104,19 +128,5 @@
             </plugin>
         </plugins>
     </build>
-    
-    <dependencies>
-        <dependency>
-               <groupId>com.google.code.gson</groupId>
-               <artifactId>gson</artifactId>
-               <version>2.7</version>
-           </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.2</version>
-            <type>jar</type>
-        </dependency>
-    </dependencies>
 
 </project>
