@@ -11,12 +11,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Map;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Hasitha Lakmal
  */
-@Component
+@Service("MavenProjectRunner")
 public class MavenProjectRunner {
 
     private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(WriteToJSONFile.class);

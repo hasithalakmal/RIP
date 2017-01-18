@@ -25,11 +25,15 @@
 
     <modules>
         <module>RIP_API</module>
-        <module>RIP_Framework</module>
+        <module>RIP_Framework_Project</module>
+        <module>RIP_Framework_ApplicationGeneration</module>
+        <module>RIP_Framework_FileHandler</module>
+        <module>RIP_Framework_TechnologyManagement</module>
+        <module>RIP_Framework_UserManagement</module>
         <module>RIP_SQL</module>
         <module>RIP_Test</module>
         <module>RIP_UI</module>
-		<module>RIP_UI_Gen</module>
+        <module>RIP_UI_Gen</module>
     </modules>
 
   

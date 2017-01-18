@@ -6,6 +6,7 @@
 package com.rip.sql.controller;
 
 import com.rip.sql.service.DDLManagementService;
+import com.rip.sql.service.DatabaseDocumentationService;
 import com.rip.sql.service.DatabaseIntroduceManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,10 +30,14 @@ public class DDLRestController {
     
     @Autowired
     DatabaseIntroduceManagementService DatabaseIntroduceManagementService;
+    
+    @Autowired
+    DatabaseDocumentationService databaseDocumentationService;
 
     @RequestMapping(value = "sql-file", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> genarate(@RequestBody String RIP_JSON) {
         String msg = DDLManagementService.genarate(RIP_JSON);
+        databaseDocumentationService.createDatabaseDoc(RIP_JSON);
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
     
@@ -40,6 +45,13 @@ public class DDLRestController {
     public ResponseEntity<String> databaseIntroducer(@RequestBody String newdatabase) {
         String msg = DatabaseIntroduceManagementService.introduceDatabse(newdatabase);
         return new ResponseEntity<>(msg, HttpStatus.CREATED);
+
+    }
+    
+    @RequestMapping(value = "test", method = RequestMethod.GET,  produces = "application/json")
+    public ResponseEntity<String> databaseIntroducer2() {
+        String msg = "hasitha lakmal";
+        return new ResponseEntity<>(msg, HttpStatus.OK);
 
     }
 
