@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="RIP_UI_Gen:war">
+    <output-path>$PROJECT_DIR$/RIP_UI_Gen/target</output-path>
+    <root id="archive" name="RIP_UI_Gen.war">
+      <element id="artifact" artifact-name="RIP_UI_Gen:war exploded" />
+    </root>
+  </artifact>
+</component>
