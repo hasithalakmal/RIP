@@ -53,6 +53,9 @@
           <element id="library" level="project" name="Maven: org.jadira.usertype:usertype.core:3.0.0.CR1" />
           <element id="library" level="project" name="Maven: org.joda:joda-money:0.6" />
           <element id="library" level="project" name="Maven: org.jadira.usertype:usertype.spi:3.0.0.CR1" />
+          <element id="library" level="project" name="Maven: org.json:json:20140107" />
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.7" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
         </element>
       </element>
       <element id="directory" name="META-INF">

@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="RIP_SQL:war exploded">
-    <output-path>$PROJECT_DIR$/RIP_SQL/target/RIP_SQL</output-path>
+  <artifact type="exploded-war" name="RIP_UI_Gen:war exploded">
+    <output-path>$PROJECT_DIR$/RIP_UI_Gen/target/RIP_UI_Gen</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="RIP_SQL" />
+          <element id="module-output" name="RIP_UI_Gen" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-core:4.3.1.RELEASE" />
@@ -53,14 +53,12 @@
           <element id="library" level="project" name="Maven: org.jadira.usertype:usertype.core:3.0.0.CR1" />
           <element id="library" level="project" name="Maven: org.joda:joda-money:0.6" />
           <element id="library" level="project" name="Maven: org.jadira.usertype:usertype.spi:3.0.0.CR1" />
-          <element id="library" level="project" name="Maven: org.json:json:20140107" />
-          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/RIP_SQL/target/RIP_SQL/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/RIP_UI_Gen/target/RIP_UI_Gen/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="RIP_SQL/web/Web" />
+      <element id="javaee-facet-resources" facet="RIP_UI_Gen/web/Web" />
     </root>
   </artifact>
 </component>
