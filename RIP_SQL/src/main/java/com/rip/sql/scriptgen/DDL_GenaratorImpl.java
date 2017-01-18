@@ -20,7 +20,7 @@ public class DDL_GenaratorImpl implements DDL_Genarator {
     public String createDDLScript(JSONObject platformIndependentModel, JSONObject domainSpecificModel) {
         String msg = "";
         JSONObject Database_Design = platformIndependentModel.getJSONObject("Database_Design");
-        JSONArray rip_sql_tables = Database_Design.getJSONArray("rip_sql_tables");
+        JSONArray rip_sql_tables = Database_Design.getJSONArray("tables");
 
         for (int i = 0; i < rip_sql_tables.length(); i++) {
             JSONObject rip_sql_table = (JSONObject) rip_sql_tables.get(i);
@@ -37,8 +37,8 @@ public class DDL_GenaratorImpl implements DDL_Genarator {
     @Override
     public String createTable(JSONObject rip_sql_table, JSONObject domainSpecificModel) {
         String script = "";
-        String rip_sql_dsm_table = domainSpecificModel.getString("rip_sql_dsm_table");
-        String rip_sql_table_name = rip_sql_table.getString("rip_sql_table_name");
+        String rip_sql_dsm_table = domainSpecificModel.getString("dsm_table");
+        String rip_sql_table_name = rip_sql_table.getString("table_name");
         rip_sql_dsm_table.replaceFirst("rip_sql_table_name", rip_sql_table_name);
         JSONArray rip_sql_fileds = rip_sql_table.getJSONArray("rip_sql_fileds");
         for (int i = 0; i < rip_sql_fileds.length(); i++) {

@@ -1,0 +1,1002 @@
+{
+  "Request_details": {
+    "project_name": "testapp",
+    "package_name": "com.rip.api",
+    "userName": "ghasithalakmal@gmail.com",
+    "version": "2.0.5",
+    "date_time": "2015-05-05 22:21:02"
+  },
+  "Technical_Spec": {
+    "app_id": 125,
+    "app_name": "testapp",
+    "language": "java",
+    "build_tool": "maven",
+    "rest_framework": "RESTEasy",
+    "orm_framework": "hibernate",
+    "dbms": "MySQL",
+    "test_framework": "junit",
+    "css_framework": "bootstrap",
+    "js_framework": "anguler",
+    "ui_theme": "theam1",
+    "architecture": "template3",
+    "server": "apache",
+    "api_documentation_type": "type1",
+    "technical_doccumentation_type": "type3",
+    "test_report_type": "type2",
+    "need_CRUD_operations_for_all": true,
+    "need_CRUD_forms_for_all": true
+  },
+  "Database_Design": {
+    "database_name": "student_management_system",
+    "tables": [
+      {
+        "table_name": "student",
+        "fields": [
+          {
+            "field_name": "student_id",
+            "data_type": "medium_integer",
+            "primary_key": true,
+            "auto_increment": true,
+            "not_null": false,
+            "unique": true
+          },
+          {
+            "field_name": "student_name",
+            "data_type": "medium_string",
+            "primary_key": false,
+            "auto_increment": false,
+            "not_null": true,
+            "unique": false
+          },
+          {
+            "field_name": "student_nic_no",
+            "data_type": "medium_string",
+            "primary_key": false,
+            "auto_increment": false,
+            "not_null": true,
+            "unique": true
+          },
+          {
+            "field_name": "student_dob",
+            "data_type": "date",
+            "primary_key": false,
+            "auto_increment": false,
+            "not_null": false,
+            "unique": false
+          },
+          {
+            "field_name": "student_is_married",
+            "data_type": "boolean",
+            "primary_key": false,
+            "auto_increment": false,
+            "not_null": false,
+            "unique": false
+          },
+          {
+            "field_name": "student_is_introduced_by",
+            "data_type": "medium_integer",
+            "primary_key": false,
+            "auto_increment": false,
+            "not_null": false,
+            "unique": false
+          }
+        ]
+      },
+      {
+        "table_name": "course",
+        "fields": [
+          {
+            "field_name": "course_id",
+            "data_type": "medium_integer",
+            "primary_key": true,
+            "auto_increment": true,
+            "not_null": false,
+            "unique": false
+          },
+          {
+            "field_name": "course_name",
+            "data_type": "medium_string",
+            "primary_key": false,
+            "auto_increment": false,
+            "not_null": true,
+            "unique": false
+          }
+        ]
+      },
+      {
+        "table_name": "student_study_on",
+        "fields": [
+          {
+            "field_name": "learn_id",
+            "data_type": "medium_integer",
+            "primary_key": false,
+            "auto_increment": true,
+            "not_null": true,
+            "unique": true
+          },
+          {
+            "field_name": "student_id",
+            "data_type": "medium_integer",
+            "primary_key": true,
+            "auto_increment": false,
+            "not_null": false,
+            "unique": false
+          },
+          {
+            "field_name": "course_id",
+            "data_type": "medium_integer",
+            "primary_key": true,
+            "auto_increment": false,
+            "not_null": false,
+            "unique": false
+          },
+          {
+            "field_name": "course_fee",
+            "data_type": "float",
+            "primary_key": false,
+            "auto_increment": false,
+            "not_null": true,
+            "unique": false
+          },
+          {
+            "field_name": "course_completed",
+            "data_type": "boolean",
+            "primary_key": false,
+            "auto_increment": false,
+            "not_null": true,
+            "unique": false
+          }
+        ]
+      },
+      {
+        "table_name": "course_payment_details",
+        "fields": [
+          {
+            "field_name": "payment_id",
+            "data_type": "medium_integer",
+            "primary_key": true,
+            "auto_increment": true,
+            "not_null": false,
+            "unique": false
+          },
+          {
+            "field_name": "learn_id",
+            "data_type": "medium_integer",
+            "primary_key": false,
+            "auto_increment": false,
+            "not_null": true,
+            "unique": false
+          },
+          {
+            "field_name": "invoice_id",
+            "data_type": "medium_integer",
+            "primary_key": false,
+            "auto_increment": false,
+            "not_null": true,
+            "unique": false
+          },
+          {
+            "field_name": "discount",
+            "data_type": "float",
+            "primary_key": false,
+            "auto_increment": false,
+            "not_null": true,
+            "unique": false
+          }
+        ]
+      },
+      {
+        "table_name": "invoice",
+        "fields": [
+          {
+            "field_name": "invoice_id",
+            "data_type": "medium_integer",
+            "primary_key": true,
+            "auto_increment": true,
+            "not_null": false,
+            "unique": false
+          },
+          {
+            "field_name": "amount",
+            "data_type": "float",
+            "primary_key": false,
+            "auto_increment": false,
+            "not_null": true,
+            "unique": false
+          },
+          {
+            "field_name": "paid_on",
+            "data_type": "timestamp",
+            "primary_key": false,
+            "auto_increment": false,
+            "not_null": true,
+            "unique": false
+          }
+        ]
+      }
+    ],
+    "foreign_keys": [
+      {
+        "fk_name": "student_introducer_fk",
+        "base_table": "student",
+        "bt_field_name": "student_is_introduced_by",
+        "reference_table": "student",
+        "rt_field_name": "student_id",
+        "on_delete": "restrict",
+        "on_update": "cascade",
+        "relation": "ManyToOne"
+      },
+      {
+        "fk_name": "student_study_on_fk1",
+        "base_table": "student_study_on",
+        "bt_field_name": "student_id",
+        "reference_table": "student",
+        "rt_field_name": "student_id",
+        "on_delete": "restrict",
+        "on_update": "cascade",
+        "relation": "ManyToOne"
+      },
+      {
+        "fk_name": "student_study_on_fk2",
+        "base_table": "student_study_on",
+        "bt_field_name": "course_id",
+        "reference_table": "course",
+        "rt_field_name": "course_id",
+        "on_delete": "restrict",
+        "on_update": "cascade",
+        "relation": "ManyToOne"
+      },
+      {
+        "fk_name": "course_payment_details_fk1",
+        "base_table": "course_payment_details",
+        "bt_field_name": "learn_id",
+        "reference_table": "student_study_on",
+        "rt_field_name": "learn_id",
+        "on_delete": "restrict",
+        "on_update": "cascade",
+        "relation": "ManyToOne"
+      },
+      {
+        "fk_name": "course_payment_details_fk2",
+        "base_table": "course_payment_details",
+        "bt_field_name": "invoice_id",
+        "reference_table": "invoice",
+        "rt_field_name": "invoice_id",
+        "on_delete": "restrict",
+        "on_update": "cascade",
+        "relation": "ManyToOne"
+      }
+    ]
+  },
+  "Query_Design": {
+    "select_queries": [
+      {
+        "query_id": "s1",
+        "query": "select * from student where stuname = ? and age > ?",
+        "parameterTypes": [
+          "varchar(45)",
+          "int(11)"
+        ],
+        "parameterNames": [
+          "stu_name",
+          "stu_age"
+        ]
+      },
+      {
+        "query_id": "s2",
+        "query": "select * from student"
+      },
+      {
+        "query_id": "s3",
+        "query": "select * from student"
+      },
+      {
+        "query_id": "s4",
+        "query": "select * from student"
+      },
+      {
+        "query_id": "s5",
+        "query": [
+          {
+            "table_name": "student",
+            "table_alise": "stu",
+            "fields": [
+              {
+                "field_name": "stuid",
+                "output_name": "student_id"
+              },
+              {
+                "field_name": "stuname",
+                "output_name": "student_name"
+              }
+            ]
+          },
+          {
+            "table_name": "schools",
+            "table_alise": "sch",
+            "fields": [
+              {
+                "field_name": "schid",
+                "output_name": "school_id"
+              },
+              {
+                "field_name": "schname",
+                "output_name": "school_name"
+              }
+            ]
+          }
+        ],
+        "where_clause": [
+          {}
+        ]
+      }
+    ],
+    "insert_queries": [
+      {
+        "query_id": "i1",
+        "query": "insert into student values('a','a','a');"
+      },
+      {
+        "query_id": "i2",
+        "query": "insert into student values('a','a','a');"
+      },
+      {
+        "query_id": "i3",
+        "query": "insert into student values('a','a','a');"
+      },
+      {
+        "queary_id": "i4",
+        "query": "insert into student values('a','a','a');"
+      }
+    ],
+    "update_queries": [
+      {
+        "query_id": "u1",
+        "query": "update student set age = 25 where stuid = 1;"
+      },
+      {
+        "query_id": "u2",
+        "query": "update student set age = 25 where stuid = 1;"
+      },
+      {
+        "query_id": "u3",
+        "query": "update student set age = 25 where stuid = 1;"
+      }
+    ],
+    "delete_queries": [
+      {
+        "query_id": "d1",
+        "query": "delete from student where stuid = 5;"
+      }
+    ]
+  },
+  "RestAPI_Design": {
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Students",
+      "description": "A sample API for a Student Management System",
+      "license": {
+        "name": "MIT",
+        "url": "http://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "api.student.com",
+    "basePath": "/api",
+    "tags": [
+      {
+        "name": "student",
+        "description": "Everything about Students"
+      },
+      {
+        "name": "course",
+        "description": "Everything about Courses"
+      },
+      {
+        "name": "student study details",
+        "description": "Everything about Student Studies"
+      },
+      {
+        "name": "course payment details",
+        "description": "Everything about Course Payments"
+      },
+      {
+        "name": "invoice",
+        "description": "Everything about Invoices"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/student": {
+        "get": {
+          "tags": [
+            "student"
+          ],
+          "summary": "Returns all Students from the system",
+          "description": "Returns all Students from the system",
+          "operationId": "findStudents",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "maximum number of results to return",
+              "required": false,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Student response",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/student"
+                }
+              }
+            },
+            "default": {
+              "description": "unexpected error",
+              "schema": {
+                "$ref": "#/definitions/errorModel"
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "student"
+          ],
+          "summary": "Creates a new student in the system.",
+          "description": "Creates a new student in the system.",
+          "operationId": "addStudent",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "student",
+              "in": "body",
+              "description": "Student to add to the system",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/student"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "student response",
+              "schema": {
+                "$ref": "#/definitions/student"
+              }
+            },
+            "default": {
+              "description": "unexpected error",
+              "schema": {
+                "$ref": "#/definitions/errorModel"
+              }
+            }
+          }
+        }
+      },
+      "/student/{id}": {
+        "get": {
+          "tags": [
+            "student"
+          ],
+          "summary": "Returns a student based on a single ID",
+          "description": "Returns a student based on a single ID",
+          "operationId": "findStudentById",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "studentId",
+              "in": "path",
+              "description": "ID of student to fetch",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "pet response",
+              "schema": {
+                "$ref": "#/definitions/student"
+              }
+            },
+            "default": {
+              "description": "unexpected error",
+              "schema": {
+                "$ref": "#/definitions/errorModel"
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "student"
+          ],
+          "summary": "deletes a single student based on the ID supplied",
+          "description": "deletes a single student based on the ID supplied",
+          "operationId": "deleteStudent",
+          "parameters": [
+            {
+              "name": "studentId",
+              "in": "path",
+              "description": "ID of student to delete",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "student deleted"
+            },
+            "default": {
+              "description": "unexpected error",
+              "schema": {
+                "$ref": "#/definitions/errorModel"
+              }
+            }
+          }
+        }
+      },
+      "/course": {
+        "get": {
+          "tags": [
+            "course"
+          ],
+          "summary": "Returns all courses from the system",
+          "description": "Returns all courses from the system",
+          "operationId": "getAllCourses",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "maximum number of results to return",
+              "required": false,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Classes response",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/course"
+                }
+              }
+            },
+            "default": {
+              "description": "unexpected error",
+              "schema": {
+                "$ref": "#/definitions/errorModel"
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "course"
+          ],
+          "summary": "Creates a new course in the system.",
+          "description": "Creates a new course in the system.",
+          "operationId": "addCourse",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "course",
+              "in": "body",
+              "description": "Course to add to the system",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/course"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "class response",
+              "schema": {
+                "$ref": "#/definitions/course"
+              }
+            },
+            "default": {
+              "description": "unexpected error",
+              "schema": {
+                "$ref": "#/definitions/errorModel"
+              }
+            }
+          }
+        }
+      },
+      "/course/{id}": {
+        "get": {
+          "tags": [
+            "course"
+          ],
+          "summary": "Returns a course based on a course ID",
+          "description": "Returns a course based on a course ID",
+          "operationId": "findCourseByCourseId",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "courseId",
+              "in": "path",
+              "description": "ID of course to fetch",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "course response",
+              "schema": {
+                "$ref": "#/definitions/course"
+              }
+            },
+            "default": {
+              "description": "unexpected error",
+              "schema": {
+                "$ref": "#/definitions/errorModel"
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "course"
+          ],
+          "summary": "deletes a single course based on the Course ID supplied",
+          "description": "deletes a single course based on the Course ID supplied",
+          "operationId": "deleteCourse",
+          "parameters": [
+            {
+              "name": "courseId",
+              "in": "path",
+              "description": "ID of course to delete",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "course deleted"
+            },
+            "default": {
+              "description": "unexpected error",
+              "schema": {
+                "$ref": "#/definitions/errorModel"
+              }
+            }
+          }
+        }
+      },
+      "/studentStudyOn": {
+        "get": {
+          "tags": [
+            "studentStudyOn"
+          ],
+          "summary": "Returns all Student Course enrollments from the system",
+          "description": "Returns all Student Course enrollments from the system",
+          "operationId": "findStudentCourseEnrollments",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "maximum number of results to return",
+              "required": false,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Student Courde enrollments response",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/studentStudyOn"
+                }
+              }
+            },
+            "default": {
+              "description": "unexpected error",
+              "schema": {
+                "$ref": "#/definitions/errorModel"
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "studentStudyOn"
+          ],
+          "summary": "Creates a new student Course Enrollment in the system.",
+          "description": "Creates a new student Course Enrollment in the system.",
+          "operationId": "addStudentCourseEnrollment",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "studentStudyOn",
+              "in": "body",
+              "description": "Enrollment details to add to the system",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/studentStudyOn"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Enrollment response",
+              "schema": {
+                "$ref": "#/definitions/studentStudyOn"
+              }
+            },
+            "default": {
+              "description": "unexpected error",
+              "schema": {
+                "$ref": "#/definitions/errorModel"
+              }
+            }
+          }
+        }
+      },
+      "/invoice": {
+        "get": {
+          "tags": [
+            "invoice"
+          ],
+          "summary": "Returns all invoice details",
+          "description": "Returns all invoice details",
+          "operationId": "findInvoiceDetails",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "maximum number of results to return",
+              "required": false,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "invoice response",
+              "schema": {
+                "$ref": "#/definitions/invoice"
+              }
+            },
+            "default": {
+              "description": "unexpected error",
+              "schema": {
+                "$ref": "#/definitions/errorModel"
+              }
+            }
+          }
+        }
+      },
+      "/invoice/{id}": {
+        "delete": {
+          "tags": [
+            "invoice"
+          ],
+          "summary": "deletes a single invoice based on the ID supplied",
+          "description": "deletes a single invoice based on the ID supplied",
+          "operationId": "deleteInvoice",
+          "parameters": [
+            {
+              "name": "invoiceId",
+              "in": "path",
+              "description": "ID of invoice to delete",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "invoice deleted"
+            },
+            "default": {
+              "description": "unexpected error",
+              "schema": {
+                "$ref": "#/definitions/errorModel"
+              }
+            }
+          }
+        }
+      },
+      "/coursePaymentDetails": {
+        "get": {
+          "tags": [
+            "coursePaymentDetails"
+          ],
+          "summary": "Returns all course payment details",
+          "description": "Returns all course payment details",
+          "operationId": "findCoursePaymentDetails",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "maximum number of results to return",
+              "required": false,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "invoice response",
+              "schema": {
+                "$ref": "#/definitions/coursePaymentDetails"
+              }
+            },
+            "default": {
+              "description": "unexpected error",
+              "schema": {
+                "$ref": "#/definitions/errorModel"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "student": {
+        "type": "object",
+        "required": [
+          "studentName",
+          "studentNICNo",
+          "studentDOB"
+        ],
+        "properties": {
+          "studentId": {
+            "type": "integer"
+          },
+          "studentName": {
+            "type": "string"
+          },
+          "studentNICNo": {
+            "type": "string"
+          },
+          "studentDOB": {
+            "type": "DateTime"
+          },
+          "studentIsMarried": {
+            "type": "boolean"
+          },
+          "studentIsIntroducedBy": {
+            "type": "integer"
+          }
+        }
+      },
+      "course": {
+        "type": "object",
+        "required": [
+          "courseName"
+        ],
+        "properties": {
+          "courseId": {
+            "type": "integer"
+          },
+          "courseName": {
+            "type": "string"
+          }
+        }
+      },
+      "studentStudyOn": {
+        "type": "object",
+        "required": [
+          "studentId",
+          "courseId",
+          "courseFee",
+          "courseCompleted"
+        ],
+        "properties": {
+          "learnId": {
+            "type": "integer"
+          },
+          "studentId": {
+            "type": "integer"
+          },
+          "courseId": {
+            "type": "integer"
+          },
+          "courseFee": {
+            "type": "float"
+          },
+          "coursecompleted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "coursePaymentDetails": {
+        "type": "object",
+        "required": [
+          "learnId",
+          "invoiceId",
+          "discount"
+        ],
+        "properties": {
+          "paymentId": {
+            "type": "integer"
+          },
+          "learnId": {
+            "type": "integer"
+          },
+          "invoiceId": {
+            "type": "integer"
+          },
+          "dicount": {
+            "type": "float"
+          }
+        }
+      },
+      "invoice": {
+        "type": "object",
+        "required": [
+          "amount",
+          "paidOn"
+        ],
+        "properties": {
+          "invoiceId": {
+            "type": "integer"
+          },
+          "amount": {
+            "type": "float"
+          },
+          "paidOn": {
+            "type": "DateTime"
+          }
+        }
+      },
+      "errorModel": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "UI_Design": {},
+  "Reload_Details": {}
+}

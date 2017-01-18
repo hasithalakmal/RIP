@@ -19,8 +19,8 @@ public class FieldNameCheck {
     public String controler(String sample_string) {
         String msg_fv = "success";
         JSONObject example_1 = new JSONObject(sample_string);
-        String rip_sql_database_name = example_1.getString("rip_sql_database_name");
-        JSONArray rip_sql_tables = example_1.getJSONArray("rip_sql_tables");
+        String rip_sql_database_name = example_1.getString("database_name");
+        JSONArray rip_sql_tables = example_1.getJSONArray("tables");
         msg_fv = FieldNameCheck.field_name_check(rip_sql_tables);
         return msg_fv;
 
@@ -31,17 +31,17 @@ public class FieldNameCheck {
 
         for (int i = 0; i < rip_sql_tables.length(); i++) {
             JSONObject rip_sql_table = rip_sql_tables.getJSONObject(i);
-            String table_name = rip_sql_table.getString("rip_sql_table_name");
-            JSONArray rip_sql_fileds = rip_sql_table.getJSONArray("rip_sql_fileds");
+            String table_name = rip_sql_table.getString("table_name");
+            JSONArray rip_sql_fileds = rip_sql_table.getJSONArray("fields");
 
             for (int j = 0; j < rip_sql_fileds.length() - 1; j++) {
 
                 JSONObject rip_sql_filed = rip_sql_fileds.getJSONObject(j);
-                String rip_sql_feild_name = rip_sql_filed.getString("rip_sql_feild_name");
+                String rip_sql_feild_name = rip_sql_filed.getString("field_name");
 
                 for (int k = j + 1; k < rip_sql_fileds.length(); k++) {
                     JSONObject next_rip_sql_filed = rip_sql_fileds.getJSONObject(k);
-                    String next_rip_sql_feild_name = next_rip_sql_filed.getString("rip_sql_feild_name");
+                    String next_rip_sql_feild_name = next_rip_sql_filed.getString("field_name");
 
                     if (rip_sql_feild_name.equals(next_rip_sql_feild_name)) {
 

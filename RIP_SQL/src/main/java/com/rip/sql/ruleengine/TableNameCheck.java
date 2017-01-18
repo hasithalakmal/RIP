@@ -15,7 +15,7 @@ public class TableNameCheck {
     public String controler(String sample_string) {
         String msg = "success";
         JSONObject example_1 = new JSONObject(sample_string);
-        JSONArray rip_sql_tables = example_1.getJSONArray("rip_sql_tables");
+        JSONArray rip_sql_tables = example_1.getJSONArray("tables");
         msg = TableNameCheck.table_name_check(rip_sql_tables);
         return msg;
     }
