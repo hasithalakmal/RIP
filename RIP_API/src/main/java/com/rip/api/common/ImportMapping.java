@@ -9,6 +9,8 @@ import java.util.Map;
 public class ImportMapping {
     private static Map<String, String> typeMapping = new HashMap<>();
     private static Map<String, String> importMapping = new HashMap<>();
+    private static Map<String, String> typeMappingDBWithORM = new HashMap<>();
+
 
     static {
         typeMapping.put("array", "List");
@@ -44,6 +46,24 @@ public class ImportMapping {
         importMapping.put("LocalDateTime", "org.joda.time.*");
         importMapping.put("LocalDate", "org.joda.time.*");
         importMapping.put("LocalTime", "org.joda.time.*");
+        typeMappingDBWithORM.put("short_string", "string");
+        typeMappingDBWithORM.put("medium_string", "string");
+        typeMappingDBWithORM.put("long_string", "string");
+        typeMappingDBWithORM.put("small_integer", "integer");
+        typeMappingDBWithORM.put("medium_integer", "integer");
+        typeMappingDBWithORM.put("big_integer", "integer");
+        typeMappingDBWithORM.put("float", "float");
+        typeMappingDBWithORM.put("date_with_tz", "date");
+        typeMappingDBWithORM.put("date_without_tz", "date");
+        typeMappingDBWithORM.put("date", "date");
+        typeMappingDBWithORM.put("time", "time");
+        typeMappingDBWithORM.put("timestamp", "timestamp");
+        typeMappingDBWithORM.put("small_blob", "binary");
+        typeMappingDBWithORM.put("medium_blob", "binary");
+        typeMappingDBWithORM.put("large_blob", "binary");
+        typeMappingDBWithORM.put("xml", "string");
+        typeMappingDBWithORM.put("boolean", "boolean");
+
     }
 
     public static String getTypeMapping(String type) {
@@ -52,5 +72,9 @@ public class ImportMapping {
 
     public static String getImportMapping(String type) {
         return importMapping.get(type);
+    }
+
+    public static String getTypeMappingDBWithORM(String type) {
+        return typeMappingDBWithORM.get(type);
     }
 }

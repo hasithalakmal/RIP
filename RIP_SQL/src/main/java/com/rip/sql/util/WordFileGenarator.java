@@ -28,8 +28,10 @@ import org.springframework.stereotype.Service;
 @Service("WordFileGenarator")
 public class WordFileGenarator {
 
-    public String createWordFile(String platformIndependentModelDBDesign) throws IOException {
+    public String createWordFile(String pimJSON) {
         String msg = "success";
+        JSONObject pim = new JSONObject(pimJSON);
+        String platformIndependentModelDBDesign = pim.getJSONObject("Database_Design").toString();
 
         FileOutputStream out = null;
         try {
@@ -193,139 +195,149 @@ public class WordFileGenarator {
             XWPFRun G = g.createRun();
             G.setText("This table contain all the Databases and its datatypes which can use for the system.");
 
-            XWPFTable tble3 = document.createTable();
-            XWPFTableRow row3 = tble3.getRow(0);
-            row3.getCell(0).setText("DIM Data Type");
-            row3.addNewTableCell().setText("MySql");
-            row3.addNewTableCell().setText("MsSql");
-            row3.addNewTableCell().setText("PgSql");
-            row3.addNewTableCell().setText("Oracal");
+//            XWPFTable tble3 = document.createTable();
+//            XWPFTableRow row3 = tble3.getRow(0);
+//            row3.getCell(0).setText("DIM Data Type");
+//            row3.addNewTableCell().setText("MySql");
+//            row3.addNewTableCell().setText("MsSql");
+//            row3.addNewTableCell().setText("PgSql");
+//            row3.addNewTableCell().setText("Oracal");
+//
+//            XWPFTableRow row5 = tble3.createRow();
+//            row5.getCell(0).setText("Short String");
+//            row5.getCell(1).setText("xxxxxxx");
+//            row5.getCell(2).setText("xxxxxxx");
+//            row5.getCell(3).setText("xxxxxxx");
+//            row5.getCell(4).setText("xxxxxxx");
+//
+//            XWPFTableRow row6 = tble3.createRow();
+//            row6.getCell(0).setText("Mediam String");
+//            row6.getCell(1).setText("xxxxxxx");
+//            row6.getCell(2).setText("xxxxxxx");
+//            row6.getCell(3).setText("xxxxxxx");
+//            row6.getCell(4).setText("xxxxxxx");
+//
+//            XWPFTableRow row7 = tble3.createRow();
+//            row7.getCell(0).setText("Long String");
+//            row7.getCell(1).setText("xxxxxxx");
+//            row7.getCell(2).setText("xxxxxxx");
+//            row7.getCell(3).setText("xxxxxxx");
+//            row7.getCell(4).setText("xxxxxxx");
+//
+//            XWPFTableRow row8 = tble3.createRow();
+//            row8.getCell(0).setText("Small Integer");
+//            row8.getCell(1).setText("xxxxxxx");
+//            row8.getCell(2).setText("xxxxxxx");
+//            row8.getCell(3).setText("xxxxxxx");
+//            row8.getCell(4).setText("xxxxxxx");
+//
+//            XWPFTableRow row9 = tble3.createRow();
+//            row9.getCell(0).setText("Mediam  Integer");
+//            row9.getCell(1).setText("xxxxxxx");
+//            row9.getCell(2).setText("xxxxxxx");
+//            row9.getCell(3).setText("xxxxxxx");
+//            row9.getCell(4).setText("xxxxxxx");
+//
+//            XWPFTableRow row10 = tble3.createRow();
+//            row10.getCell(0).setText("Big Integer");
+//            row10.getCell(1).setText("xxxxxxx");
+//            row10.getCell(2).setText("xxxxxxx");
+//            row10.getCell(3).setText("xxxxxxx");
+//            row10.getCell(4).setText("xxxxxxx");
+//
+//            XWPFTableRow row11 = tble3.createRow();
+//            row11.getCell(0).setText("Float(M,D)");
+//            row11.getCell(1).setText("xxxxxxx");
+//            row11.getCell(2).setText("xxxxxxx");
+//            row11.getCell(3).setText("xxxxxxx");
+//            row11.getCell(4).setText("xxxxxxx");
+//
+//            XWPFTableRow row12 = tble3.createRow();
+//            row12.getCell(0).setText("Date With TZ");
+//            row12.getCell(1).setText("xxxxxxx");
+//            row12.getCell(2).setText("xxxxxxx");
+//            row12.getCell(3).setText("xxxxxxx");
+//            row12.getCell(4).setText("xxxxxxx");
+//
+//            XWPFTableRow row13 = tble3.createRow();
+//            row13.getCell(0).setText("Date Without TZ");
+//            row13.getCell(1).setText("xxxxxxx");
+//            row13.getCell(2).setText("xxxxxxx");
+//            row13.getCell(3).setText("xxxxxxx");
+//            row13.getCell(4).setText("xxxxxxx");
+//
+//            XWPFTableRow row14 = tble3.createRow();
+//            row14.getCell(0).setText("Date");
+//            row14.getCell(1).setText("xxxxxxx");
+//            row14.getCell(2).setText("xxxxxxx");
+//            row14.getCell(3).setText("xxxxxxx");
+//            row14.getCell(4).setText("xxxxxxx");
+//
+//            XWPFTableRow row15 = tble3.createRow();
+//            row15.getCell(0).setText("Time");
+//            row15.getCell(1).setText("xxxxxxx");
+//            row15.getCell(2).setText("xxxxxxx");
+//            row15.getCell(3).setText("xxxxxxx");
+//            row15.getCell(4).setText("xxxxxxx");
+//
+//            XWPFTableRow row16 = tble3.createRow();
+//            row16.getCell(0).setText("TimeStamp");
+//            row16.getCell(1).setText("xxxxxxx");
+//            row16.getCell(2).setText("xxxxxxx");
+//            row16.getCell(3).setText("xxxxxxx");
+//            row16.getCell(4).setText("xxxxxxx");
+//
+//            XWPFTableRow row17 = tble3.createRow();
+//            row17.getCell(0).setText("Small Blob");
+//            row17.getCell(1).setText("xxxxxxx");
+//            row17.getCell(2).setText("xxxxxxx");
+//            row17.getCell(3).setText("xxxxxxx");
+//            row17.getCell(4).setText("xxxxxxx");
+//
+//            XWPFTableRow row18 = tble3.createRow();
+//            row18.getCell(0).setText("Mediam Blob");
+//            row18.getCell(1).setText("xxxxxxx");
+//            row18.getCell(2).setText("xxxxxxx");
+//            row18.getCell(3).setText("xxxxxxx");
+//            row18.getCell(4).setText("xxxxxxx");
+//
+//            XWPFTableRow row19 = tble3.createRow();
+//            row19.getCell(0).setText("Large Blob");
+//            row19.getCell(1).setText("xxxxxxx");
+//            row19.getCell(2).setText("xxxxxxx");
+//            row19.getCell(3).setText("xxxxxxx");
+//            row19.getCell(4).setText("xxxxxxx");
+//
+//            XWPFTableRow row20 = tble3.createRow();
+//            row20.getCell(0).setText("XML");
+//            row20.getCell(1).setText("xxxxxxx");
+//            row20.getCell(2).setText("xxxxxxx");
+//            row20.getCell(3).setText("xxxxxxx");
+//            row20.getCell(4).setText("xxxxxxx");
+//
+//            XWPFTableRow row21 = tble3.createRow();
+//            row21.getCell(0).setText("rip_sql_boolean");
+//            row21.getCell(1).setText("xxxxxxx");
+//            row21.getCell(2).setText("xxxxxxx");
+//            row21.getCell(3).setText("xxxxxxx");
+//            row21.getCell(4).setText("xxxxxxx");
+            ConfigDetails configdetails = ConfigDetailExtractor.getConfigDetails(pimJSON);
+            String sqlpath = configdetails.getDbSQLPath();
 
-            XWPFTableRow row5 = tble3.createRow();
-            row5.getCell(0).setText("Short String");
-            row5.getCell(1).setText("xxxxxxx");
-            row5.getCell(2).setText("xxxxxxx");
-            row5.getCell(3).setText("xxxxxxx");
-            row5.getCell(4).setText("xxxxxxx");
+            if (sqlpath != null) {
+                File parent = new File(sqlpath);
+                parent.mkdirs();
+            }
 
-            XWPFTableRow row6 = tble3.createRow();
-            row6.getCell(0).setText("Mediam String");
-            row6.getCell(1).setText("xxxxxxx");
-            row6.getCell(2).setText("xxxxxxx");
-            row6.getCell(3).setText("xxxxxxx");
-            row6.getCell(4).setText("xxxxxxx");
-
-            XWPFTableRow row7 = tble3.createRow();
-            row7.getCell(0).setText("Long String");
-            row7.getCell(1).setText("xxxxxxx");
-            row7.getCell(2).setText("xxxxxxx");
-            row7.getCell(3).setText("xxxxxxx");
-            row7.getCell(4).setText("xxxxxxx");
-
-            XWPFTableRow row8 = tble3.createRow();
-            row8.getCell(0).setText("Small Integer");
-            row8.getCell(1).setText("xxxxxxx");
-            row8.getCell(2).setText("xxxxxxx");
-            row8.getCell(3).setText("xxxxxxx");
-            row8.getCell(4).setText("xxxxxxx");
-
-            XWPFTableRow row9 = tble3.createRow();
-            row9.getCell(0).setText("Mediam  Integer");
-            row9.getCell(1).setText("xxxxxxx");
-            row9.getCell(2).setText("xxxxxxx");
-            row9.getCell(3).setText("xxxxxxx");
-            row9.getCell(4).setText("xxxxxxx");
-
-            XWPFTableRow row10 = tble3.createRow();
-            row10.getCell(0).setText("Big Integer");
-            row10.getCell(1).setText("xxxxxxx");
-            row10.getCell(2).setText("xxxxxxx");
-            row10.getCell(3).setText("xxxxxxx");
-            row10.getCell(4).setText("xxxxxxx");
-
-            XWPFTableRow row11 = tble3.createRow();
-            row11.getCell(0).setText("Float(M,D)");
-            row11.getCell(1).setText("xxxxxxx");
-            row11.getCell(2).setText("xxxxxxx");
-            row11.getCell(3).setText("xxxxxxx");
-            row11.getCell(4).setText("xxxxxxx");
-
-            XWPFTableRow row12 = tble3.createRow();
-            row12.getCell(0).setText("Date With TZ");
-            row12.getCell(1).setText("xxxxxxx");
-            row12.getCell(2).setText("xxxxxxx");
-            row12.getCell(3).setText("xxxxxxx");
-            row12.getCell(4).setText("xxxxxxx");
-
-            XWPFTableRow row13 = tble3.createRow();
-            row13.getCell(0).setText("Date Without TZ");
-            row13.getCell(1).setText("xxxxxxx");
-            row13.getCell(2).setText("xxxxxxx");
-            row13.getCell(3).setText("xxxxxxx");
-            row13.getCell(4).setText("xxxxxxx");
-
-            XWPFTableRow row14 = tble3.createRow();
-            row14.getCell(0).setText("Date");
-            row14.getCell(1).setText("xxxxxxx");
-            row14.getCell(2).setText("xxxxxxx");
-            row14.getCell(3).setText("xxxxxxx");
-            row14.getCell(4).setText("xxxxxxx");
-
-            XWPFTableRow row15 = tble3.createRow();
-            row15.getCell(0).setText("Time");
-            row15.getCell(1).setText("xxxxxxx");
-            row15.getCell(2).setText("xxxxxxx");
-            row15.getCell(3).setText("xxxxxxx");
-            row15.getCell(4).setText("xxxxxxx");
-
-            XWPFTableRow row16 = tble3.createRow();
-            row16.getCell(0).setText("TimeStamp");
-            row16.getCell(1).setText("xxxxxxx");
-            row16.getCell(2).setText("xxxxxxx");
-            row16.getCell(3).setText("xxxxxxx");
-            row16.getCell(4).setText("xxxxxxx");
-
-            XWPFTableRow row17 = tble3.createRow();
-            row17.getCell(0).setText("Small Blob");
-            row17.getCell(1).setText("xxxxxxx");
-            row17.getCell(2).setText("xxxxxxx");
-            row17.getCell(3).setText("xxxxxxx");
-            row17.getCell(4).setText("xxxxxxx");
-
-            XWPFTableRow row18 = tble3.createRow();
-            row18.getCell(0).setText("Mediam Blob");
-            row18.getCell(1).setText("xxxxxxx");
-            row18.getCell(2).setText("xxxxxxx");
-            row18.getCell(3).setText("xxxxxxx");
-            row18.getCell(4).setText("xxxxxxx");
-
-            XWPFTableRow row19 = tble3.createRow();
-            row19.getCell(0).setText("Large Blob");
-            row19.getCell(1).setText("xxxxxxx");
-            row19.getCell(2).setText("xxxxxxx");
-            row19.getCell(3).setText("xxxxxxx");
-            row19.getCell(4).setText("xxxxxxx");
-
-            XWPFTableRow row20 = tble3.createRow();
-            row20.getCell(0).setText("XML");
-            row20.getCell(1).setText("xxxxxxx");
-            row20.getCell(2).setText("xxxxxxx");
-            row20.getCell(3).setText("xxxxxxx");
-            row20.getCell(4).setText("xxxxxxx");
-
-            XWPFTableRow row21 = tble3.createRow();
-            row21.getCell(0).setText("rip_sql_boolean");
-            row21.getCell(1).setText("xxxxxxx");
-            row21.getCell(2).setText("xxxxxxx");
-            row21.getCell(3).setText("xxxxxxx");
-            row21.getCell(4).setText("xxxxxxx");
-
-            out = new FileOutputStream(new File("D:\\Accademic\\4thYearProject\\Dev\\FrameworkServerArea\\DatabaseDocumentation.docx"));
+            out = new FileOutputStream(new File(sqlpath + "\\DatabaseDocumentation.docx"));
             document.write(out);
             out.close();
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(WordFileGenarator.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(WordFileGenarator.class.getName()).log(Level.SEVERE, null, ex);
+            msg = "Some thing went wrong In word file Genarartion";
+        } catch (IOException ex) {
+            //Logger.getLogger(WordFileGenarator.class.getName()).log(Level.SEVERE, null, ex);
             msg = "Some thing went wrong In word file Genarartion";
         }
         return msg;

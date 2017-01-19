@@ -11,7 +11,7 @@ public class ConfigDetailExtractor {
     public static ConfigDetails getConfigDetails(String ripJsonString) {
         JSONObject ripJson = new JSONObject(ripJsonString);
         ConfigDetails configDetails = new ConfigDetails();
-        configDetails.setAppDetails(ripJson.getJSONObject("Request_details"));
+        configDetails.setAppDetails(ripJson.getJSONObject("Request_Details"));
         configDetails.setTechnicalSpecification(ripJson.getJSONObject("Technical_Spec"));
         configDetails.setRestAPISpecification(ripJson.getJSONObject("RestAPI_Design"));
         configDetails.setDatabaseDesign(ripJson.getJSONObject("Database_Design"));
@@ -22,8 +22,8 @@ public class ConfigDetailExtractor {
         configDetails.setVersion(configDetails.getAppDetails().getString("version"));
         configDetails.setProgrammingLanguage(configDetails.getTechnicalSpecification().getString("language"));
         configDetails.setRestFramework(configDetails.getTechnicalSpecification().getString("rest_framework"));
-        configDetails.setOutputPath(Constants.PROJECT_OUTPUT_PATH_PREFIX + configDetails.getAppId() + "\\" + configDetails.getVersion() + "\\" + configDetails.getProjectName()+ "\\" + configDetails.getProjectName());
-        configDetails.setOutputPathDocs(Constants.PROJECT_OUTPUT_PATH_PREFIX + configDetails.getAppId() + "\\" + configDetails.getVersion() + "\\" + configDetails.getProjectName()+ "\\Docs");
+        configDetails.setOutputPath(Constants.PROJECT_OUTPUT_PATH_PREFIX + configDetails.getAppId() + "\\" + configDetails.getVersion() + "\\" + configDetails.getProjectName()+ "\\Server-Project"+ "\\" + configDetails.getProjectName());
+        configDetails.setOutputPathDocs(Constants.PROJECT_OUTPUT_PATH_PREFIX + configDetails.getAppId() + "\\" + configDetails.getVersion() + "\\" + configDetails.getProjectName()+ "\\Server-Project"+ "\\Docs");
         configDetails.setPostmanCollectionPath(configDetails.getOutputPathDocs() + "\\Postman\\");
         configDetails.setResourcesPath(configDetails.getOutputPath() + "\\" + "resources");
         configDetails.setInputJsonPath(configDetails.getOutputPathDocs() + "\\" + configDetails.getProjectName() + ".json");
@@ -31,7 +31,7 @@ public class ConfigDetailExtractor {
         configDetails.setGeneratorPath(Constants.REST_API_GENERATOR_PATH);
         configDetails.setPostmanGeneratorPath(Constants.POSTMAN_GENERATOR_PATH);
         configDetails.setProjectUtilPath(configDetails.getOutputPath() + "\\src\\main\\java\\" + configDetails.getPackageName().substring(0, configDetails.getPackageName().lastIndexOf('.') + 1).replace('.', '\\') + "util\\");
-        configDetails.setDbName(ripJson.getJSONObject("Database_Design").getString("db_name"));
+        configDetails.setDbName(ripJson.getJSONObject("Database_Design").getString("database_name"));
         configDetails.setDbSQLPath(configDetails.getOutputPathDocs() + "\\SQL\\");
         return configDetails;
     }

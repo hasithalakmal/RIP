@@ -1,4 +1,4 @@
-package com.rip.api.dto;
+package com.rip.sql.util;
 
 import org.json.JSONObject;
 
@@ -27,9 +27,9 @@ public class ConfigDetails {
     private String generatorPath;
     private String postmanGeneratorPath;
     private String projectUtilPath;
+    private String dbName;
+    private String dbSQLPath;
     private String outputPathDocs;
-    private String outputClientProject;
-
     public ConfigDetails() {
     }
 
@@ -185,6 +185,22 @@ public class ConfigDetails {
         this.projectUtilPath = projectUtilPath;
     }
 
+    public String getDbName() {
+        return dbName;
+    }
+
+    public void setDbName(String dbName) {
+        this.dbName = dbName;
+    }
+
+    public String getDbSQLPath() {
+        return dbSQLPath;
+    }
+
+    public void setDbSQLPath(String dbSQLPath) {
+        this.dbSQLPath = dbSQLPath;
+    }
+
     public String getOutputPathDocs() {
         return outputPathDocs;
     }
@@ -192,13 +208,4 @@ public class ConfigDetails {
     public void setOutputPathDocs(String outputPathDocs) {
         this.outputPathDocs = outputPathDocs;
     }
-
-    public String getOutputClientProject() {
-        return outputClientProject;
-    }
-
-    public void setOutputClientProject(String outputClientProject) {
-        this.outputClientProject = outputClientProject;
-    }
-    
 }

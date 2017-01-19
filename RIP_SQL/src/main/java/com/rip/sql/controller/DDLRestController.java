@@ -8,6 +8,7 @@ package com.rip.sql.controller;
 import com.rip.sql.service.DDLManagementService;
 import com.rip.sql.service.DatabaseDocumentationService;
 import com.rip.sql.service.DatabaseIntroduceManagementService;
+import com.rip.sql.util.WordFileGenarator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,9 @@ public class DDLRestController {
     
     @Autowired
     DatabaseIntroduceManagementService DatabaseIntroduceManagementService;
+    
+    @Autowired 
+    WordFileGenarator wordFileGenarator;
     
     @Autowired
     DatabaseDocumentationService databaseDocumentationService;

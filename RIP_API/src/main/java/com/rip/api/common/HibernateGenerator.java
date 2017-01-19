@@ -50,7 +50,7 @@ public class HibernateGenerator {
             templateData.put("defaultPackage", packageName.substring(0, packageName.lastIndexOf('.') + 1) + "persistence.entity");
             templateData.put("className", getCompliantEntityName(tableName));
             templateData.put("tableName", tableName);
-            templateData.putAll(generateMappingDataForDBTable(table.getJSONArray("fileds"), getForeignKeysForADBTable(databaseDesign.getJSONArray("forign_keys"), tableName, "base_table"), getCompliantEntityName(tableName) + "Entity"));
+            templateData.putAll(generateMappingDataForDBTable(table.getJSONArray("fields"), getForeignKeysForADBTable(databaseDesign.getJSONArray("foreign_keys"), tableName, "base_table"), getCompliantEntityName(tableName) + "Entity"));
             Common.generateFileFromTemplateWithSubTemplate(Constants.HIBERNATE_HBM_XML_MUSTACHE_FILE_PATH, outputPath + "\\hbm\\" + tableName + ".hbm.xml", templateData, Constants.HBM_TEMPLATE_DIRECTORY_PATH);
 
             daoTemplateData.put("package", packageName.substring(0, packageName.lastIndexOf('.') + 1));
@@ -152,19 +152,19 @@ public class HibernateGenerator {
         for (int i = 0; i < fieldList.length(); i++) {
             other = "";
             JSONObject field = fieldList.getJSONObject(i);
-            JSONObject foreignKey = getForeignKeyForADBField(foreignKeys, field.getString("feild_name"));
+            JSONObject foreignKey = getForeignKeyForADBField(foreignKeys, field.getString("field_name"));
 
             if (field.getBoolean("primary_key")) {
-                if (field.getBoolean("auto_incriment")) {
+                if (field.getBoolean("auto_increment")) {
                     generator = "<generator class=\"identity\" />";
                 }
-                ids.add(new Id(getCompliantEntityFieldName(field.getString("feild_name")), fromDBDataTypeToEntityDataType(field.getString("data_type")), generator, field.getString("feild_name")));
+                ids.add(new Id(getCompliantEntityFieldName(field.getString("field_name")), fromDBDataTypeToEntityDataType(field.getString("data_type")), generator, field.getString("field_name")));
             } else if (foreignKey != null) {
                 String cascade = "";
-                if (foreignKey.getString("on_update").equals("CASCADE")) {
+                if (foreignKey.getString("on_update").equals("cascade")) {
                     cascade = "save-update";
                 }
-                if (foreignKey.getString("on_delete").equals("CASCADE")) {
+                if (foreignKey.getString("on_delete").equals("cascade")) {
                     if (cascade.equals("")) {
                         cascade = "delete";
                     } else {
@@ -172,9 +172,9 @@ public class HibernateGenerator {
                     }
                 }
                 if (foreignKey.getString("relation").equals("OneToOne")) {
-                    OneToOneforeignKeys.add(new ForeignKey(getCompliantEntityFieldName(field.getString("feild_name")), getCompliantEntityName(foreignKey.getString("reference_table")) + "Entity", cascade, getCompliantEntityFieldName(foreignKey.getString("rt_feild_name")), null));
+                    OneToOneforeignKeys.add(new ForeignKey(getCompliantEntityFieldName(field.getString("field_name")), getCompliantEntityName(foreignKey.getString("reference_table")) + "Entity", cascade, getCompliantEntityFieldName(foreignKey.getString("rt_field_name")), null));
                 } else {// ManyToMany
-                    ManyToOneforeignKeys.add(new ForeignKey(getCompliantEntityFieldName(field.getString("feild_name")), getCompliantEntityName(foreignKey.getString("reference_table")) + "Entity", cascade, getCompliantEntityFieldName(foreignKey.getString("rt_feild_name")), foreignKey.getString("bt_feild_name")));
+                    ManyToOneforeignKeys.add(new ForeignKey(getCompliantEntityFieldName(field.getString("field_name")), getCompliantEntityName(foreignKey.getString("reference_table")) + "Entity", cascade, getCompliantEntityFieldName(foreignKey.getString("rt_field_name")), foreignKey.getString("bt_field_name")));
                 }
             } else {
                 if (field.getBoolean("not_null")) {
@@ -183,7 +183,7 @@ public class HibernateGenerator {
                 if (field.getBoolean("unique")) {
                     other += "unique=\"true\" ";
                 }
-                properties.add(new Property(getCompliantEntityFieldName(field.getString("feild_name")), field.getString("feild_name"), fromDBDataTypeToEntityDataType(field.getString("data_type")), other));
+                properties.add(new Property(getCompliantEntityFieldName(field.getString("field_name")), field.getString("field_name"), fromDBDataTypeToEntityDataType(field.getString("data_type")), other));
             }
         }
         if (ids.size() > 1) {
@@ -205,10 +205,10 @@ public class HibernateGenerator {
             JSONObject field = fieldList.getJSONObject(i);
 
             if (field.getBoolean("primary_key")) {
-                if (field.getBoolean("auto_incriment")) {
+                if (field.getBoolean("auto_increment")) {
                     generator = "<generator class=\"identity\" />";
                 }
-                ids.add(new Id(getCompliantEntityFieldName(field.getString("feild_name")), fromDBDataTypeToEntityDataType(field.getString("data_type")), generator, field.getString("feild_name")));
+                ids.add(new Id(getCompliantEntityFieldName(field.getString("field_name")), fromDBDataTypeToEntityDataType(field.getString("data_type")), generator, field.getString("field_name")));
             }
         }
 
@@ -236,7 +236,7 @@ public class HibernateGenerator {
         }
         JSONObject foreignKey = null;
         for (int i = 0; i < foreignKeys.length(); i++) {
-            if (foreignKeys.getJSONObject(i).getString("bt_feild_name").equals(field)) {
+            if (foreignKeys.getJSONObject(i).getString("bt_field_name").equals(field)) {
                 foreignKey = foreignKeys.getJSONObject(i);
                 break;
             }
@@ -245,14 +245,16 @@ public class HibernateGenerator {
     }
 
     public static String fromDBDataTypeToEntityDataType(String dbDataType) {
-        String entityDataType = dbDataType;
+        return ImportMapping.getTypeMappingDBWithORM(dbDataType);
+
+/*        String entityDataType = dbDataType;
         if (dbDataType.toLowerCase().contains("int")) {
             entityDataType = "integer";
         } else if (dbDataType.toLowerCase().contains("varchar")) {
             entityDataType = "string";
         }
 
-        return entityDataType;
+        return entityDataType;*/
     }
 
     public static Map<String, Object> getPathsForADBTable(String table, JSONObject paths, String packageName, final Map<String, Object> entityData, JSONArray tableList) {
@@ -270,7 +272,7 @@ public class HibernateGenerator {
         Iterator pathKeys = paths.keys();
         while (pathKeys.hasNext()) {
             String pathName = (String) pathKeys.next();
-            if (pathName.substring(1).startsWith(table)) {
+            if (pathName.substring(1).toLowerCase().startsWith(table.toLowerCase())) {
                 JSONObject path = paths.getJSONObject(pathName);
                 Iterator crudKeys = path.keys();
                 while (crudKeys.hasNext()) {
@@ -364,6 +366,10 @@ public class HibernateGenerator {
         for (ForeignKey fk : foreignKeys) {
             importsForDAOImpl.add(fk.getClassName());
         }
+        CompositeIdHBM compositeId = (CompositeIdHBM) entityData.get("compositeId");
+        if(compositeId != null){
+            importsForDAOImpl.add(entityData.get("className")+"EntityId");
+        }
         for (String importType : importsForDAOImpl) {
             importsListForDAOImpl.add(new Import(packageName.substring(0, packageName.lastIndexOf('.') + 1) + "persistence.entity." + importType));
         }
@@ -416,6 +422,9 @@ public class HibernateGenerator {
         }
         if (compositeId != null) {
             List<Id> ids = compositeId.getColumns();
+            for (Id changingId:ids){
+                changingId.setName(parametersForAMethod.get(0).getName() + "."+getGetterOrSetterForFieldWithBracket(changingId.getName(),"get"));
+            }
             parametersForCompositeId = getParameterListForCompositeId(ids);
             CompositeId.add(new CompositeId(entity + "Id", parametersForCompositeId, "setCompositeId"));
         }
@@ -541,7 +550,7 @@ public class HibernateGenerator {
             JSONObject table = tableList.getJSONObject(i);
             String tableName = getCompliantEntityName(table.getString("table_name")) + "Entity";
             if (entityName.equals(tableName)) {
-                fieldList = table.getJSONArray("fileds");
+                fieldList = table.getJSONArray("fields");
                 break;
             }
         }

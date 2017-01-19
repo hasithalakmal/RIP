@@ -12,13 +12,13 @@ package com.rip.sql.util;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import org.jboss.logging.Logger;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service("WriteToJavaFile")
 public class WriteToJavaFile {
-private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(WriteToJSONFile.class);
+
+    private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(WriteToJSONFile.class);
+
     public int createJavaFile(String fileName, String javaCode) {
         int state = 0;
         final String FILENAME = "D:\\Accademic\\4thYearProject\\Dev\\ExternalResource\\SQLScriptGen\\src\\main\\java\\com\\rip\\sqlscriptgen\\" + fileName + ".java";
@@ -27,14 +27,11 @@ private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.ge
         FileWriter fw = null;
 
         try {
-
             String content = javaCode;
-
             fw = new FileWriter(FILENAME);
             bw = new BufferedWriter(fw);
             bw.write(content);
             state = 1;
-
         } catch (IOException e) {
             LOGGER.error(e.getMessage(), e);
         } finally {
@@ -54,7 +51,6 @@ private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.ge
             }
 
         }
-
         return state;
 
     }

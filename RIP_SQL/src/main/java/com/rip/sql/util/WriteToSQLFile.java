@@ -10,6 +10,7 @@ package com.rip.sql.util;
  * @author Hasitha Lakmal
  */
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import org.apache.log4j.Logger;
@@ -19,9 +20,17 @@ import org.springframework.stereotype.Service;
 public class WriteToSQLFile {
     private static final Logger LOGGER = Logger.getLogger(WriteToSQLFile.class);
 
-	public int createSQLFile(String fileName, String sql_code) {
+	public int createSQLFile(String fileName, String sql_code, String pimJSON) {
+             ConfigDetails configdetails = ConfigDetailExtractor.getConfigDetails(pimJSON);
+            String sqlpath = configdetails.getDbSQLPath();
+
+            if (sqlpath != null) {
+                File parent = new File(sqlpath);
+                parent.mkdirs();
+            }
+            
              int state = 0;
-             final String FILENAME = "D:\\Accademic\\4thYearProject\\Dev\\FrameworkServerArea\\"+fileName+".sql";
+             final String FILENAME = sqlpath+"\\"+fileName+".sql";
 
 		BufferedWriter bw = null;
 		FileWriter fw = null;

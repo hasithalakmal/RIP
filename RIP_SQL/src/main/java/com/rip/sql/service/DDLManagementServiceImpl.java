@@ -54,44 +54,34 @@ public class DDLManagementServiceImpl implements DDLManagementService {
         if (!msg.equals("success")) {
             return msg;
         } else {
-            try {
-                writeToJSONFile.createJsonFile("pim", platformIndependentModel.toString());
-                String script = MavenProjectRunner.runMavenProject(executionClass);
-                System.out.println(script);
-                //write ddl script
-                String startString = "RIP_SQL_GEN_DDL_BEGIN";
-                int start = script.indexOf(startString);
-                int start1 = startString.length();
-                String endString = "RIP_SQL_GEN_DDL_END";
-                int end = script.indexOf(endString);
-                CharSequence sub = script.subSequence((start + start1), (end));
-                String ddl_script = sub.toString();
-                writeToSQLFile.createSQLFile("DDL_Script", ddl_script);
-
-                //write ddl script
-                startString = "RIP_SQL_GEN_DML_BEGIN";
-                start = script.indexOf(startString);
-                start1 = startString.length();
-                endString = "RIP_SQL_GEN_DML_END";
-                end = script.indexOf(endString);
-                sub = script.subSequence((start + start1), (end));
-                String dml_script = sub.toString();
-                writeToSQLFile.createSQLFile("DML_Script", dml_script);
-
-                //write ddl script
-                startString = "RIP_SQL_GEN_DQL_BEGIN";
-                start = script.indexOf(startString);
-                start1 = startString.length();
-                endString = "RIP_SQL_GEN_DQL_END";
-                end = script.indexOf(endString);
-                sub = script.subSequence((start + start1), (end));
-                String dql_script = sub.toString();
-                writeToSQLFile.createSQLFile("DQL_Script", dql_script);
-                wordFileGenarator.createWordFile(databaseDesign.toString());
-            } catch (IOException ex) {
-                Logger.getLogger(DDLManagementServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("error in PIM");
-            }
+            writeToJSONFile.createJsonFile("pim", platformIndependentModel.toString());
+            String script = MavenProjectRunner.runMavenProject(executionClass);
+            System.out.println(script);
+            String startString = "RIP_SQL_GEN_DDL_BEGIN";
+            int start = script.indexOf(startString);
+            int start1 = startString.length();
+            String endString = "RIP_SQL_GEN_DDL_END";
+            int end = script.indexOf(endString);
+            CharSequence sub = script.subSequence((start + start1), (end));
+            String ddl_script = sub.toString();
+            writeToSQLFile.createSQLFile("DDL_Script", ddl_script,ddlJSON);
+            startString = "RIP_SQL_GEN_DML_BEGIN";
+            start = script.indexOf(startString);
+            start1 = startString.length();
+            endString = "RIP_SQL_GEN_DML_END";
+            end = script.indexOf(endString);
+            sub = script.subSequence((start + start1), (end));
+            String dml_script = sub.toString();
+            writeToSQLFile.createSQLFile("DML_Script", dml_script,ddlJSON);
+            startString = "RIP_SQL_GEN_DQL_BEGIN";
+            start = script.indexOf(startString);
+            start1 = startString.length();
+            endString = "RIP_SQL_GEN_DQL_END";
+            end = script.indexOf(endString);
+            sub = script.subSequence((start + start1), (end));
+            String dql_script = sub.toString();
+            writeToSQLFile.createSQLFile("DQL_Script", dql_script,ddlJSON);
+            wordFileGenarator.createWordFile(ddlJSON.toString());
         }
         return msg;
     }

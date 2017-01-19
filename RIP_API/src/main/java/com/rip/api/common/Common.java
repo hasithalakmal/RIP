@@ -25,7 +25,7 @@ public class Common {
 
     public static String getTemplate(String programmingLanguage, String restFramework) {
         String template = "";
-        if (programmingLanguage.equals("java")) {
+        if (programmingLanguage.equals("Java")) {
             if (restFramework.equals("RESTEasy")) {
                 template = "jaxrs-resteasy";
             } else if (restFramework.equals("Jersey")) {
@@ -77,14 +77,14 @@ public class Common {
         deleteList.add(configDetails.getOutputPathDocs() + "\\API-Doc\\LICENSE");
         deleteList.add(configDetails.getOutputPath() + "\\README.md");
 
-        if (configDetails.getTechnicalSpecification().getString("orm_framework").equals("hibernate")) {
+        if (configDetails.getTechnicalSpecification().getString("orm_framework").equals("Hibernate")) {
             deleteList.add(configDetails.getOutputPath() + "\\build.xml");
             deleteList.add(configDetails.getOutputPath() + "\\hbm");
         }
-        if (configDetails.getTechnicalSpecification().getString("build_tool").equals("maven")) {
+        if (configDetails.getTechnicalSpecification().getString("build_tool").equals("Maven")) {
             deleteList.add(configDetails.getOutputPath() + "\\build.gradle");
             deleteList.add(configDetails.getOutputPath() + "\\settings.gradle");
-        } else if (configDetails.getTechnicalSpecification().getString("build_tool").equals("gradle")) {
+        } else if (configDetails.getTechnicalSpecification().getString("build_tool").equals("Gradle")) {
             deleteList.add(configDetails.getOutputPath() + "\\pom.xml");
         }
         return deleteList;
